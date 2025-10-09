@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: actualbudget-certificate
+  namespace: actualbudget
+spec:
+  dnsNames:
+    - actual-budget.hoareau-marion.eu
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  secretName: actualbudget-hoareau-marion-eu-tls
