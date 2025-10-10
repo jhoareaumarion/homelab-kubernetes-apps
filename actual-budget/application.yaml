@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: actual-budget
+  namespace: actual-budget
+spec:
+  project: homelab
+  source:
+    repoURL: https://community-charts.github.io/helm-charts
+    chart: actualbudget
+    targetRevision: 1.8.3
+    helm:
+      values: |
+        ingress:
+          enabled: true
+          className: nginx
+          hosts:
+            - host: actual-budget.hoareau-marion.eu
+              paths:
+                - path: /
+                  pathType: ImplementationSpecific
+          tls:
+            - secretName: actualbudget-hoareau-marion-eu-tls
+              hosts:
+                - actual-budget.hoareau-marion.eu
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: actual-budget
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
