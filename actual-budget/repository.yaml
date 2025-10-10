@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: community-charts-repo
+  namespace: actual-budget
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: community-charts
+  url: https://community-charts.github.io/helm-charts
+  type: helm

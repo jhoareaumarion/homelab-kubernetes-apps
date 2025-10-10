@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: actual-budget
-  namespace: argocd
+  namespace: actual-budget
 spec:
   project: homelab
   source:
@@ -25,7 +25,7 @@ spec:
                 - actual-budget.hoareau-marion.eu
   destination:
     server: https://kubernetes.default.svc
-    namespace: actualbudget
+    namespace: actual-budget
   syncPolicy:
     automated:
       prune: true
