@@ -1,18 +1,6 @@
 # Custom values for the Actual Budget subchart
 actualbudget:
-  # Resources
-  resources:
-    limits:
-      cpu: 500m
-      memory: 512Mi
-    requests:
-      cpu: 200m
-      memory: 256Mi
 
-  # Persistence
-  persistence:
-    enabled: true
-    existingClaim: "actual-budget-pvc"
 
   # Ingress
   ingress:
