@@ -18,10 +18,10 @@ extraResources:
   - apiVersion: cert-manager.io/v1
     kind: Certificate
     metadata:
-      name: actualbudget-hoareau-marion-eu-tls
+      name: actual-budget-hoareau-marion-eu-tls
       namespace: actual-budget
     spec:
-      secretName: actualbudget-hoareau-marion-eu-tls
+      secretName: actual-budget-hoareau-marion-eu-tls
       issuerRef:
         name: letsencrypt-prod
         kind: ClusterIssuer
