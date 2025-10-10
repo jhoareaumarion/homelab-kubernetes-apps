@@ -1,6 +1,11 @@
 # Custom values for the Actual Budget subchart
 #actualbudget:
   # Resources
+# Basic deployment
+replicaCount: 1
+strategy:
+  type: Recreate
+
 resources:
   limits:
     cpu: 500m
@@ -13,7 +18,17 @@ resources:
 persistence:
   enabled: true
   existingClaim: "actual-budget-pvc"
-  
+# Image configuration
+image:
+  repository: actualbudget/actual-server
+  pullPolicy: IfNotPresent
+
+# File storage
+files:
+  dataDirectory: /data
+  server: /data/server-files
+  user: /data/user-files
+
 actualbudget:
 # Ingress
   ingress:
