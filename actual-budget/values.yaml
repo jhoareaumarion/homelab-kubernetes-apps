@@ -23,7 +23,7 @@ extraResources:
     spec:
       secretName: actual-budget-hoareau-marion-eu-tls
       issuerRef:
-        name: letsencrypt-prod
+        name: letsencrypt
         kind: ClusterIssuer
       dnsNames:
         - actual-budget.hoareau-marion.eu
