@@ -1,0 +1,12 @@
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: actual-budget.hoareau-marion.eu
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: actualbudget-hoareau-marion-eu-tls
+      hosts:
+        - actual-budget.hoareau-marion.eu
