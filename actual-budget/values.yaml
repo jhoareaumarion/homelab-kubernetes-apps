@@ -9,7 +9,7 @@ actualbudget:
           - path: /
             pathType: ImplementationSpecific
     tls:
-      - secretName: actualbudget-hoareau-marion-eu-tls
+      - secretName: actual-budget-hoareau-marion-eu-tls
         hosts:
           - actual-budget.hoareau-marion.eu
 
