@@ -1,5 +1,17 @@
 # Custom values for the Actual Budget subchart
 actualbudget:
+  resources:
+    limits:
+      cpu: 500m
+      memory: 1Gi
+      
+  requests:
+    cpu: 200m
+    memory: 512Mi
+
+  persistence:
+    enabled: true
+    existingClaim: "actual-budget-pvc"
   ingress:
     enabled: true
     className: nginx
