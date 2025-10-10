@@ -1,0 +1,29 @@
+# Custom values for the Actual Budget subchart
+actualbudget:
+  ingress:
+    enabled: true
+    className: nginx
+    hosts:
+      - host: actual-budget.hoareau-marion.eu
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls:
+      - secretName: actualbudget-hoareau-marion-eu-tls
+        hosts:
+          - actual-budget.hoareau-marion.eu
+
+# Extra resources (e.g., Certificate)
+extraResources:
+  - apiVersion: cert-manager.io/v1
+    kind: Certificate
+    metadata:
+      name: actualbudget-hoareau-marion-eu-tls
+      namespace: actual-budget
+    spec:
+      secretName: actualbudget-hoareau-marion-eu-tls
+      issuerRef:
+        name: letsencrypt-prod
+        kind: ClusterIssuer
+      dnsNames:
+        - actual-budget.hoareau-marion.eu
