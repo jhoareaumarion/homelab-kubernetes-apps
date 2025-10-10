@@ -1,5 +1,5 @@
 # Custom values for the Actual Budget subchart
-#ctualbudget:
+#actualbudget:
   # Resources
 resources:
   limits:
@@ -54,3 +54,4 @@ extraResources:
         requests:
           storage: 20Gi
       volumeName: apps-nfs-persistent-volume
+      storageClassName: ""
