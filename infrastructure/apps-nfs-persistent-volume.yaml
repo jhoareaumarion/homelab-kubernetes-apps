@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: apps-nfs-persistent-volume
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    path: /srv/dev-disk-by-uuid-0d49323d-9441-4879-8bbf-7ca1a1453272/apps
+    server: openmediavault.local.hoareau-marion.eu
+  persistentVolumeReclaimPolicy: Retain
