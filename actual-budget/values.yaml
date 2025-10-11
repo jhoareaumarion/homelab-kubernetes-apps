@@ -17,7 +17,14 @@ resources:
 # Persistence
 persistence:
   enabled: true
+  size: 20Gi
   existingClaim: "actual-budget-pvc"
+  subPath: "actual-budget-pvc"
+  accessModes:
+    - ReadWriteOnce
+  annotations:
+    backup.kubernetes.io/enabled: "true"
+
 # Image configuration
 image:
   repository: actualbudget/actual-server
