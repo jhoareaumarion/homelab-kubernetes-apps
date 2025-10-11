@@ -1,5 +1,5 @@
 # Custom values for the Actual Budget subchart
-#actualbudget:
+actualbudget:
   # Resources
 # Basic deployment
 replicaCount: 1
@@ -36,7 +36,7 @@ files:
   server: /data/server-files
   user: /data/user-files
 
-actualbudget:
+#actualbudget:
 # Ingress
   ingress:
     enabled: true
