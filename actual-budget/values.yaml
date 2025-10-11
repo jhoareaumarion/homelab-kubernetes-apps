@@ -19,7 +19,7 @@ actualbudget:
     enabled: true
     size: 20Gi
     existingClaim: "actual-budget-pvc"
-    subPath: "actual-budget-pvc"
+    subPath: "actual-budget"
     accessModes:
       - ReadWriteOnce
     annotations:
