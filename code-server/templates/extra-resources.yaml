@@ -1,0 +1,15 @@
+{{- range .Values.extraResources }}
+---
+apiVersion: {{ .apiVersion }}
+kind: {{ .kind }}
+metadata:
+  name: {{ .metadata.name }}
+  namespace: {{ .metadata.namespace | default $.Release.Namespace }}
+  {{- if .metadata.labels }}
+  labels: {{ toYaml .metadata.labels | nindent 4 }}
+  {{- end }}
+  {{- if .metadata.annotations }}
+  annotations: {{ toYaml .metadata.annotations | nindent 4 }}
+  {{- end }}
+spec: {{ toYaml .spec | nindent 2 }}
+{{- end }}
