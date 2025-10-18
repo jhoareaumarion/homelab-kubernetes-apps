@@ -4,5 +4,6 @@ kind: Kustomization
 
 resources:
   - ci/helm-chart  # MANUALLY IMPORTED FROM https://github.com/coder/code-server/tree/main
-  - my-configmap.yaml
-  - my-service.yaml
+  - ../../certificate.yaml
+  - ../../ingress.yaml
+  - ../../pvc.yaml
