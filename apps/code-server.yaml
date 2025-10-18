@@ -1,18 +1,21 @@
-# infrastructure/application.yaml
+# apps/code-server.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infrastructure
+  name: code-server
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/hydrate: normal
+    argocd.argoproj.io/refresh: normal
 spec:
   project: homelab
   source:
     repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
     targetRevision: HEAD
-    path: infrastructure
+    path: apps/code-server
   destination:
     server: https://kubernetes.default.svc
-    namespace: infrastructure
+    namespace: code-server
   syncPolicy:
     automated:
       prune: true
@@ -21,3 +24,7 @@ spec:
       - CreateNamespace=true
     retry:
       limit: 0
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

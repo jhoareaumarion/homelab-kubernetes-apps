@@ -1,4 +1,4 @@
-# actual-budget/application.yaml
+# apps/actual-budget.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:

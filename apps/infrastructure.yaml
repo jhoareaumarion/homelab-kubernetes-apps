@@ -1,4 +1,4 @@
-# infrastructure/application.yaml
+# apps/infrastructure.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
