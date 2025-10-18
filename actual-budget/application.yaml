@@ -10,7 +10,7 @@ metadata:
 spec:
   project: homelab
   source:
-    repoURL: https://github.com/jhoareauamarion/homelab-kubernetes-apps
+    repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
     targetRevision: HEAD
     path: actual-budget
   destination:
