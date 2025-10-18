@@ -1,3 +1,4 @@
+# apps/code-server/values.yaml
 # Extra resources (e.g., Certificate)
 extraResources:
   - apiVersion: cert-manager.io/v1

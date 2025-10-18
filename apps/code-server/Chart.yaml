@@ -1,3 +1,4 @@
+# apps/code-server/Chart.yaml
 apiVersion: v2
 name: code-server
 description: Umbrella chart for Code Server

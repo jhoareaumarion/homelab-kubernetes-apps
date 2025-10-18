@@ -1,3 +1,4 @@
+# apps/actual-budget/Chart.yaml
 apiVersion: v2
 name: actual-budget
 description: Umbrella chart for Actual Budget

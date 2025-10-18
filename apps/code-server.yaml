@@ -7,21 +7,17 @@ metadata:
 spec:
   project: homelab
   source:
-    repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
+    repoURL: https://github.com/coder/code-server
     targetRevision: HEAD
-    path: apps/code-server
+    path: ci/helm-chart  # Path to the Helm chart in the maintainer's repo
+    helm:
+      releaseName: code-server
   destination:
     server: https://kubernetes.default.svc
-    namespace: code-server
+    namespace: code-server  # Target namespace
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-    retry:
-      limit: 0
-      backoff:
-        duration: 5s
-        factor: 2
-        maxDuration: 3m

@@ -1,3 +1,4 @@
+# apps/code-server/templates/extra-resources.yaml
 {{- range .Values.extraResources }}
 ---
 apiVersion: {{ .apiVersion }}

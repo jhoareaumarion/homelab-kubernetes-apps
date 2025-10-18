@@ -1,3 +1,4 @@
+# apps/actual-budget/templates/extra-resources.yaml
 {{- range .Values.extraResources }}
 ---
 apiVersion: {{ .apiVersion }}
