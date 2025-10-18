@@ -1,9 +1,0 @@
-# apps/code-server/Chart.yaml
-apiVersion: v2
-name: code-server
-description: Umbrella chart for Code Server
-version: 0.1.0
-dependencies:
-  - name: code-server
-    version: "*"
-    repository: https://github.com/coder/code-server

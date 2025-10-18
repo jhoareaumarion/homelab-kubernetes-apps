@@ -1,0 +1,13 @@
+# apps/code-server/certificate.yaml
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: code-server-hoareau-marion-eu-tls
+  namespace: code-server
+spec:
+  secretName: code-server-hoareau-marion-eu-tls
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  dnsNames:
+    - code-server.hoareau-marion.eu

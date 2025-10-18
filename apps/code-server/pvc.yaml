@@ -1,0 +1,14 @@
+# apps/code-server/pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: code-server-pvc
+  namespace: code-server
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+  volumeName: apps-nfs-persistent-volume
+  storageClassName: ""
