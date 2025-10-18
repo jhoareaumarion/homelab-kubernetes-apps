@@ -1,18 +1,21 @@
-# infrastructure/application.yaml
+# actual-budget/application.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infrastructure
+  name: actual-budget
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/hydrate: normal
+    argocd.argoproj.io/refresh: normal
 spec:
   project: homelab
   source:
     repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
     targetRevision: HEAD
-    path: infrastructure
+    path: apps/actual-budget
   destination:
     server: https://kubernetes.default.svc
-    namespace: infrastructure
+    namespace: actual-budget
   syncPolicy:
     automated:
       prune: true
@@ -21,3 +24,7 @@ spec:
       - CreateNamespace=true
     retry:
       limit: 0
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
