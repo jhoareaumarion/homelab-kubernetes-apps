@@ -4,9 +4,6 @@ kind: Application
 metadata:
   name: code-server
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/hydrate: normal
-    argocd.argoproj.io/refresh: normal
 spec:
   project: homelab
   source:
