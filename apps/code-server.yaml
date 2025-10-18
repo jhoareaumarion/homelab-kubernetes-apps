@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: code-server
-  namespace: code-server
+  namespace: argocd
   annotations:
     argocd.argoproj.io/hydrate: normal
     argocd.argoproj.io/refresh: normal
