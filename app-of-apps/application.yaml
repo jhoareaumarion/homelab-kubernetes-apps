@@ -1,0 +1,19 @@
+# bootstrap/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps
+  namespace: argocd
+spec:
+  project: homelab
+  source:
+    repoURL: https://github.com/jhoareauamarion/homelab-kubernetes-apps
+    targetRevision: HEAD
+    path: ./apps
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
