@@ -10,8 +10,6 @@ spec:
     repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
     targetRevision: HEAD
     path: apps/code-server  # Path to the directory with kustomization.yaml
-    plugin:
-      name: kustomize  # Use the Kustomize plugin
   destination:
     server: https://kubernetes.default.svc
     namespace: code-server
