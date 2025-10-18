@@ -4,9 +4,6 @@ kind: Application
 metadata:
   name: actual-budget
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/hydrate: normal
-    argocd.argoproj.io/refresh: normal
 spec:
   project: homelab
   source:
