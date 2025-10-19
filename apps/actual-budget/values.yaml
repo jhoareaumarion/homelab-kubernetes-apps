@@ -78,4 +78,4 @@ extraResources:
         requests:
           storage: 20Gi
       volumeName: apps-nfs-persistent-volume
-      storageClassName: ""
+      storageClassName: nfs-client
