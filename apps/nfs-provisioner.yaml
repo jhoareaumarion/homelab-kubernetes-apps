@@ -12,8 +12,12 @@ spec:
     targetRevision: "*"  # Use the latest version
     helm:
       releaseName: nfs-subdir-external-provisioner
-      valuesFiles:
-        - nfs-provisioner/values.yaml  # Path to your custom values
+      values: |
+        nfs:
+          server: openmediavault.local.hoareau-marion.eu
+          path: /export/apps
+        storageClass:
+          onDelete: true
   destination:
     server: https://kubernetes.default.svc
     namespace: storagenfs
