@@ -3,4 +3,6 @@ nfs:
   server: openmediavault.local.hoareau-marion.eu
   path: /export/apps
 storageClass:
+  name: nfs-client
+  defaultClass: false
   onDelete: true
