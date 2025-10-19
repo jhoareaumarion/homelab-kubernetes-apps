@@ -13,7 +13,7 @@ spec:
     helm:
       releaseName: nfs-subdir-external-provisioner
       valuesFiles:
-        - values.yaml  # Path to your custom values
+        - nfs-provisioner/values.yaml  # Path to your custom values
   destination:
     server: https://kubernetes.default.svc
     namespace: storagenfs
