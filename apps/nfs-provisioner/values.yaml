@@ -1,0 +1,6 @@
+# nfs-provisioner/values.yaml
+nfs:
+  server: openmediavault.local.hoareau-marion.eu
+  path: /export/apps
+storageClass:
+  onDelete: true

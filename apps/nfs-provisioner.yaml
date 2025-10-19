@@ -1,0 +1,25 @@
+# apps/nfs-provisioner.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nfs-subdir-external-provisioner
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
+    chart: nfs-subdir-external-provisioner
+    targetRevision: "*"  # Use the latest version
+    helm:
+      releaseName: nfs-subdir-external-provisioner
+      valuesFiles:
+        - values.yaml  # Path to your custom values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: storagenfs
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
