@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Include your certificate and ingress
+resources:
+  - certificate.yaml
+  - ingress.yaml
+
+# Reference the local Helm chart and use its values.yaml
+helmCharts:
+  - name: code-server
+    repo: file://./ci/helm-chart  # Path to the local chart
+    version: ""                  # Leave empty for local charts
+    releaseName: code-server
+    namespace: code-server
+    includeCRDs: false
+    valuesFile: values.yaml      # Use the values.yaml from the chart

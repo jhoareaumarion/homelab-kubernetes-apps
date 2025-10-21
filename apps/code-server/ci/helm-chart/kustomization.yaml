@@ -1,9 +1,0 @@
-# apps/code-server/kustomization.yaml
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-
-resources:
-  - Chart.yaml  # MANUALLY IMPORTED FROM https://github.com/coder/code-server/tree/main
-  - ../../certificate.yaml
-  - ../../ingress.yaml
-  - ../../pvc.yaml
