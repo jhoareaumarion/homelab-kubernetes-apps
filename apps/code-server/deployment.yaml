@@ -19,13 +19,18 @@ spec:
           ports:
             - containerPort: 8080
           env:
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: code-server-secret
+                  key: password
             - name: DOCKER_USER
               value: "coder"
           volumeMounts:
-            # Optional: mount a ConfigMap for code-server config
             - name: config
               mountPath: /home/coder/.config/code-server
+              readOnly: true
       volumes:
-        # Optional emptyDir if you don’t want persistent storage
         - name: config
-          emptyDir: {}
+          configMap:
+            name: code-server-config
