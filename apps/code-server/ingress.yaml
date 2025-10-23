@@ -19,8 +19,9 @@ metadata:
         proxysetheader X-Forwarded-Proto $scheme;
         proxysetheader X-Forwarded-For $remoteaddr;
         proxysetheader Host $host;
+        proxy_set_header Accept-Encoding gzip;
         proxysetheader Connection "upgrade";
-        proxycachebypass $httpupgrade;
+        proxycachebypass $httpupgrade;        
       }
 
 spec:
