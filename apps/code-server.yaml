@@ -6,10 +6,19 @@ metadata:
   namespace: argocd
 spec:
   project: homelab
-  source:
-    repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
-    targetRevision: HEAD
-    path: apps/code-server  # Path to the directory with kustomization.yaml
+  sources:
+    # Certificate and ingress
+    - repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
+      targetRevision: HEAD
+      path: apps/code-server  
+    # Helm chart
+    - repoURL: https://github.com/coder/code-server
+      targetRevision: HEAD
+      path: ci/helm-chart  # Path to the directory with kustomization.yaml
+      helm:
+        releaseName: code-server
+        valueFiles:
+          - apps/code-server/values.yaml  # relative to the chart folder
   destination:
     server: https://kubernetes.default.svc
     namespace: code-server
