@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: code-server
+  namespace: code-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: code-server
+  template:
+    metadata:
+      labels:
+        app: code-server
+    spec:
+      containers:
+        - name: code-server
+          image: codercom/code-server:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DOCKER_USER
+              value: "coder"
+          volumeMounts:
+            # Optional: mount a ConfigMap for code-server config
+            - name: config
+              mountPath: /home/coder/.config/code-server
+      volumes:
+        # Optional emptyDir if you don’t want persistent storage
+        - name: config
+          emptyDir: {}

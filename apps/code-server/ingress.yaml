@@ -17,9 +17,9 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: code-server-server
+            name: code-server
             port:
-              number: 80
+              number: 8080
   tls:
   - hosts:
     - code-server.hoareau-marion.eu  # Replace with your domain
