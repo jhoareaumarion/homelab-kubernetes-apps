@@ -22,7 +22,7 @@ spec:
             - name: PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: code-server-secret
+                  name: code-server-password
                   key: password
             - name: DOCKER_USER
               value: "coder"
