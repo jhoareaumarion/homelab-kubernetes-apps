@@ -15,6 +15,14 @@ metadata:
       add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' blob: wss: https:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' wss: https:; frame-src 'self'; worker-src 'self' blob:;";
       proxy_set_header Upgrade $http_upgrade;
       proxy_set_header Connection "upgrade";
+    nginx.ingress.kubernetes.io/server-snippet: |
+      location / {
+        proxy_pass http://code-server.code-server.svc.cluster.local:8080/;
+        proxy_set_header Host $http_host;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Accept-Encoding gzip;
+      }
 spec:
   rules:
   - host: code-server.hoareau-marion.eu
