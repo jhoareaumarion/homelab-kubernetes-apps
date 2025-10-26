@@ -19,6 +19,8 @@ spec:
           ports:
             - containerPort: 8080
           env:
+            - name: PROXY_DOMAIN
+              value: "code-server.hoareau-marion.eu"  # or use a valueFrom if you want to reference a ConfigMap/Secret
             - name: PASSWORD
               valueFrom:
                 secretKeyRef:
