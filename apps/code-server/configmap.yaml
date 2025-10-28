@@ -9,3 +9,4 @@ data:
     auth: password
     password: ${PASSWORD}
     cert: false
+    proxy-domain: code-server.hoareau-marion.eu
