@@ -35,7 +35,7 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /home/coder/.config/code-server
-              readOnly: true
+              readOnly: false
       volumes:
         - name: config
           configMap:
