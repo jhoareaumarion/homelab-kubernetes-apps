@@ -34,8 +34,9 @@ spec:
               value: "1000"
           volumeMounts:
             - name: config
-              mountPath: /home/coder/.config/code-server
-              readOnly: false
+              mountPath: /home/coder/.config/code-server/config.yaml
+              subPath: config.yaml
+              readOnly: true
       volumes:
         - name: config
           configMap:
