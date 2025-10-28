@@ -15,28 +15,30 @@ spec:
     spec:
       containers:
         - name: code-server
-          image: codercom/code-server:latest
+          image: lscr.io/linuxserver/code-server:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 8443
           env:
-            - name: PROXY_DOMAIN
-              value: "code-server.hoareau-marion.eu"  # or use a valueFrom if you want to reference a ConfigMap/Secret
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "Europe/Paris"
             - name: PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: code-server-password
                   key: password
-            - name: DOCKER_USER
-              value: "coder"
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
+            - name: PROXY_DOMAIN
+              value: "code-server.hoareau-marion.eu"
+            - name: DEFAULT_WORKSPACE
+              value: "/config/workspace"
+            - name: PWA_APPNAME
+              value: "code-server"
           volumeMounts:
             - name: config
-              mountPath: /home/coder/.config/code-server/config.yaml
-              subPath: config.yaml
-              readOnly: true
+              mountPath: /config
       volumes:
         - name: config
           configMap:
