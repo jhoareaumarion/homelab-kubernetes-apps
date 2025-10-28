@@ -38,8 +38,15 @@ spec:
               value: "code-server"
           volumeMounts:
             - name: config
-              mountPath: /config
+              mountPath: /config                     
+            - name: config-yaml
+              mountPath: /config/config.yaml         
+              subPath: config.yaml
+              readOnly: true
       volumes:
         - name: config
+          persistentVolumeClaim:
+            claimName: code-server-pvc
+        - name: config-yaml
           configMap:
             name: code-server-config
