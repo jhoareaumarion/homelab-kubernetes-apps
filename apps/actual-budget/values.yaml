@@ -38,19 +38,6 @@ actualbudget:
     user: /data/user-files
 
 #actualbudget:
-# Ingress
-  ingress:
-    enabled: true
-    className: nginx
-    hosts:
-      - host: actual-budget.hoareau-marion.eu
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-    tls:
-      - secretName: actual-budget-hoareau-marion-eu-tls
-        hosts:
-          - actual-budget.hoareau-marion.eu
 
 # Extra resources (e.g., Certificate)
 extraResources:
@@ -78,3 +65,54 @@ extraResources:
         requests:
           storage: 20Gi
       storageClassName: nfs-client
+  - apiVersion: gateway.networking.k8s.io/v1
+    kind: Gateway
+    metadata:
+      name: actual-budget-gateway
+      namespace: actual-budget
+    spec:
+      gatewayClassName: nginx
+      listeners:
+        - name: http
+          hostname: "actual-budget.hoareau-marion.eu"
+          port: 80
+          protocol: HTTP
+          allowedRoutes:
+            namespaces:
+              from: Same
+        - name: https
+          hostname: "actual-budget.hoareau-marion.eu"
+          port: 443
+          protocol: HTTPS
+          tls:
+            mode: Terminate
+            certificateRefs:
+              - name: actual-budget-hoareau-marion-eu-tls
+          allowedRoutes:
+            namespaces:
+              from: Same
+  - apiVersion: gateway.networking.k8s.io/v1
+    kind: HTTPRoute
+    metadata:
+      name: actual-budget-route
+      namespace: actual-budget
+      labels:
+        app.kubernetes.io/instance: actual-budget
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/name: actualbudget
+        app.kubernetes.io/version: 25.10.0
+        helm.sh/chart: actualbudget-1.8.3
+    spec:
+      parentRefs:
+        - name: actual-budget-gateway
+      hostnames:
+        - "actual-budget.hoareau-marion.eu"
+      rules:
+        - matches:
+            - path:
+                type: PathPrefix
+                value: "/"
+          backendRefs:
+            - name: actual-budget-actualbudget
+              port: 5006
+
