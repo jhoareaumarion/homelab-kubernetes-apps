@@ -19,12 +19,12 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-  patches:
-    - patch: |
-        - op: add
-          path: /data/kustomize.buildOptions
-          value: "--enable-helm"
-      target:
-        kind: ConfigMap
-        name: argocd-cm
-        namespace: argocd
+  # patches:
+  #   - patch: |
+  #       - op: add
+  #         path: /data/kustomize.buildOptions
+  #         value: "--enable-helm"
+  #     target:
+  #       kind: ConfigMap
+  #       name: argocd-cm
+  #       namespace: argocd
