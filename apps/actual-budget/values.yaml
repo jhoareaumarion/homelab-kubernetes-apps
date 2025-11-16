@@ -80,3 +80,9 @@ extraResources:
           backendRefs:
             - name: actual-budget-actualbudget
               port: 5006
+  - apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: actual-budget
+      labels:
+        gateway-access: actual-budget 

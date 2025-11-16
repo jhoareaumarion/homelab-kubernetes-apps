@@ -14,7 +14,11 @@ spec:
     protocol: HTTP
     allowedRoutes:
       namespaces:
-        from: Same
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: actual-budget
+
   - name: https
     hostname: "actual-budget.hoareau-marion.eu"
     port: 443
@@ -25,4 +29,7 @@ spec:
         - name: actual-budget-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
-        from: Same
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: actual-budget
