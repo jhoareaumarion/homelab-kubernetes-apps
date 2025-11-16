@@ -16,7 +16,9 @@ spec:
     port: 443
     tls:
       mode: Terminate
-      options: {}  # Required if no certificateRefs
+      certificateRefs:
+        - kind: Secret
+          name: placeholder-cert  # Placeholder or wildcard cert
     allowedRoutes:
       namespaces:
         from: All  # Allow routes from any namespace
