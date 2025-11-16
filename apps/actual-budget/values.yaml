@@ -66,32 +66,6 @@ extraResources:
           storage: 20Gi
       storageClassName: nfs-client
   - apiVersion: gateway.networking.k8s.io/v1
-    kind: Gateway
-    metadata:
-      name: actual-budget-gateway
-      namespace: actual-budget
-    spec:
-      gatewayClassName: nginx
-      listeners:
-        - name: http
-          hostname: "actual-budget.hoareau-marion.eu"
-          port: 80
-          protocol: HTTP
-          allowedRoutes:
-            namespaces:
-              from: Same
-        - name: https
-          hostname: "actual-budget.hoareau-marion.eu"
-          port: 443
-          protocol: HTTPS
-          tls:
-            mode: Terminate
-            certificateRefs:
-              - name: actual-budget-hoareau-marion-eu-tls
-          allowedRoutes:
-            namespaces:
-              from: Same
-  - apiVersion: gateway.networking.k8s.io/v1
     kind: HTTPRoute
     metadata:
       name: actual-budget-route
@@ -102,9 +76,12 @@ extraResources:
         app.kubernetes.io/name: actualbudget
         app.kubernetes.io/version: 25.10.0
         helm.sh/chart: actualbudget-1.8.3
+      annotations:
+        argocd.argoproj.io/sync-wave: "1"  
     spec:
       parentRefs:
-        - name: actual-budget-gateway
+        - name: base-gateway
+          namespace: cluster-gateway 
       hostnames:
         - "actual-budget.hoareau-marion.eu"
       rules:
@@ -115,4 +92,7 @@ extraResources:
           backendRefs:
             - name: actual-budget-actualbudget
               port: 5006
-
+      tls:
+        certificateRefs:
+          - kind: Secret
+            name: actual-budget-hoareau-marion-eu-tls  # Your per-route certificate
