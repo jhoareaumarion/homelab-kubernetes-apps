@@ -4,7 +4,7 @@ metadata:
   name: base-gateway
   namespace: cluster-gateway  # Dedicated namespace for the gateway
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   gatewayClassName: nginx
   listeners:

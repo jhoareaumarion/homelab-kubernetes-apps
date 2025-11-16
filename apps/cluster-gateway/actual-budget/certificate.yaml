@@ -3,6 +3,8 @@ kind: Certificate
 metadata:
   name: actual-budget-hoareau-marion-eu-tls
   namespace: cluster-gateway
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   secretName: actual-budget-hoareau-marion-eu-tls
   issuerRef:
