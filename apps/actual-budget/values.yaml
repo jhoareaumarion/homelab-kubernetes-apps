@@ -41,18 +41,6 @@ actualbudget:
 
 # Extra resources (e.g., Certificate)
 extraResources:
-  - apiVersion: cert-manager.io/v1
-    kind: Certificate
-    metadata:
-      name: actual-budget-hoareau-marion-eu-tls
-      namespace: actual-budget
-    spec:
-      secretName: actual-budget-hoareau-marion-eu-tls
-      issuerRef:
-        name: letsencrypt
-        kind: ClusterIssuer
-      dnsNames:
-        - actual-budget.hoareau-marion.eu
   - apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
@@ -65,34 +53,3 @@ extraResources:
         requests:
           storage: 20Gi
       storageClassName: nfs-client
-  - apiVersion: gateway.networking.k8s.io/v1
-    kind: HTTPRoute
-    metadata:
-      name: actual-budget-route
-      namespace: actual-budget
-      labels:
-        app.kubernetes.io/instance: actual-budget
-        app.kubernetes.io/managed-by: Helm
-        app.kubernetes.io/name: actualbudget
-        app.kubernetes.io/version: 25.10.0
-        helm.sh/chart: actualbudget-1.8.3
-      annotations:
-        argocd.argoproj.io/sync-wave: "1"  
-    spec:
-      parentRefs:
-        - name: base-gateway
-          namespace: cluster-gateway 
-      hostnames:
-        - "actual-budget.hoareau-marion.eu"
-      rules:
-        - matches:
-            - path:
-                type: PathPrefix
-                value: "/"
-          backendRefs:
-            - name: actual-budget-actualbudget
-              port: 5006
-      tls:
-        certificateRefs:
-          - kind: Secret
-            name: actual-budget-hoareau-marion-eu-tls  # Your per-route certificate

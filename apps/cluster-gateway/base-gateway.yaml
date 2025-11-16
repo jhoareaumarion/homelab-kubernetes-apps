@@ -9,16 +9,20 @@ spec:
   gatewayClassName: nginx
   listeners:
   - name: http
-    protocol: HTTP
+    hostname: "actual-budget.hoareau-marion.eu"
     port: 80
+    protocol: HTTP
+    allowedRoutes:
+      namespaces:
+        from: Same
   - name: https
-    protocol: HTTPS
+    hostname: "actual-budget.hoareau-marion.eu"
     port: 443
+    protocol: HTTPS
     tls:
       mode: Terminate
       certificateRefs:
-        - kind: Secret
-          name: wildcard-hoareau-marion-eu-tls
+        - name: actual-budget-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
-        from: All  # Allow routes from any namespace
+        from: Same
