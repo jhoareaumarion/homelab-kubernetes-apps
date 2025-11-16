@@ -18,7 +18,7 @@ spec:
       mode: Terminate
       certificateRefs:
         - kind: Secret
-          name: placeholder-cert  # Placeholder or wildcard cert
+          name: wildcard-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
         from: All  # Allow routes from any namespace
