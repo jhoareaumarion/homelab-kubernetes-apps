@@ -1,9 +1,10 @@
-# apps/code-server/certificate.yaml
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: code-server-hoareau-marion-eu-tls
-  namespace: code-server
+  namespace: cluster-gateway
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   secretName: code-server-hoareau-marion-eu-tls
   issuerRef:
