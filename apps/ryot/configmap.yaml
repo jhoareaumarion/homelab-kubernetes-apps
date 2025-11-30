@@ -4,5 +4,6 @@ metadata:
   name: ryot-cm
   namespace: ryot
 data:
+  TZ: "Europe/Paris"
   POSTGRES_DB: "ryot"
   POSTGRES_USER: "ryot"
