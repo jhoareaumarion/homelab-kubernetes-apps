@@ -14,19 +14,6 @@ spec:
         app: ryot
     spec:
       containers:
-        - name: ryot
-          image: ignisda/ryot:v9
-          imagePullPolicy: Always
-          envFrom:
-            - configMapRef:
-                name: ryot-cm
-            - secretRef:
-                name: ryot-secrets
-          env:
-            - name: TZ
-              value: "Europe/Paris"
-          ports:
-            - containerPort: 8000
         - name: postgres
           image: postgres:16-alpine
           envFrom:
@@ -42,6 +29,19 @@ spec:
           volumeMounts:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
+        - name: ryot
+          image: ignisda/ryot:v9
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: ryot-cm
+            - secretRef:
+                name: ryot-secrets
+          env:
+            - name: TZ
+              value: "Europe/Paris"
+          ports:
+            - containerPort: 8000
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:
