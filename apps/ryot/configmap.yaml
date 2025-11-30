@@ -8,3 +8,4 @@ data:
   POSTGRES_DB: "ryot"
   POSTGRES_USER: "ryot"
   FRONTEND_OIDC_BUTTON_LABEL: "Connect with Keycloak"
+  DISABLE_TELEMETRY: "true"
