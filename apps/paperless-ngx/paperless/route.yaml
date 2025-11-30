@@ -1,0 +1,17 @@
+# apps/paperless-ngx/route.yaml
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: paperless-ngx-route
+  namespace: paperless-ngx
+spec:
+  parentRefs:
+    - name: base-gateway
+      namespace: cluster-gateway
+      sectionName: paperless-ngx-https     # Attach to the HTTPS listener
+  hostnames:
+    - "paperless-ngx.hoareau-marion.eu"
+  rules:
+    - backendRefs:
+        - name: paperless-ngx
+          port: 8000
