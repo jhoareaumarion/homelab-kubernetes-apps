@@ -18,6 +18,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: cm
+            - secretRef:
+                name: secrets
           ports:
             - containerPort: 8000
           volumeMounts:
