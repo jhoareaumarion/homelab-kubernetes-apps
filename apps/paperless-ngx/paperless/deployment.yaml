@@ -15,11 +15,6 @@ spec:
       containers:
         - name: paperless
           image: ghcr.io/paperless-ngx/paperless-ngx:latest
-          env:
-            - name: PAPERLESS_REDIS
-              value: redis://paperless-redis:6379
-            - name: PAPERLESS_DBHOST
-              value: paperless-postgres
           envFrom:
             - configMapRef:
                 name: cm
