@@ -90,4 +90,32 @@ spec:
         from: Selector
         selector:
           matchLabels:
-            gateway-access: ryot
+            gateway-access: ryot  
+  ###
+  # UPTIME KUMA
+  ###
+  - name: uptime-kuma-http
+    hostname: "uptime-kuma.hoareau-marion.eu"
+    port: 80
+    protocol: HTTP
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: uptime-kuma
+
+  - name: uptime-kuma-https
+    hostname: "uptime-kuma.hoareau-marion.eu"
+    port: 443
+    protocol: HTTPS
+    tls:
+      mode: Terminate
+      certificateRefs:
+        - name: uptime-kuma-hoareau-marion-eu-tls   # Secret must exist in gateway’s namespace
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: uptime-kuma
