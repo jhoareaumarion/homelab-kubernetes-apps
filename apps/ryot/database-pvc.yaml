@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ryot-pvc
+  name: ryot-database-pvc
   namespace: ryot
 spec:
   accessModes:
