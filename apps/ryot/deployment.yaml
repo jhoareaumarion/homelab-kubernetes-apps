@@ -19,9 +19,9 @@ spec:
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
-              name: ryot-cm
+                name: ryot-cm
             - secretRef:
-              name: ryot-secrets
+                name: ryot-secrets
           env:
             - name: TZ
               value: "Europe/Paris"

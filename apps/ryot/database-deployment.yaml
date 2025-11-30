@@ -18,9 +18,9 @@ spec:
           image: postgres:16-alpine
           envFrom:
             - configMapRef:
-              name: database-cm
+                name: database-cm
             - secretRef:
-              name: database-ryot-secret
+                name: database-ryot-secret
           env:
             - name: TZ
               value: "Europe/Paris"
