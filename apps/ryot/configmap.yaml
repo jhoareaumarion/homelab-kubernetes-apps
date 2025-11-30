@@ -10,3 +10,4 @@ data:
   FRONTEND_OIDC_BUTTON_LABEL: "Connect with Keycloak"
   DISABLE_TELEMETRY: "true"
   USERS_DISABLE_LOCAL_AUTH: "true"
+  RUST_LOG: "ryot=debug"
