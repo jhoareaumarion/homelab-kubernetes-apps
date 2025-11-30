@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ryot
+  namespace: ryot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ryot
+  template:
+    metadata:
+      labels:
+        app: ryot
+    spec:
+      containers:
+        - name: ryot
+          image: ignisda/ryot:v9
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+              name: ryot-cm
+            - secretRef:
+              name: ryot-secrets
+          env:
+            - name: TZ
+              value: "Europe/Paris"
+          ports:
+            - containerPort: 8000

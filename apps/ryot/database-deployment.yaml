@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ryot-database
+  namespace: ryot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ryot-database
+  template:
+    metadata:
+      labels:
+        app: ryot-database
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16-alpine
+          envFrom:
+            - configMapRef:
+              name: database-cm
+            - secretRef:
+              name: database-ryot-secret
+          env:
+            - name: TZ
+              value: "Europe/Paris"
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: ryot-database-pvc

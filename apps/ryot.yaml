@@ -1,0 +1,27 @@
+# apps/ryot.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ryot
+  namespace: argocd
+spec:
+  project: homelab
+  source:
+    repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
+    targetRevision: HEAD
+    path: apps/ryot
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ryot
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 0
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

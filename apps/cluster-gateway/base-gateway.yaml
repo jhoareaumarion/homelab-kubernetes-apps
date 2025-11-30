@@ -38,8 +38,8 @@ spec:
   ###
   # CODE SERVER
   ###
-  - name: code-server-http
-    hostname: "code-server.hoareau-marion.eu"
+  - name: ryot-http
+    hostname: "ryot.hoareau-marion.eu"
     port: 80
     protocol: HTTP
     allowedRoutes:
@@ -47,19 +47,47 @@ spec:
         from: Selector
         selector:
           matchLabels:
-            gateway-access: code-server
+            gateway-access: ryot
 
-  - name: code-server-https
-    hostname: "code-server.hoareau-marion.eu"
+  - name: ryot-https
+    hostname: "ryot.hoareau-marion.eu"
     port: 443
     protocol: HTTPS
     tls:
       mode: Terminate
       certificateRefs:
-        - name: code-server-hoareau-marion-eu-tls   # Secret must exist in gateway’s namespace
+        - name: ryot-hoareau-marion-eu-tls   # Secret must exist in gateway’s namespace
     allowedRoutes:
       namespaces:
         from: Selector
         selector:
           matchLabels:
-            gateway-access: code-server
+            gateway-access: ryot
+  ###
+  # RYOT
+  ###
+  - name: ryot-http
+    hostname: "ryot.hoareau-marion.eu"
+    port: 80
+    protocol: HTTP
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: ryot
+
+  - name: ryot-https
+    hostname: "ryot.hoareau-marion.eu"
+    port: 443
+    protocol: HTTPS
+    tls:
+      mode: Terminate
+      certificateRefs:
+        - name: ryot-hoareau-marion-eu-tls   # Secret must exist in gateway’s namespace
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: ryot
