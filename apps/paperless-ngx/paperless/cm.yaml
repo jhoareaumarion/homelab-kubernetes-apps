@@ -8,3 +8,5 @@ data:
   PAPERLESS_TIMEZONE: "Europe/Paris"
   PAPERLESS_REDIS: "redis://redis:6379"
   PAPERLESS_DBHOST: "postgres"
+  PAPERLESS_DBNAME: "paperless"
+  PAPERLESS_DBUSER: "paperless"

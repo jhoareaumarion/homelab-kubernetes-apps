@@ -19,8 +19,12 @@ spec:
           envFrom:
             - configMapRef:
                 name: db-cm 
-            - secretRef:
-                name: secrets
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: POSTGRES_PASSWORD
           volumeMounts:
             - name: pgdata
               mountPath: /var/lib/postgresql

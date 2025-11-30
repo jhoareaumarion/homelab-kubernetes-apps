@@ -18,8 +18,12 @@ spec:
           envFrom:
             - configMapRef:
                 name: cm
-            - secretRef:
-                name: secrets
+          env:
+            - name: PAPERLESS_DBPASS
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: POSTGRES_PASSWORD
           ports:
             - containerPort: 8000
           volumeMounts:
