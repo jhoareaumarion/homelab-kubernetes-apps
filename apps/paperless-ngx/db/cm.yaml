@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-cm
+  namespace: paperless-ngx
+data:
+  POSTGRES_DB: "paperless"
+  POSTGRES_USER: "paperless"

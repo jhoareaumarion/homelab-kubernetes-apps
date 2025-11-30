@@ -119,3 +119,31 @@ spec:
         selector:
           matchLabels:
             gateway-access: uptime-kuma
+  ###
+  # PAPERLESS NGX
+  ###
+  - name: paperless-ngx-http
+    hostname: "paperless-ngx.hoareau-marion.eu"
+    port: 80
+    protocol: HTTP
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: paperless-ngx
+
+  - name: paperless-ngx-https
+    hostname: "paperless-ngx.hoareau-marion.eu"
+    port: 443
+    protocol: HTTPS
+    tls:
+      mode: Terminate
+      certificateRefs:
+        - name: paperless-ngx-hoareau-marion-eu-tls   # Secret must exist in gateway’s namespace
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: paperless-ngx

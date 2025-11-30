@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm
+  namespace: paperless-ngx
+data:
+  PAPERLESS_URL: https://paperless-ngx.hoareau-marion.eu
+  PAPERLESS_TIMEZONE: "Europe/Paris"
+  PAPERLESS_REDIS: "redis://redis:6379"
+  PAPERLESS_DBHOST: "postgres"
