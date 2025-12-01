@@ -25,6 +25,11 @@ spec:
                 secretKeyRef:
                   name: secrets
                   key: POSTGRES_PASSWORD
+            - name: PAPERLESS_SOCIALACCOUNT_PROVIDERS
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: PAPERLESS_SOCIALACCOUNT_PROVIDERS
           ports:
             - containerPort: 8000
           volumeMounts:
