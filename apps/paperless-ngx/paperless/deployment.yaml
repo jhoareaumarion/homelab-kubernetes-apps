@@ -30,6 +30,11 @@ spec:
                 secretKeyRef:
                   name: secrets
                   key: PAPERLESS_SOCIALACCOUNT_PROVIDERS
+            - name: PAPERLESS_APPS
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: PAPERLESS_APPS
           ports:
             - containerPort: 8000
           volumeMounts:
