@@ -23,5 +23,5 @@ spec:
             type: PathPrefix
             value: "/"
       backendRefs:
-        - name: actual-budget-actualbudget
+        - name: actual-budget
           port: 5006
