@@ -49,4 +49,4 @@ spec:
       volumes:
         - name: actual-budget-volume
           persistentVolumeClaim:
-            claimName: actual-budget-database-pvc
+            claimName: actual-budget-pvc
