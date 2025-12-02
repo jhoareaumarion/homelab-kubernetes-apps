@@ -1,9 +1,0 @@
-# apps/actual-budget/Chart.yaml
-apiVersion: v2
-name: actual-budget
-description: Umbrella chart for Actual Budget
-version: 0.1.0
-dependencies:
-  - name: actualbudget
-    version: 1.8.3
-    repository: https://community-charts.github.io/helm-charts
