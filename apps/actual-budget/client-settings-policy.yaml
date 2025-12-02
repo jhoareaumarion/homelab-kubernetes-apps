@@ -9,4 +9,4 @@ spec:
       kind: HTTPRoute
       name: actual-budget-route
   body:
-    maxSize: 100Mi
+    maxSize: 200m
