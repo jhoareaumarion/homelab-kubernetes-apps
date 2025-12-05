@@ -15,7 +15,7 @@ spec:
     spec:
       containers:        
         - name: actual-budget
-          image: docker.io/actualbudget/actual-server:25.11.0
+          image: docker.io/actualbudget/actual-server:25.12.0
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
