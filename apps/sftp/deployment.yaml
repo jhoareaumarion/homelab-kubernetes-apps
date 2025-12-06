@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sftpgo
+  namespace: sftpgo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sftpgo
+  template:
+    metadata:
+      labels:
+        app: sftpgo
+    spec:
+      containers:        
+        - name: sftpgo
+          image: ghcr.io/drakkan/sftpgo:v2.6.6
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: cm
+            - secretRef:
+                name: secrets
+          ports:
+            - containerPort: 8080
+            - containerPort: 2022
+          volumeMounts:
+            - name: sftpgo-home-volume
+              mountPath: /var/lib/sftpgo
+            - name: sftpgo-data-volume
+              mountPath: /srv/sftpgo
+      volumes:
+        - name: sftpgo-home-volume
+          persistentVolumeClaim:
+            claimName: sftpgo-home-pvc
+        - name: sftpgo-data-volume
+          persistentVolumeClaim:
+            claimName: sftpgo-data-pvc

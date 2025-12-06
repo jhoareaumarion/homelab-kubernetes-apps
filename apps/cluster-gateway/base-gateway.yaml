@@ -146,4 +146,31 @@ spec:
         from: Selector
         selector:
           matchLabels:
-            gateway-access: paperless-ngx
+            gateway-access: paperless-ngx  
+  ###
+  # SFTPGO
+  ###
+  - name: sftpgo-http
+    hostname: "sftpgo.hoareau-marion.eu"
+    port: 80
+    protocol: HTTP
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: sftpgo
+  - name: sftpgo-https
+    hostname: "sftpgo.hoareau-marion.eu"
+    port: 443
+    protocol: HTTPS
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: sftpgo-hoareau-marion-eu-tls  # Create this TLS secret
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: sftpgo

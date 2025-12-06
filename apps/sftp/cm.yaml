@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm
+  namespace: sftpgo
+data:
+  ENABLE_LOGIN_METHODS: 3 
+
+  
