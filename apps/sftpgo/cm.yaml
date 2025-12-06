@@ -4,6 +4,6 @@ metadata:
   name: cm
   namespace: sftpgo
 data:
-  ENABLE_LOGIN_METHODS: 3 
+  ENABLE_LOGIN_METHODS: "3"
 
   
