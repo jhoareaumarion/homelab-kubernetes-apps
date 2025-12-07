@@ -1,0 +1,20 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: sroom-prt01-scanner-route
+  namespace: sroom-prt01-scanner
+spec:
+  parentRefs:
+    - name: base-gateway
+      namespace: cluster-gateway 
+      sectionName: sroom-prt01-scanner-https
+  hostnames:
+    - "sroom-prt01-scanner.hoareau-marion.eu"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: "/"
+      backendRefs:
+        - name: sroom-prt01-scanner
+          port: 33555

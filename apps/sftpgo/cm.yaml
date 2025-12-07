@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cm
-  namespace: sftpgo
+  namespace: sroom-prt01-scanner
 data:
   ENABLE_LOGIN_METHODS: "3"
 

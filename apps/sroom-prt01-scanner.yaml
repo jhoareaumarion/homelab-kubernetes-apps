@@ -1,0 +1,27 @@
+# apps/sroom-prt01-scanner.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sroom-prt01-scanner
+  namespace: argocd
+spec:
+  project: homelab
+  source:
+    repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
+    targetRevision: HEAD
+    path: apps/sroom-prt01-scanner
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: sroom-prt01-scanner
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 0
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

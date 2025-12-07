@@ -173,4 +173,31 @@ spec:
         from: Selector
         selector:
           matchLabels:
-            gateway-access: sftpgo
+            gateway-access: sftpgo  
+  ###
+  # BROTHER SCANNER
+  ###
+  - name: sroom-prt01-scanner-http
+    hostname: "sroom-prt01-scanner.hoareau-marion.eu"
+    port: 80
+    protocol: HTTP
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: sroom-prt01-scanner
+  - name: sroom-prt01-scanner-https
+    hostname: "sroom-prt01-scanner.hoareau-marion.eu"
+    port: 443
+    protocol: HTTPS
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: sroom-prt01-scanner-hoareau-marion-eu-tls  # Create this TLS secret
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: sroom-prt01-scanner

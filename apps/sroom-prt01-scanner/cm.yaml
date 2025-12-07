@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm
+  namespace: sroom-prt01-scanner
+data:
+  NAME: "BROTHER DCP-1610W"
+  MODEL: "DCP-1610W"
+  TZ: "Europe/Paris"
+  WEBSERVER: "true"
+  PORT: "33555"
+  DISABLE_GUI_SCANTOIMAGE: "true"
+  DISABLE_GUI_SCANTOOCR: "true"
+  
