@@ -33,21 +33,3 @@ spec:
             - containerPort: 161
               protocol: UDP
               name: snmp-udp
-
-          volumeMounts:
-            - name: sroom-prt01-scanner-home-volume
-              mountPath: /var/lib/sroom-prt01-scanner
-            - name: sroom-prt01-scanner-data-volume
-              mountPath: /srv/sroom-prt01-scanner
-            - name: paperless-consume-volume
-              mountPath: /mnt/paperless-consume
-      volumes:
-        - name: sroom-prt01-scanner-home-volume
-          persistentVolumeClaim:
-            claimName: sroom-prt01-scanner-home-pvc
-        - name: sroom-prt01-scanner-data-volume
-          persistentVolumeClaim:
-            claimName: sroom-prt01-scanner-data-pvc        
-        - name: paperless-consume-volume         
-          persistentVolumeClaim:
-            claimName: paperless-consume-pvc
