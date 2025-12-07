@@ -4,7 +4,7 @@ metadata:
   name: cm
   namespace: sroom-prt01-scanner
 data:
-  NAME: "BROTHER DCP-1610W"
+  NAME: "SROOM-PRT01"
   MODEL: "DCP-1610W"
   TZ: "Europe/Paris"
   WEBSERVER: "true"
