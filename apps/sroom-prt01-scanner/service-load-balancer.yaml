@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sroom-prt01-scanner
+  namespace: sroom-prt01-scanner
+spec:
+  type: ClusterIP
+  ports:
+  - name: scanner-udp
+    port: 54925
+    targetPort: scanner-udp
+    protocol: UDP
+  - name: scanner-tcp
+    port: 54921
+    targetPort: scanner-tcp
+    protocol: TCP
+  - name: snmp-udp
+    port: 161
+    targetPort: snmp-udp
+    protocol: UDP
+  selector:
+    app: sroom-prt01-scanner
