@@ -10,4 +10,4 @@ spec:
     requests:
       storage: 10Gi
   storageClassName: ""
-  volumeName: paperless-consume-pv
+  volumeName: sftpgo-consume-pv
