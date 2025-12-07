@@ -30,10 +30,15 @@ spec:
               mountPath: /var/lib/sftpgo
             - name: sftpgo-data-volume
               mountPath: /srv/sftpgo
+            - name: paperless-consume-volume
+              mountPath: /mnt/paperless-consume
       volumes:
         - name: sftpgo-home-volume
           persistentVolumeClaim:
             claimName: sftpgo-home-pvc
         - name: sftpgo-data-volume
           persistentVolumeClaim:
-            claimName: sftpgo-data-pvc
+            claimName: sftpgo-data-pvc        
+        - name: paperless-consume-volume         
+          persistentVolumeClaim:
+            claimName: paperless-consume-pvc
