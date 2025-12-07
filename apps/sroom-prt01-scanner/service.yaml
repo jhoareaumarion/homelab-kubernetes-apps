@@ -9,13 +9,16 @@ spec:
   - name: http
     port: 33555
     targetPort: 33555
-  - port: 54925
+  - name: scanner-udp
+    port: 54925
     targetPort: scanner-udp
     protocol: UDP
-  - port: 54921
+  - name: scanner-tcp
+    port: 54921
     targetPort: scanner-tcp
     protocol: TCP
-  - port: 161
+  - name: scanner-tcp
+    port: 161
     targetPort: snmp-udp
     protocol: UDP
   selector:
