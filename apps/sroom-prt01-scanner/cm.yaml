@@ -9,6 +9,8 @@ data:
   TZ: "Europe/Paris"
   WEBSERVER: "true"
   PORT: "33555"
+  UID: "1000"
+  GID: "1000"
   DISABLE_GUI_SCANTOIMAGE: "true"
   DISABLE_GUI_SCANTOOCR: "true"
   
