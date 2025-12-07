@@ -4,7 +4,7 @@ metadata:
   name: sroom-prt01-scanner
   namespace: sroom-prt01-scanner
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - name: http
     port: 33555
