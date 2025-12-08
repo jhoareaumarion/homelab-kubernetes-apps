@@ -5,6 +5,7 @@ metadata:
   namespace: sroom-prt01-scanner
 spec:
   type: LoadBalancer
+  externalTrafficPolicy: Local
   ports:
   - name: scanner-udp
     port: 54925

@@ -13,8 +13,6 @@ spec:
       labels:
         app: sroom-prt01-scanner
     spec:
-      hostNetwork: true  
-      dnsPolicy: ClusterFirstWithHostNet 
       containers:        
         - name: sroom-prt01-scanner
           image: ghcr.io/jhoareaumarion/brotherscannerdocker:latest
