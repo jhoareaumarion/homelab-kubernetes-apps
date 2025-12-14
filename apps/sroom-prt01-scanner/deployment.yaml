@@ -13,11 +13,7 @@ spec:
       labels:
         app: sroom-prt01-scanner 
       annotations:
-        k8s.v1.cni.cncf.io/networks: |
-          [{
-            "name": "ens20-net",
-            "mac": "02:00:00:00:00:01"
-          }]
+        k8s.v1.cni.cncf.io/networks: ens20-net
     spec:
       containers:        
         - name: sroom-prt01-scanner
