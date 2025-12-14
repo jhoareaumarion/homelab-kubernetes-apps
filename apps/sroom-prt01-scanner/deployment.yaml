@@ -19,8 +19,6 @@ spec:
             "mac": "02:00:00:00:00:01"
           }]
     spec:
-      nodeSelector:
-        ens20: "true"
       containers:        
         - name: sroom-prt01-scanner
           image: ghcr.io/philippmundhenk/brotherscannerdocker:v1.1.1
