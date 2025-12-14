@@ -12,7 +12,6 @@ spec:
     path: apps/multus
   destination:
     server: https://kubernetes.default.svc
-    namespace: multus
   syncPolicy:
     automated:
       prune: true
