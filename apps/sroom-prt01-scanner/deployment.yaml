@@ -11,11 +11,20 @@ spec:
   template:
     metadata:
       labels:
-        app: sroom-prt01-scanner
+        app: sroom-prt01-scanner 
+      annotations:
+        k8s.v1.cni.cncf.io/networks: |
+          [{
+            "name": "ens20-net",
+            "mac": "02:00:00:00:00:01"
+          }]
+  spec:
+    nodeSelector:
+      ens20: "true"
     spec:
       containers:        
         - name: sroom-prt01-scanner
-          image: ghcr.io/jhoareaumarion/brotherscannerdocker:latest
+          image: ghcr.io/philippmundhenk/brotherscannerdocker:v1.1.1
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
