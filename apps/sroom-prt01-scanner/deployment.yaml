@@ -17,7 +17,7 @@ spec:
           [{
             "name": "ens20-net",
             "namespace": "sroom-prt01-scanner",
-            "mac": "02:00:00:00:00:01"
+            "mac": "02:fd:20:30:40:01"
           }]
     spec:
       containers:        
