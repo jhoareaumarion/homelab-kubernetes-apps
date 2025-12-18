@@ -20,6 +20,8 @@ spec:
             "mac": "02:fd:20:30:40:01"
           }]
     spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       containers:        
         - name: sroom-prt01-scanner
           image: ghcr.io/jhoareaumarion/brotherscannerdocker:latest
