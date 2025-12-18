@@ -31,14 +31,14 @@ spec:
                 name: cm
             - secretRef:
                 name: secrets
-          # ports:
-          #   - containerPort: 33555            
-          #   - containerPort: 54925
-          #     protocol: UDP
-          #     name: scanner-udp
-          #   - containerPort: 54921
-          #     protocol: TCP
-          #     name: scanner-tcp
-          #   - containerPort: 161
-          #     protocol: UDP
-          #     name: snmp-udp
+          ports:
+            - containerPort: 33555            
+            - containerPort: 54925
+              protocol: UDP
+              name: scanner-udp
+            - containerPort: 54921
+              protocol: TCP
+              name: scanner-tcp
+            - containerPort: 161
+              protocol: UDP
+              name: snmp-udp
