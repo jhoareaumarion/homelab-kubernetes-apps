@@ -10,6 +10,7 @@ spec:
       "type": "macvlan",
       "master": "ens20",
       "mode": "bridge",
+      "mtu": 1400,
       "ipam": {
         "type": "dhcp"
       }
