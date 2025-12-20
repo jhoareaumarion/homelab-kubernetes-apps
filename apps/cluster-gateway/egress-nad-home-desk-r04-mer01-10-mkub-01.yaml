@@ -1,0 +1,21 @@
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: egress-nad-home-desk-r04-mer01-10-mkub-01 
+  namespace: cluster-gateway
+  labels:
+    node: home-desk-r04-mer01-10-mkub-01   # Your actual node names
+spec:
+  config: |
+    {
+      "cniVersion": "0.8.6",
+      "name": "egress-nad-home-desk-r04-mer01-10-mkub-01",
+      "type": "macvlan",
+      "master": "ens18",
+      "vlanId": 50,
+      "mode": "bridge",
+      "mac": "02:fd:20:30:41:01",
+      "ipam": {
+        "type": "dhcp"
+      }
+    }
