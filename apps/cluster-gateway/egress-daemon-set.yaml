@@ -17,9 +17,18 @@ spec:
           egress-nad-home-desk-r04-mer01-10-wkub-01@home-desk-r04-mer01-10-wkub-01,
           egress-nad-home-desk-r04-mer01-10-wkub-02@home-desk-r04-mer01-10-wkub-02
     spec:
-      hostNetwork: true
-      nodeSelector:
-        kubernetes.io/hostname: home-desk-r04-mer01-10-mkub-01,home-desk-r04-mer01-10-wkub-01,home-desk-r04-mer01-10-wkub-02 
+      hostNetwork: true      
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - home-desk-r04-mer01-10-mkub-01
+                - home-desk-r04-mer01-10-wkub-01
+                - home-desk-r04-mer01-10-wkub-02
       containers:
       - name: envoy
         image: envoyproxy/envoy:v1.29.3
