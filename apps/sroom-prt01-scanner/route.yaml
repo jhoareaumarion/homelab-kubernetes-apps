@@ -5,7 +5,7 @@ metadata:
   namespace: sroom-prt01-scanner
 spec:
   parentRefs:
-    - name: base-gateway
+    - name: ingress-gateway
       namespace: cluster-gateway 
       sectionName: sroom-prt01-scanner-https
   hostnames:

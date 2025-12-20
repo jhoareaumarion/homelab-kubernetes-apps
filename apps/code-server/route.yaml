@@ -6,7 +6,7 @@ metadata:
   namespace: code-server
 spec:
   parentRefs:
-    - name: base-gateway
+    - name: ingress-gateway
       namespace: cluster-gateway
       sectionName: code-server-https     # Attach to the HTTPS listener
   hostnames:

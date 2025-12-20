@@ -5,7 +5,7 @@ metadata:
   namespace: sftpgo
 spec:
   parentRefs:
-    - name: base-gateway
+    - name: ingress-gateway
       namespace: cluster-gateway 
       sectionName: sftpgo-https
   hostnames:

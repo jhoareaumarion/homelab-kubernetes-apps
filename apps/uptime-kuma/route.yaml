@@ -6,7 +6,7 @@ metadata:
   namespace: uptime-kuma
 spec:
   parentRefs:
-    - name: base-gateway
+    - name: ingress-gateway
       namespace: cluster-gateway
       sectionName: uptime-kuma-https     # Attach to the HTTPS listener
   hostnames:

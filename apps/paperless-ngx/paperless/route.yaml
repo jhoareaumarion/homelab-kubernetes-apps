@@ -6,7 +6,7 @@ metadata:
   namespace: paperless-ngx
 spec:
   parentRefs:
-    - name: base-gateway
+    - name: ingress-gateway
       namespace: cluster-gateway
       sectionName: paperless-ngx-https     # Attach to the HTTPS listener
   hostnames:

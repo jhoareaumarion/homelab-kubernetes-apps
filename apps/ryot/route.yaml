@@ -6,7 +6,7 @@ metadata:
   namespace: ryot
 spec:
   parentRefs:
-    - name: base-gateway
+    - name: ingress-gateway
       namespace: cluster-gateway
       sectionName: ryot-https     # Attach to the HTTPS listener
   hostnames:
