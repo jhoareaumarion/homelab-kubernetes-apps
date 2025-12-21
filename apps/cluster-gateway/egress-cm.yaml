@@ -12,8 +12,8 @@ data:
     
     static_resources:
       listeners:
-      # TCP egress listener (80/443 → 8080)
-      - name: tcp_egress_listener
+      # TCP proxy (iptables 80/443 → 8080)
+      - name: tcp_egress
         address:
           socket_address: { address: 0.0.0.0, port_value: 8080 }
         filter_chains:
@@ -22,11 +22,10 @@ data:
             typed_config:
               "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
               stat_prefix: egress_tcp
-              cluster: external_tcp
-              tproxy_bind: true
+              cluster: original_dst_tcp
       
-      # UDP egress listener (DNS → 5300)
-      - name: udp_egress_listener
+      # UDP proxy (DNS 53 → 5300) 
+      - name: udp_egress
         address:
           socket_address: { address: 0.0.0.0, port_value: 5300, protocol: UDP }
         udp_listener_config:
@@ -43,13 +42,13 @@ data:
                   name: route
                   typed_config:
                     "@type": type.googleapis.com/envoy.extensions.filters.udp.udp_proxy.v3.Route
-                    cluster: external_udp
+                    cluster: original_dst_udp
             upstream_socket_config:
               max_rx_datagram_size: 9000
       
-      # ORIGINAL_DST clusters - SIMPLIFIED (no custom LB policy needed)
       clusters:
-      - name: external_tcp
+      # Transparent ORIGINAL_DST for TCP
+      - name: original_dst_tcp
         connect_timeout: 30s
         type: ORIGINAL_DST
         lb_policy: CLUSTER_PROVIDED
@@ -57,7 +56,8 @@ data:
           endpoints:
           - lb_endpoints: []
       
-      - name: external_udp
+      # Transparent ORIGINAL_DST for UDP  
+      - name: original_dst_udp
         connect_timeout: 30s
         type: ORIGINAL_DST
         lb_policy: CLUSTER_PROVIDED
