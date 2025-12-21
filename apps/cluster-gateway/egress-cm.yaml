@@ -47,22 +47,15 @@ data:
               max_rx_datagram_size: 9000
       
       clusters:
-      # Transparent ORIGINAL_DST for TCP
-      - name: original_dst_tcp
-        connect_timeout: 30s
-        type: ORIGINAL_DST
-        lb_policy: CLUSTER_PROVIDED
-        load_assignment:
-          cluster_name: original_dst_tcp
-          endpoints:
-          - lb_endpoints: []
-      
-      # Transparent ORIGINAL_DST for UDP  
-      - name: original_dst_udp
-        connect_timeout: 30s
-        type: ORIGINAL_DST
-        lb_policy: CLUSTER_PROVIDED
-        load_assignment:
-          cluster_name: original_dst_udp
-          endpoints:
-          - lb_endpoints: []
+        # Transparent ORIGINAL_DST for TCP
+        - name: original_dst_tcp
+          connect_timeout: 30s
+          type: ORIGINAL_DST
+          lb_policy: CLUSTER_PROVIDED
+
+        # Transparent ORIGINAL_DST for UDP  
+        - name: original_dst_udp
+          connect_timeout: 30s
+          type: ORIGINAL_DST
+          lb_policy: CLUSTER_PROVIDED
+
