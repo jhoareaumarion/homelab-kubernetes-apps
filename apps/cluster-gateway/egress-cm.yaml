@@ -53,6 +53,7 @@ data:
         type: ORIGINAL_DST
         lb_policy: CLUSTER_PROVIDED
         load_assignment:
+          cluster_name: original_dst_tcp
           endpoints:
           - lb_endpoints: []
       
@@ -62,5 +63,6 @@ data:
         type: ORIGINAL_DST
         lb_policy: CLUSTER_PROVIDED
         load_assignment:
+          cluster_name: original_dst_udp
           endpoints:
           - lb_endpoints: []
