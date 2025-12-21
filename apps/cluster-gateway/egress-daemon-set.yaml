@@ -45,27 +45,35 @@ spec:
         #   name: https
         securityContext:
           capabilities: { add: ["NET_ADMIN", "NET_RAW"] } 
-      initContainers:
-      - name: iptables-redirect
-        image: busybox:1.36
-        command: ["/bin/sh"]
-        args:
-        - -c
-        - |
-          iptables -t nat -N KUBE-EGRESS-PROXY 2>/dev/null || true
-          iptables -t nat -F KUBE-EGRESS-PROXY
-          # Skip cluster-internal + your VLANs
-          iptables -t nat -A KUBE-EGRESS-PROXY -d 10.42.0.0/16 -j RETURN  # k3s pod CIDR (verify yours)
-          iptables -t nat -A KUBE-EGRESS-PROXY -d 10.43.0.0/16 -j RETURN  # k3s service CIDR
-          iptables -t nat -A KUBE-EGRESS-PROXY -d 10.10.50.0/24 -j RETURN  # VLAN 50 (new)
-          # Redirect external traffic only
-          iptables -t nat -A KUBE-EGRESS-PROXY -p tcp --dport 80 -j REDIRECT --to-ports 8080
-          iptables -t nat -A KUBE-EGRESS-PROXY -p tcp --dport 443 -j REDIRECT --to-ports 8080
-          iptables -t nat -A KUBE-EGRESS-PROXY -p udp --dport 53 -j REDIRECT --to-ports 5300
-          iptables -t nat -A OUTPUT -j KUBE-EGRESS-PROXY
-        securityContext:
-          capabilities:
-            add: ["NET_ADMIN"]
+        initContainers:
+        - name: iptables-redirect
+          image: busybox:1.36
+          command: ["/bin/sh"]
+          args:
+          - -c
+          - |
+            # Clean slate first
+            iptables -t nat -N KUBE-EGRESS-PROXY 2>/dev/null || true
+            iptables -t nat -F KUBE-EGRESS-PROXY 2>/dev/null || true
+            iptables -t nat -X KUBE-EGRESS-PROXY 2>/dev/null || true
+            
+            # Skip internal traffic
+            iptables -t nat -A KUBE-EGRESS-PROXY -d 10.42.0.0/16 -j RETURN
+            iptables -t nat -A KUBE-EGRESS-PROXY -d 10.43.0.0/16 -j RETURN
+            iptables -t nat -A KUBE-EGRESS-PROXY -d 10.10.50.0/24 -j RETURN
+            
+            # Redirect external traffic
+            iptables -t nat -A KUBE-EGRESS-PROXY -p tcp --dport 80 -j REDIRECT --to-ports 8080
+            iptables -t nat -A KUBE-EGRESS-PROXY -p tcp --dport 443 -j REDIRECT --to-ports 8080
+            iptables -t nat -A KUBE-EGRESS-PROXY -p udp --dport 53 -j REDIRECT --to-ports 5300
+            
+            # Route all OUTPUT through proxy
+            iptables -t nat -A OUTPUT -j KUBE-EGRESS-PROXY
+            
+            echo "iptables setup complete"
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
 
       volumes:
       - name: config
