@@ -12,12 +12,10 @@ data:
     
     static_resources:
       listeners:
-      # TCP egress (HTTP/HTTPS → 8080)
+      # TCP egress listener (80/443 → 8080)
       - name: tcp_egress_listener
         address:
           socket_address: { address: 0.0.0.0, port_value: 8080 }
-        listener_filters:
-        - name: envoy.filters.listener.tls_inspector
         filter_chains:
         - filters:
           - name: envoy.filters.network.tcp_proxy
@@ -27,7 +25,7 @@ data:
               cluster: external_tcp
               tproxy_bind: true
       
-      # UDP egress (DNS → 5300)  
+      # UDP egress listener (DNS → 5300)
       - name: udp_egress_listener
         address:
           socket_address: { address: 0.0.0.0, port_value: 5300, protocol: UDP }
@@ -49,16 +47,12 @@ data:
             upstream_socket_config:
               max_rx_datagram_size: 9000
       
-      # ORIGINAL_DST clusters (transparent proxy)
+      # ORIGINAL_DST clusters - SIMPLIFIED (no custom LB policy needed)
       clusters:
       - name: external_tcp
         connect_timeout: 30s
         type: ORIGINAL_DST
         lb_policy: CLUSTER_PROVIDED
-        load_balancing_policy:  # ← CORRECT STRUCTURE
-          typed_extension_protocol_options:
-            envoy.extensions.load_balancing_policy.original_dst.v3.OriginalDstLbConfig:
-              "@type": type.googleapis.com/envoy.extensions.load_balancing_policy.original_dst.v3.OriginalDstLbConfig
         load_assignment:
           endpoints:
           - lb_endpoints: []
@@ -67,10 +61,6 @@ data:
         connect_timeout: 30s
         type: ORIGINAL_DST
         lb_policy: CLUSTER_PROVIDED
-        load_balancing_policy:  # ← CORRECT STRUCTURE
-          typed_extension_protocol_options:
-            envoy.extensions.load_balancing_policy.original_dst.v3.OriginalDstLbConfig:
-              "@type": type.googleapis.com/envoy.extensions.load_balancing_policy.original_dst.v3.OriginalDstLbConfig
         load_assignment:
           endpoints:
           - lb_endpoints: []
