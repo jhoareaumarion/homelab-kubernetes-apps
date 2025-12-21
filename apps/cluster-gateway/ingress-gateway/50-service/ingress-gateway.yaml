@@ -5,6 +5,7 @@ metadata:
   namespace: cluster-gateway  # Dedicated namespace for the gateway
   annotations:
     argocd.argoproj.io/sync-wave: "1"
+    k8s.v1.cni.cncf.io/networks: vlan50-ens18
 spec:
   gatewayClassName: nginx
   listeners:
@@ -23,7 +24,7 @@ spec:
             gateway-access: actual-budget
   - name: https
     hostname: "actual-budget.hoareau-marion.eu"
-    port: 443
+    port: 443  
     protocol: HTTPS
     tls:
       mode: Terminate
