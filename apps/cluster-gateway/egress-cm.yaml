@@ -5,9 +5,14 @@ metadata:
   namespace: cluster-gateway
 data:
   envoy.yaml: |
+    admin:
+      access_log_path: /dev/null
+      address:
+        socket_address: { address: 127.0.0.1, port_value: 9901 }
+    
     static_resources:
       listeners:
-      # TCP egress listener (HTTP/HTTPS)
+      # TCP egress (HTTP/HTTPS → 8080)
       - name: tcp_egress_listener
         address:
           socket_address: { address: 0.0.0.0, port_value: 8080 }
@@ -21,7 +26,8 @@ data:
               stat_prefix: egress_tcp
               cluster: external_tcp
               tproxy_bind: true
-      # UDP egress listener (DNS/other UDP)
+      
+      # UDP egress (DNS → 5300)  
       - name: udp_egress_listener
         address:
           socket_address: { address: 0.0.0.0, port_value: 5300, protocol: UDP }
@@ -42,24 +48,29 @@ data:
                     cluster: external_udp
             upstream_socket_config:
               max_rx_datagram_size: 9000
+      
+      # ORIGINAL_DST clusters (transparent proxy)
       clusters:
       - name: external_tcp
         connect_timeout: 30s
         type: ORIGINAL_DST
         lb_policy: CLUSTER_PROVIDED
+        load_balancing_policy:  # ← CORRECT STRUCTURE
+          typed_extension_protocol_options:
+            envoy.extensions.load_balancing_policy.original_dst.v3.OriginalDstLbConfig:
+              "@type": type.googleapis.com/envoy.extensions.load_balancing_policy.original_dst.v3.OriginalDstLbConfig
         load_assignment:
           endpoints:
           - lb_endpoints: []
-        typed_extension_protocol_options:
-          envoy.extensions.load_balancing_policy.original_dst.v3.OriginalDstLbConfig:
-            "@type": type.googleapis.com/envoy.extensions.load_balancing_policy.original_dst.v3.OriginalDstLbConfig
+      
       - name: external_udp
         connect_timeout: 30s
         type: ORIGINAL_DST
         lb_policy: CLUSTER_PROVIDED
+        load_balancing_policy:  # ← CORRECT STRUCTURE
+          typed_extension_protocol_options:
+            envoy.extensions.load_balancing_policy.original_dst.v3.OriginalDstLbConfig:
+              "@type": type.googleapis.com/envoy.extensions.load_balancing_policy.original_dst.v3.OriginalDstLbConfig
         load_assignment:
           endpoints:
           - lb_endpoints: []
-        typed_extension_protocol_options:
-          envoy.extensions.load_balancing_policy.original_dst.v3.OriginalDstLbConfig:
-            "@type": type.googleapis.com/envoy.extensions.load_balancing_policy.original_dst.v3.OriginalDstLbConfig
