@@ -38,11 +38,11 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /etc/envoy
-        ports:
-        - containerPort: 80
-          name: http
-        - containerPort: 443
-          name: https
+        # ports:
+        # - containerPort: 80
+        #   name: http
+        # - containerPort: 443
+        #   name: https
         securityContext:
           capabilities: { add: ["NET_ADMIN", "NET_RAW"] } 
       initContainers:
