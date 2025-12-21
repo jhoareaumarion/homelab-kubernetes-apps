@@ -7,7 +7,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "1"
     k8s.v1.cni.cncf.io/networks: vlan50-ens18
 spec:
-  gatewayClassName: nginx
+  gatewayClassName: haproxy
   listeners:
   ###
   # ACTUAL BUDGET
