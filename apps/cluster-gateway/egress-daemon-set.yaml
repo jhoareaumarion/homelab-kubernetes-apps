@@ -52,25 +52,25 @@ spec:
           args:
           - -c
           - |
-            # Clean slate first
             iptables -t nat -N KUBE-EGRESS-PROXY 2>/dev/null || true
             iptables -t nat -F KUBE-EGRESS-PROXY 2>/dev/null || true
             iptables -t nat -X KUBE-EGRESS-PROXY 2>/dev/null || true
             
-            # Skip internal traffic
-            iptables -t nat -A KUBE-EGRESS-PROXY -d 10.42.0.0/16 -j RETURN
-            iptables -t nat -A KUBE-EGRESS-PROXY -d 10.43.0.0/16 -j RETURN
-            iptables -t nat -A KUBE-EGRESS-PROXY -d 10.10.50.0/24 -j RETURN
+            # Skip ONLY cluster-internal traffic
+            iptables -t nat -A KUBE-EGRESS-PROXY -d 10.42.0.0/16 -j RETURN  # Pod CIDR
+            iptables -t nat -A KUBE-EGRESS-PROXY -d 10.43.0.0/16 -j RETURN  # Service CIDR
             
-            # Redirect external traffic
+            # Proxy ALL VLAN50 traffic → Envoy → external
+            # NO VLAN50 RETURN rule - let it hit proxy
+            
+            # Redirect external-bound traffic
             iptables -t nat -A KUBE-EGRESS-PROXY -p tcp --dport 80 -j REDIRECT --to-ports 8080
             iptables -t nat -A KUBE-EGRESS-PROXY -p tcp --dport 443 -j REDIRECT --to-ports 8080
             iptables -t nat -A KUBE-EGRESS-PROXY -p udp --dport 53 -j REDIRECT --to-ports 5300
             
-            # Route all OUTPUT through proxy
             iptables -t nat -A OUTPUT -j KUBE-EGRESS-PROXY
-            
-            echo "iptables setup complete"
+            echo "iptables setup complete - VLAN50 proxied"
+
           securityContext:
             capabilities:
               add: ["NET_ADMIN"]
