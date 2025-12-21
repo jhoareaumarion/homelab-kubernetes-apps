@@ -57,8 +57,10 @@ spec:
             iptables -t nat -X KUBE-EGRESS-PROXY 2>/dev/null || true
             
             # Skip ONLY cluster-internal traffic
-            iptables -t nat -A KUBE-EGRESS-PROXY -d 10.42.0.0/16 -j RETURN  # Pod CIDR
-            iptables -t nat -A KUBE-EGRESS-PROXY -d 10.43.0.0/16 -j RETURN  # Service CIDR
+            iptables -t nat -A KUBE-EGRESS-PROXY -m owner --uid-owner root -j RETURN
+            iptables -t nat -A KUBE-EGRESS-PROXY -d 10.43.0.0/16 -j RETURN     # Service CIDR
+            iptables -t nat -A KUBE-EGRESS-PROXY -d 10.42.0.0/16 -j RETURN     # Pod CIDR
+            iptables -t nat -A KUBE-EGRESS-PROXY -s 10.42.0.0/16 -j RETURN     # From pods
             
             # Proxy ALL VLAN50 traffic → Envoy → external
             # NO VLAN50 RETURN rule - let it hit proxy
