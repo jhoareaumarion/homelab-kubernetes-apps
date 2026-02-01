@@ -4,7 +4,8 @@ metadata:
   name: vlan50-pool
 spec:
   blocks:
-  - cidr: 10.10.50.96/27 
+  - start: "10.10.50.150" 
+    stop: "10.10.50.199"
 serviceSelector:
   matchExpressions:
   - key: gateway.networking.k8s.io/gateway-name
