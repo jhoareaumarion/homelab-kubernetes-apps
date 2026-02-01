@@ -1,4 +1,5 @@
 # apps/nfs-provisioner.yaml
+# Requires helm repo to be added to ArgoCD + permissions on homelab project
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
