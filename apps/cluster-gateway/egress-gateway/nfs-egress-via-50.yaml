@@ -8,8 +8,8 @@ spec:
   - podSelector:
       matchLabels:
         app: nfs-subdir-external-provisioner
-    destinationCIDRs:
-    - "truenas.local.hoareau-marion.eu/32"  # TrueNAS IP
+      destinationCIDRs:
+      - "truenas.local.hoareau-marion.eu/32"
   egressGateway:
     nodeSelector:
       matchLabels:
