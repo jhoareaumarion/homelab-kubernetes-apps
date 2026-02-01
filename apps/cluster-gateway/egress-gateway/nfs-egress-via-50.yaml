@@ -9,7 +9,7 @@ spec:
       matchLabels:
         app: nfs-subdir-external-provisioner
       destinationCIDRs:
-      - "truenas.local.hoareau-marion.eu/32"
+      - "10.10.50.26/32"
   egressGateway:
     nodeSelector:
       matchLabels:
