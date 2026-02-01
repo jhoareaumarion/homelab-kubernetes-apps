@@ -6,8 +6,8 @@ spec:
   blocks:
   - start: "10.10.50.150" 
     stop: "10.10.50.199"
-serviceSelector:
-  matchExpressions:
-  - key: gateway.networking.k8s.io/gateway-name
-    operator: In
-    values: ["ingress-gateway"]
+  serviceSelector:
+    matchExpressions:
+    - key: gateway.networking.k8s.io/gateway-name
+      operator: In
+      values: ["ingress-gateway"]
