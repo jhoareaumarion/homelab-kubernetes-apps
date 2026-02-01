@@ -8,8 +8,8 @@ spec:
   - podSelector:
       matchLabels:
         app: nfs-subdir-external-provisioner
-      destinationCIDRs:
-      - "10.10.50.26/32"
+  destinationCIDRs:
+  - "10.10.50.26/32"
   egressGateway:
     nodeSelector:
       matchLabels:
