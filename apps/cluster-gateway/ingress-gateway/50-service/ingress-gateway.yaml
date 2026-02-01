@@ -2,12 +2,12 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: ingress-gateway
-  namespace: cluster-gateway  # Dedicated namespace for the gateway
+  namespace: cluster-gateway
   annotations:
+    metallb.universe.tf/address-pool: vlan50-pool
     argocd.argoproj.io/sync-wave: "1"
-    k8s.v1.cni.cncf.io/networks: vlan50-ens18
 spec:
-  gatewayClassName: haproxy
+  gatewayClassName: cilium
   listeners:
   ###
   # ACTUAL BUDGET
