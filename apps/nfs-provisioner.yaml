@@ -1,5 +1,6 @@
 # apps/nfs-provisioner.yaml
 # Requires helm repo to be added to ArgoCD + permissions on homelab project
+# Requires sudo apt update && sudo apt install -y nfs-common on all nodes
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:

@@ -1,0 +1,17 @@
+apiVersion: cilium.io/v2
+kind: CiliumEgressGatewayPolicy
+metadata:
+  name: nfs-egress-via-node50
+  namespace: storagenfs
+spec:
+  selectors:
+  - podSelector:
+      matchLabels:
+        app: nfs-subdir-external-provisioner
+    destinationCIDRs:
+    - "truenas.local.hoareau-marion.eu/32"  # TrueNAS IP
+  egressGateway:
+    nodeSelector:
+      matchLabels:
+        egress: "50"   
+        node-role.kubernetes.io/egress-gateway: "true"
