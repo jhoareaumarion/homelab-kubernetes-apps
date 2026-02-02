@@ -4,10 +4,10 @@ metadata:
   name: nfs-egress-via-node50
   namespace: storagenfs
 spec:
-  # selectors:
-  # - podSelector:
-  #     matchLabels:
-  #       app: nfs-subdir-external-provisioner
+  selectors:
+  - podSelector:
+      matchLabels:
+        app: nfs-test #nfs-subdir-external-provisioner
   destinationCIDRs:
   - "10.10.50.26/32"
   egressGateway:
