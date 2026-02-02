@@ -2,7 +2,6 @@ apiVersion: cilium.io/v2
 kind: CiliumEgressGatewayPolicy
 metadata:
   name: nfs-egress-via-node50
-  namespace: storagenfs
 spec:
   selectors:
   - podSelector:
@@ -15,3 +14,4 @@ spec:
       matchLabels:
         egress: "50"   
         node-role.kubernetes.io/egress-gateway: "true"
+    interface: ens18.50
