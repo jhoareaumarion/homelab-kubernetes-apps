@@ -14,5 +14,5 @@ spec:
       matchLabels:
         egress: "50"   
         node-role.kubernetes.io/egress-gateway: "true"
-    interface: ens18.50
-    ip: "10.10.50.203"
+    #interface: ens18.50
+    egressIP: "10.10.50.203"
