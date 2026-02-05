@@ -1,0 +1,23 @@
+{
+  "name": "Kubernetes",
+  "build":{
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "opentofu.vscode-opentofu",
+        "redhat.vscode-yaml",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "redhat.ansible"
+      ]
+    }
+  },
+  "postCreateCommand": "",
+  "remoteUser": "root",
+  "features": {},
+  "forwardPorts": [],
+  "mounts": [],
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+}
