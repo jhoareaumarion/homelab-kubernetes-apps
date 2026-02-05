@@ -1,12 +1,12 @@
-apiVersion: gateway.nginx.org/v1alpha1
-kind: ClientSettingsPolicy
-metadata:
-  name: actual-budget-client-policy
-  namespace: actual-budget
-spec:
-  targetRef:
-    group: gateway.networking.k8s.io
-    kind: HTTPRoute
-    name: actual-budget-route
-  body:
-    maxSize: "200m"
+# apiVersion: gateway.nginx.org/v1alpha1
+# kind: ClientSettingsPolicy
+# metadata:
+#   name: actual-budget-client-policy
+#   namespace: actual-budget
+# spec:
+#   targetRef:
+#     group: gateway.networking.k8s.io
+#     kind: HTTPRoute
+#     name: actual-budget-route
+#   body:
+#     maxSize: "200m"
