@@ -20,6 +20,8 @@ spec:
           path: /mnt/homelab-pool/homelab/k3s_apps
         storageClass:
           onDelete: true
+        labels:
+          nfs-required: "true"  
   destination:
     server: https://kubernetes.default.svc
     namespace: storagenfs
