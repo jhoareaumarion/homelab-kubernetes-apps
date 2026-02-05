@@ -6,7 +6,7 @@ spec:
   selectors:
   - podSelector:
       matchLabels:
-        app: nfs-test #nfs-subdir-external-provisioner
+        nfs-required: true
   destinationCIDRs:
   - "10.10.50.26/32"
   egressGateway:
