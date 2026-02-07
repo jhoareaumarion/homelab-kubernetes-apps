@@ -1,1 +1,2 @@
-kubeseal/kubeseal.key
+kubeseal/*
+*.secrets.yaml
