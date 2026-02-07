@@ -16,7 +16,7 @@ spec:
       releaseName: nfs-subdir-external-provisioner
       values: |
         nfs:
-          server: truenas.local.hoareau-marion.eu
+          server: 10.10.50.26
           path: /mnt/homelab-pool/homelab/k3s_apps
         storageClass:
           onDelete: true
