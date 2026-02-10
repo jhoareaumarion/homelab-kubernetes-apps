@@ -13,7 +13,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "0"  
 spec:
   parentRefs:
-    - name: base-gateway
+    - name: ingress-gateway
       namespace: cluster-gateway 
   hostnames:
     - "actual-budget.hoareau-marion.eu"
