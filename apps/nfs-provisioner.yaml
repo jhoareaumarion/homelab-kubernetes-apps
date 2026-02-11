@@ -20,17 +20,6 @@ spec:
           path: /mnt/homelab-pool/homelab/k3s_apps
         storageClass:
           onDelete: true
-        nodeSelector:
-          egress: "50"                   
-        tolerations:                      
-          - key: "gateway-only"          
-            operator: "Equal" 
-            value: "true"
-            effect: "NoSchedule"
-          - key: "node.kubernetes.io/unschedulable" 
-            operator: "Exists"
-            effect: "NoSchedule"
-
   destination:
     server: https://kubernetes.default.svc
     namespace: storagenfs
