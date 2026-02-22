@@ -14,7 +14,7 @@ spec:
         app: actual-budget
         nfs-required: "true"
     spec:
-      node_selector:
+      nodeSelector:
         affected_vlan: "50"
       containers:
         - name: actual-budget
