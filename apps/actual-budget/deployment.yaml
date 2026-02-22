@@ -18,7 +18,7 @@ spec:
         affected_vlan: "50"
       containers:
         - name: actual-budget
-          image: docker.io/actualbudget/actual-server:26.2.0
+          image: docker.io/actualbudget/actual-server:26.2.1
           imagePullPolicy: Always
           resources:                    
             requests:
