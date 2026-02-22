@@ -1,7 +1,7 @@
 apiVersion: cilium.io/v2alpha1
 kind: CiliumL2AnnouncementPolicy
 metadata:
-  name: vlan20-gateway-announcement
+  name: vlan50-gateway-announcement
   namespace: kube-system
 spec:
   interfaces: ["ens18.50"]
