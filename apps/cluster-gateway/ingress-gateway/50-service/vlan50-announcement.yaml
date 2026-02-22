@@ -13,4 +13,4 @@ spec:
       values: ["ingress-gateway"]
   nodeSelector:
     matchLabels:
-      affected_vlan: 50
+      affected_vlan: "50"
