@@ -14,6 +14,8 @@ spec:
         app: actual-budget
         nfs-required: "true"
     spec:
+      node_selector:
+        affected_vlan: "50"
       containers:
         - name: actual-budget
           image: docker.io/actualbudget/actual-server:25.12.0
