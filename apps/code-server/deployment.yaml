@@ -13,9 +13,11 @@ spec:
       labels:
         app: code-server
     spec:
+      nodeSelector:
+        affected_vlan: "50"
       containers:
         - name: code-server
-          image: lscr.io/linuxserver/code-server:latest
+          image: lscr.io/linuxserver/code-server:4.109.2
           ports:
             - containerPort: 8443
           env:

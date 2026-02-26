@@ -13,6 +13,8 @@ spec:
       labels:
         app: redis
     spec:
+      nodeSelector:
+        affected_vlan: "50"
       containers:
         - name: redis
           image: docker.io/library/redis:8

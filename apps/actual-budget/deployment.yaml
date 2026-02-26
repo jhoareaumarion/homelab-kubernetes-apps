@@ -12,7 +12,6 @@ spec:
     metadata:
       labels:
         app: actual-budget
-        nfs-required: "true"
     spec:
       nodeSelector:
         affected_vlan: "50"

@@ -13,6 +13,8 @@ spec:
       labels:
         app: sftpgo
     spec:
+      nodeSelector:
+        affected_vlan: "50"
       containers:        
         - name: sftpgo
           image: ghcr.io/drakkan/sftpgo:v2.6.6

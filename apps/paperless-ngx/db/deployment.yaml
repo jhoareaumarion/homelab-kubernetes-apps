@@ -13,6 +13,8 @@ spec:
       labels:
         app: postgres
     spec:
+      nodeSelector:
+        affected_vlan: "50"
       containers:
         - name: postgres
           image: docker.io/library/postgres:18

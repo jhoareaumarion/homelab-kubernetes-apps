@@ -13,9 +13,11 @@ spec:
       labels:
         app: paperless-web
     spec:
+      nodeSelector:
+        affected_vlan: "50"
       containers:
         - name: paperless
-          image: ghcr.io/paperless-ngx/paperless-ngx:latest
+          image: ghcr.io/paperless-ngx/paperless-ngx:2.20.8
           envFrom:
             - configMapRef:
                 name: cm
