@@ -25,17 +25,17 @@ spec:
             - name: PAPERLESS_DBPASS
               valueFrom:
                 secretKeyRef:
-                  name: secrets
+                  name: paperless-ngx-secrets
                   key: POSTGRES_PASSWORD
             - name: PAPERLESS_SOCIALACCOUNT_PROVIDERS
               valueFrom:
                 secretKeyRef:
-                  name: secrets
+                  name: paperless-ngx-secrets
                   key: PAPERLESS_SOCIALACCOUNT_PROVIDERS
             - name: PAPERLESS_APPS
               valueFrom:
                 secretKeyRef:
-                  name: secrets
+                  name: paperless-ngx-secrets
                   key: PAPERLESS_APPS
           ports:
             - containerPort: 8000

@@ -25,7 +25,7 @@ spec:
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: secrets
+                  name: paperless-ngx-secrets
                   key: POSTGRES_PASSWORD
           volumeMounts:
             - name: pgdata
