@@ -23,7 +23,7 @@ spec:
             - configMapRef:
                 name: cm
             - secretRef:
-                name: secrets
+                name: sftpgo-secrets
           ports:
             - containerPort: 8080
             - containerPort: 2022
