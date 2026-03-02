@@ -43,4 +43,4 @@ spec:
             claimName: sftpgo-data-pvc        
         - name: shared-consume-volume         
           persistentVolumeClaim:
-            claimName: shared-sftpgo-pv
+            claimName: shared-consume-pvc
