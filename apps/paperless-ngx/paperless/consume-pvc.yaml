@@ -9,5 +9,5 @@ spec:
   resources:
     requests:
       storage: 10Gi  
-  storageClassName: ""
+  storageClassName: nfs-client
   volumeName: shared-paperless-consume-pv
