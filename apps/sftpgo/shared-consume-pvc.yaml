@@ -10,4 +10,4 @@ spec:
     requests:
       storage: 10Gi
   storageClassName: nfs-client
-  volumeName: shared-consume-pv
+  volumeName: shared-sftpgo-pv
