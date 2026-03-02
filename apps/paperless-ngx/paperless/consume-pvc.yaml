@@ -10,4 +10,4 @@ spec:
     requests:
       storage: 10Gi  
   storageClassName: ""
-  volumeName: shared-consume-pv
+  volumeName: shared-paperless-consume-pv
