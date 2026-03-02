@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: sftpgo
   namespace: sftpgo
+  label:
+    app: sftpgo
 spec:
   type: LoadBalancer
   ports:
