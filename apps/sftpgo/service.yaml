@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: sftpgo
   namespace: sftpgo
-  annotations:
-    io.cilium/lb-ipam-ips: vlan50-pool
 spec:
   type: LoadBalancer
   ports:
