@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: sftpgo
   namespace: sftpgo
-  label:
+  labels:
     app: sftpgo
 spec:
   type: LoadBalancer
