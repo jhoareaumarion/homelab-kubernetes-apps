@@ -20,7 +20,7 @@ spec:
           image: codewithcj/sparkyfitness_server:v0.16.5.3
           envFrom:
             - configMapRef:
-                name: cm
+                name: server-cm
           env:
             - name: SPARKY_FITNESS_DB_PASSWORD
               valueFrom:
