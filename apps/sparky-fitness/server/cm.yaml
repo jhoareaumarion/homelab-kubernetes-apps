@@ -10,7 +10,7 @@ data:
   SPARKY_FITNESS_LOG_LEVEL: "info"
   ALLOW_PRIVATE_NETWORK_CORS: "true"
   SPARKY_FITNESS_EXTRA_TRUSTED_ORIGINS: ""
-  SPARKY_FITNESS_DB_USER: "sparky"
+  SPARKY_FITNESS_DB_USER: "sparky_admin"
   SPARKY_FITNESS_DB_HOST: "db"
   SPARKY_FITNESS_DB_NAME: "sparkyfitness_db"
   SPARKY_FITNESS_FRONTEND_URL: "https://sparky-fitness.hoareau-marion.eu"
