@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: db
-  namespace: sparkyfitness
+  namespace: sparky-fitness
 spec:
   replicas: 1
   selector:
