@@ -5,4 +5,4 @@ metadata:
   namespace: sparky-fitness
 data:
   POSTGRES_DB: "sparkyfitness_db"
-  POSTGRES_USER: "sparky"
+  POSTGRES_USER: "sparky_admin"
