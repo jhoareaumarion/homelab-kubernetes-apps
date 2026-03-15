@@ -13,6 +13,8 @@ spec:
       labels:
         app: sparkyfitness-frontend
     spec:
+      nodeSelector:
+        affected_vlan: "50"
       containers:
         - name: frontend
           image: codewithcj/sparkyfitness:latest
