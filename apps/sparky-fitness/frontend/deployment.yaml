@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: sparky-fitness
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sparkyfitness-frontend
+  template:
+    metadata:
+      labels:
+        app: sparkyfitness-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: codewithcj/sparkyfitness:latest
+          envFrom:
+            - configMapRef:
+                name: sparkyfitness-config
+          ports:
+            - containerPort: 80

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+  namespace: sparkyfitness
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sparkyfitness-db
+  template:
+    metadata:
+      labels:
+        app: sparkyfitness-db
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:15-alpine
+          envFrom:
+            - configMapRef:
+                name: db-cm 
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: sparky-fitness-secrets
+                  key: POSTGRES_PASSWORD
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: db-data
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: db-data
+          persistentVolumeClaim:
+            claimName: sparkyfitness-db-pvc

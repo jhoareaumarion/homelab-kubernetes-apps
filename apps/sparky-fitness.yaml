@@ -1,0 +1,29 @@
+# apps/paperless-ngx.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: paperless-ngx
+  namespace: argocd
+spec:
+  project: homelab
+  source:
+    repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
+    targetRevision: HEAD
+    path: apps/paperless-ngx
+    directory:  
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: paperless-ngx
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 0
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

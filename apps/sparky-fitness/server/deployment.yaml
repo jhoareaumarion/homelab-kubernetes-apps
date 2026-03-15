@@ -1,0 +1,106 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sparkyfitness-server
+  namespace: sparky-fitness
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sparkyfitness-server
+  template:
+    metadata:
+      labels:
+        app: sparkyfitness-server
+    spec:
+      containers:
+        - name: server
+          image: codewithcj/sparkyfitness_server:latest
+          envFrom:
+            - configMapRef:
+                name: cm
+          env:
+            - name: SPARKY_FITNESS_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: sparky-fitness-secrets
+                  key: POSTGRES_PASSWORD                  
+            - name: SPARKY_FITNESS_API_ENCRYPTION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: sparky-fitness-secrets
+                  key: SPARKY_FITNESS_API_ENCRYPTION_KEY
+            - name: SPARKY_FITNESS_ADMIN_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: sparky-fitness-secrets
+                  key: SPARKY_FITNESS_ADMIN_EMAIL
+            - name: PARKY_FITNESS_EMAIL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: sparky-fitness-secrets
+                  key: PARKY_FITNESS_EMAIL_USER
+            - name: SPARKY_FITNESS_OIDC_PROVIDER_SLUG
+              valueFrom:
+                secretKeyRef:
+                  name: sparky-fitness-secrets
+                  key: SPARKY_FITNESS_OIDC_PROVIDER_SLUG
+            - name: SPARKY_FITNESS_OIDC_PROVIDER_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: sparky-fitness-secrets
+                  key: SPARKY_FITNESS_OIDC_PROVIDER_NAME
+            - name: SPARKY_FITNESS_OIDC_ISSUER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: sparky-fitness-secrets
+                  key: SPARKY_FITNESS_OIDC_ISSUER_URL
+            - name: SPARKY_FITNESS_OIDC_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: sparky-fitness-secrets
+                  key: SPARKY_FITNESS_OIDC_CLIENT_ID
+            - name: SPARKY_FITNESS_OIDC_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: sparky-fitness-secrets
+                  key: SPARKY_FITNESS_OIDC_CLIENT_SECRET
+            - name: SPARKY_FITNESS_OIDC_SCOPE
+              valueFrom:
+                secretKeyRef:
+                  name: sparky-fitness-secrets
+                  key: SPARKY_FITNESS_OIDC_SCOPE
+            - name: SPARKY_FITNESS_OIDC_ADMIN_GROUP
+              valueFrom:
+                secretKeyRef:
+                  name: sparky-fitness-secrets
+                  key: SPARKY_FITNESS_OIDC_ADMIN_GROUP
+            - name: SPARKY_FITNESS_APP_DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: sparky-fitness-secrets
+                  key: SPARKY_FITNESS_APP_DB_USER
+            - name: SPARKY_FITNESS_APP_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: sparky-fitness-secrets
+                  key: SPARKY_FITNESS_APP_DB_PASSWORD
+            - name: BETTER_AUTH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: sparky-fitness-secrets
+                  key: BETTER_AUTH_SECRET
+          ports:
+            - containerPort: 3010
+          volumeMounts:
+            - name: backup
+              mountPath: /app/SparkyFitnessServer/backup
+            - name: uploads
+              mountPath: /app/SparkyFitnessServer/uploads
+      volumes:
+        - name: backup
+          persistentVolumeClaim:
+            claimName: sparkyfitness-backup-pvc
+        - name: uploads
+          persistentVolumeClaim:
+            claimName: sparkyfitness-uploads-pvc
