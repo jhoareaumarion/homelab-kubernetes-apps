@@ -39,7 +39,7 @@ spec:
   ###
   # SPARKY FITNESS
   ###
-  - name: http
+  - name: sparky-http
     hostname: "sparky-fitness.hoareau-marion.eu"
     port: 80
     protocol: HTTP
@@ -49,7 +49,7 @@ spec:
         selector:
           matchLabels:
             gateway-access: sparky-fitness
-  - name: https
+  - name: sparky-https
     hostname: "sparky-fitness.hoareau-marion.eu"
     port: 443  
     protocol: HTTPS
