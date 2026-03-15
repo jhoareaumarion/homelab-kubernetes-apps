@@ -14,7 +14,7 @@ data:
   SPARKY_FITNESS_DB_HOST: "db"
   SPARKY_FITNESS_DB_NAME: "sparkyfitness_db"
   SPARKY_FITNESS_FRONTEND_URL: "https://sparky-fitness.hoareau-marion.eu"
-  SPARKY_FITNESS_DISABLE_SIGNUP: "true"
+  SPARKY_FITNESS_DISABLE_SIGNUP: "false"
   SPARKY_FITNESS_EMAIL_HOST: "smtp.home.hoareau-marion.eu"
   SPARKY_FITNESS_EMAIL_PORT: "25"
   SPARKY_FITNESS_EMAIL_SECURE: "false"
