@@ -1,20 +1,20 @@
-# apps/paperless-ngx.yaml
+# apps/sparky-fitness.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: paperless-ngx
+  name: sparky-fitness
   namespace: argocd
 spec:
   project: homelab
   source:
     repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
     targetRevision: HEAD
-    path: apps/paperless-ngx
+    path: apps/sparky-fitness
     directory:  
       recurse: true
   destination:
     server: https://kubernetes.default.svc
-    namespace: paperless-ngx
+    namespace: sparky-fitness
   syncPolicy:
     automated:
       prune: true
