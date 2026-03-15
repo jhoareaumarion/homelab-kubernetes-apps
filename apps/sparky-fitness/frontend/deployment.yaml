@@ -17,9 +17,9 @@ spec:
         affected_vlan: "50"
       containers:
         - name: frontend
-          image: codewithcj/sparkyfitness:latest
+          image: codewithcj/sparkyfitness:v0.16.5.3
           envFrom:
             - configMapRef:
-                name: sparkyfitness-config
+                name: frontend-cm
           ports:
             - containerPort: 80

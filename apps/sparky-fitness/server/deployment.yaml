@@ -17,7 +17,7 @@ spec:
         affected_vlan: "50"
       containers:
         - name: server
-          image: codewithcj/sparkyfitness_server:latest
+          image: codewithcj/sparkyfitness_server:v0.16.5.3
           envFrom:
             - configMapRef:
                 name: cm
@@ -37,11 +37,11 @@ spec:
                 secretKeyRef:
                   name: sparky-fitness-secrets
                   key: SPARKY_FITNESS_ADMIN_EMAIL
-            - name: PARKY_FITNESS_EMAIL_USER
+            - name: SPARKY_FITNESS_EMAIL_USER
               valueFrom:
                 secretKeyRef:
                   name: sparky-fitness-secrets
-                  key: PARKY_FITNESS_EMAIL_USER
+                  key: SPARKY_FITNESS_EMAIL_USER
             - name: SPARKY_FITNESS_OIDC_PROVIDER_SLUG
               valueFrom:
                 secretKeyRef:
