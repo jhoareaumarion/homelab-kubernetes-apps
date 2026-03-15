@@ -7,6 +7,7 @@ spec:
   parentRefs:
   - name: ingress-gateway
     namespace: cluster-gateway
+    sectionName: sparky-fitness-https
   hostnames:
   - "sparky-fitness.hoareau-marion.eu"
   rules:
