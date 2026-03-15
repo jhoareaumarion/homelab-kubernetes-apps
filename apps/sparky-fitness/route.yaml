@@ -18,7 +18,7 @@ spec:
         value: /
     backendRefs:
     - name: sparkyfitness-frontend
-      port: 80  # Nginx container port
+      port: 3004  # Nginx container port
   # Backend API calls  
   - matches:
     - path:
