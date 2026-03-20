@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+  namespace: qbittorrent
+data:
+  QBT_LEGAL_NOTICE: "confirm"
+  QBT_TORRENTING_PORT: "6881"
+  QBT_WEBUI_PORT: "8080"
+  QBT_VERSION: "5.1.4-lt2-2"

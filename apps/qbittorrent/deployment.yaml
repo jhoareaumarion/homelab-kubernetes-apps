@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qbittorrent-nox
+  namespace: qbittorrent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qbittorrent-nox
+  template:
+    metadata:
+      labels:
+        app: qbittorrent-nox
+    spec:
+      securityContext:
+        runAsUser: 1000  # Avoid root
+        fsGroup: 1000
+      containers:
+      - name: qbittorrent
+        image: qbittorrentofficial/qbittorrent-nox:5.1.4-lt2-2
+        securityContext:
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+        envFrom:
+        - configMapRef:
+            name: qbittorrent-config
+        - secretRef:
+            name: secrets
+        ports:
+        - name: webui
+          containerPort: 8080
+          protocol: TCP
+        - name: torrent-tcp
+          containerPort: 6881
+          protocol: TCP
+        - name: torrent-udp
+          containerPort: 6881
+          protocol: UDP
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: downloads
+          mountPath: /downloads
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+        terminationGracePeriodSeconds: 1800
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: config-pvc
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: downloads-pvc
