@@ -13,6 +13,8 @@ spec:
       labels:
         app: qbittorrent-nox
     spec:
+      nodeSelector:
+        affected_vlan: "50"
       securityContext:
         runAsUser: 1000  # Avoid root
         fsGroup: 1000
