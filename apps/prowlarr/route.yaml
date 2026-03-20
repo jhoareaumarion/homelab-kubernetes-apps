@@ -1,0 +1,17 @@
+# apps/arr-stack/prowlarr/route.yaml
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: prowlarr-route
+  namespace: prowlarr
+spec:
+  parentRefs:
+    - name: ingress-gateway
+      namespace: cluster-gateway
+      sectionName: prowlarr-https     
+  hostnames:
+    - "prowlarr.hoareau-marion.eu"
+  rules:
+    - backendRefs:
+        - name: prowlarr-webui
+          port: 8080

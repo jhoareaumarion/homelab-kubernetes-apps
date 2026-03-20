@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prowlarr
+  namespace: prowlarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prowlarr
+  template:
+    metadata:
+      labels:
+        app: prowlarr
+    spec:
+      nodeSelector:
+        affected_vlan: "50"
+      securityContext:
+        runAsUser: 1000  # Avoid root
+        fsGroup: 1000
+      containers:
+      - name: prowlarr
+        image: lscr.io/linuxserver/prowlarr:2.3.0.5236-ls139
+        securityContext:
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+        envFrom:
+        - configMapRef:
+            name: config-map
+        ports:
+        - name: prowlarr
+          containerPort: 9696
+          protocol: TCP
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "1"
+          limits:
+            memory: "1Gi"
+            cpu: "1"
+        terminationGracePeriodSeconds: 1800
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: config-pvc
