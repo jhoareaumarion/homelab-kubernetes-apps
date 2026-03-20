@@ -22,7 +22,6 @@ spec:
       - name: prowlarr
         image: lscr.io/linuxserver/prowlarr:2.3.0.5236-ls139
         securityContext:
-          readOnlyRootFilesystem: true
           allowPrivilegeEscalation: false
         envFrom:
         - configMapRef:
