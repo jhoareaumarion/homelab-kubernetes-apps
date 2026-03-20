@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: ""
+  storageClassName: media-nas
   nfs:
     server: truenas.local.hoareau-marion.eu
     path: /mnt/homelab-pool/media/downloads
