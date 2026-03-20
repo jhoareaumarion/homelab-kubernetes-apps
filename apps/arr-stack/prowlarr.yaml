@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
     targetRevision: HEAD
-    path: apps/arr-stack/prowlarr
+    path: apps/prowlarr
   destination:
     server: https://kubernetes.default.svc
     namespace: prowlarr
