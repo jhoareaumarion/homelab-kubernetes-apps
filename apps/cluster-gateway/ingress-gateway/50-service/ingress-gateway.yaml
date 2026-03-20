@@ -12,7 +12,7 @@ spec:
   ###
   # ACTUAL BUDGET
   ###
-  - name: http
+  - name: actual-budget-http
     hostname: "actual-budget.hoareau-marion.eu"
     port: 80
     protocol: HTTP
@@ -22,7 +22,7 @@ spec:
         selector:
           matchLabels:
             gateway-access: actual-budget
-  - name: https
+  - name: actual-budget-https
     hostname: "actual-budget.hoareau-marion.eu"
     port: 443  
     protocol: HTTPS
@@ -63,6 +63,33 @@ spec:
         selector:
           matchLabels:
             gateway-access: sparky-fitness
+  ###
+  # QBITTORRENT
+  ###
+  - name: qbittorrent-http
+    hostname: "qbittorrent.hoareau-marion.eu"
+    port: 80
+    protocol: HTTP
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: qbittorrent
+  - name: qbittorrent-https
+    hostname: "qbittorrent.hoareau-marion.eu"
+    port: 443  
+    protocol: HTTPS
+    tls:
+      mode: Terminate
+      certificateRefs:
+        - name: qbittorrent-hoareau-marion-eu-tls
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: qbittorrent
   ###
   # CODE SERVER
   ###
