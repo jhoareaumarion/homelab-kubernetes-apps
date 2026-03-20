@@ -5,7 +5,7 @@ metadata:
   name: qbittorrent-downloads-media-pv
 spec:
   capacity:
-    storage: 10Gi
+    storage: 1000Gi
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
