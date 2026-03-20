@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: nfs-client
+  storageClassName: ""
   nfs:
     server: truenas.local.hoareau-marion.eu
     path: /mnt/homelab-pool/homelab/k3s_apps/shared-consume  

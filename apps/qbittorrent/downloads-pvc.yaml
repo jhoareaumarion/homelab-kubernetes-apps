@@ -9,5 +9,5 @@ spec:
   resources:
     requests:
       storage: 1000Gi
-  storageClassName: nfs-client
+  storageClassName: ""
   volumeName: qbittorrent-downloads-media-pv

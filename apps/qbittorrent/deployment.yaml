@@ -24,9 +24,7 @@ spec:
           allowPrivilegeEscalation: false
         envFrom:
         - configMapRef:
-            name: qbittorrent-config
-        - secretRef:
-            name: secrets
+            name: config-map
         ports:
         - name: webui
           containerPort: 8080

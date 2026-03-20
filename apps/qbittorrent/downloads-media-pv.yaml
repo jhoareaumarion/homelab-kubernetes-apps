@@ -1,4 +1,4 @@
-# apps/sftpgo/shared-sftpgo-pv.yaml
+# apps/qbittorrent/qbittorrent-downloads-media-pv.yaml
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: nfs-client
+  storageClassName: ""
   nfs:
     server: truenas.local.hoareau-marion.eu
     path: /mnt/homelab-pool/media/downloads
