@@ -38,7 +38,6 @@ spec:
           readOnlyRootFilesystem: true
           runAsUser: 3102
           runAsGroup: 3100
-          fsGroup: 3100
         envFrom:
         - configMapRef:
             name: config-map
