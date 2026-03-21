@@ -52,11 +52,11 @@ spec:
           mountPath: /run
         resources:
           requests:
-            memory: "256Mi"
-            cpu: "100m"
+            memory: "512Mi"
+            cpu: "250m"
           limits:
-            memory: "1Gi"
-            cpu: "1"
+            memory: "2Gi"
+            cpu: "1500m"
       volumes:
       - name: config
         persistentVolumeClaim:
