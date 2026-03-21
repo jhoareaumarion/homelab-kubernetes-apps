@@ -23,7 +23,6 @@ spec:
         image: qbittorrentofficial/qbittorrent-nox:5.1.4-lt2-2
         securityContext:
           readOnlyRootFilesystem: true
-          allowPrivilegeEscalation: false
         envFrom:
         - configMapRef:
             name: config-map

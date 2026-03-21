@@ -15,9 +15,6 @@ spec:
     spec:
       nodeSelector:
         affected_vlan: "50"
-      securityContext:
-        runAsUser: 3102
-        fsGroup: 3100
       initContainers:
       - name: set-permissions
         image: busybox
@@ -29,7 +26,11 @@ spec:
       - name: sonarr
         image: lscr.io/linuxserver/sonarr:4.0.17
         securityContext:
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
           readOnlyRootFilesystem: true
+          runAsUser: 3102
+          fsGroup: 3100
         envFrom:
         - configMapRef:
             name: config-map
