@@ -16,7 +16,7 @@ spec:
       nodeSelector:
         affected_vlan: "50"
       securityContext:
-        runAsUser: 1000  # Avoid root
+        runAsUser: 1000  
         fsGroup: 1000
       containers:
       - name: prowlarr
@@ -33,6 +33,8 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /config
+        - name: run
+          mountPath: /run
         resources:
           requests:
             memory: "256Mi"
@@ -45,3 +47,5 @@ spec:
       - name: config
         persistentVolumeClaim:
           claimName: config-pvc
+      - name: run
+        emptyDir: {}
