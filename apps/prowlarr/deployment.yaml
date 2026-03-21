@@ -16,8 +16,8 @@ spec:
       nodeSelector:
         affected_vlan: "50"
       securityContext:
-        runAsUser: 1000
-        fsGroup: 1000
+        runAsUser: 3101
+        fsGroup: 3100
       containers:
       - name: prowlarr
         image: lscr.io/linuxserver/prowlarr:2.3.0.5236-ls139
