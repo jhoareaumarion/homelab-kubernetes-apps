@@ -32,7 +32,7 @@ spec:
           mountPath: /run
       containers:
       - name: radarr
-        image: lscr.io/linuxserver/radarr:4.0.17
+        image: lscr.io/linuxserver/radarr:6.0.4.10291-ls295
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
