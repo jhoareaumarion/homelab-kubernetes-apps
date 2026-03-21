@@ -15,13 +15,21 @@ spec:
     spec:
       nodeSelector:
         affected_vlan: "50"
-      initContainers:
-      - name: set-permissions
-        image: busybox
-        command: ["sh", "-c", "chmod 0777 /run"]
-        volumeMounts:
-        - name: run-tmpfs
-          mountPath: /run
+        initContainers:
+        - name: setup-run
+          image: busybox
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 0
+          command:
+            - sh
+            - -c
+            - |
+              chmod 0755 /run
+              chown 3102:3100 /run
+          volumeMounts:
+          - name: run-tmpfs
+            mountPath: /run
       containers:
       - name: sonarr
         image: lscr.io/linuxserver/sonarr:4.0.17
