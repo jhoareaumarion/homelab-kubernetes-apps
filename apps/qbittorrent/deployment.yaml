@@ -40,8 +40,8 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /config
-        - name: downloads
-          mountPath: /downloads
+        - name: torrents
+          mountPath: /torrents
         resources:
           requests:
             memory: "96Mi"
@@ -53,6 +53,6 @@ spec:
       - name: config
         persistentVolumeClaim:
           claimName: config-pvc
-      - name: downloads
+      - name: torrents
         persistentVolumeClaim:
-          claimName: downloads-pvc
+          claimName: torrents-pvc

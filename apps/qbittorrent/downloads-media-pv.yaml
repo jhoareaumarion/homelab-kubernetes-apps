@@ -1,15 +1,15 @@
-# apps/qbittorrent/qbittorrent-downloads-media-pv.yaml
+# apps/qbittorrent/qbittorrent-torrents-pv.yaml
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: qbittorrent-downloads-media-pv
+  name: qbittorrent-torrents-pv
 spec:
   capacity:
-    storage: 1000Gi
+    storage: 6000Gi
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   storageClassName: media-nas
   nfs:
     server: truenas.local.hoareau-marion.eu
-    path: /mnt/homelab-pool/media/downloads
+    path: /mnt/homelab-pool/media_data/torrents

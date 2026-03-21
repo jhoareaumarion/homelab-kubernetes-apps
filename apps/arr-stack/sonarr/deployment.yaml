@@ -15,9 +15,18 @@ spec:
     spec:
       nodeSelector:
         affected_vlan: "50"
+      initContainers:
+      - name: set-permissions
+        image: busybox
+        command: ["sh", "-c", "chmod 0777 /run"]
+        volumeMounts:
+        - name: run-tmpfs
+          mountPath: /run
       containers:
       - name: sonarr
         image: lscr.io/linuxserver/sonarr:4.0.17
+        securityContext:
+          readOnlyRootFilesystem: true
         envFrom:
         - configMapRef:
             name: config-map
@@ -28,15 +37,10 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /config
-        - name: downloads
-          mountPath: /downloads
-        - name: animes
-          mountPath: /animes
-        - name: shows
-          mountPath: /shows
+        - name: media_data
+          mountPath: /media_data
         - name: run-tmpfs
           mountPath: /run
-          mountPropagation: HostToContainer
         resources:
           requests:
             memory: "256Mi"
@@ -48,16 +52,9 @@ spec:
       - name: config
         persistentVolumeClaim:
           claimName: config-pvc
-      - name: animes
+      - name: media_data
         persistentVolumeClaim:
-          claimName: animes-pvc
-      - name: downloads
-        persistentVolumeClaim:
-          claimName: downloads-pvc
-      - name: shows
-        persistentVolumeClaim:
-          claimName: shows-pvc
+          claimName: media-data-pvc
       - name: run-tmpfs
         emptyDir:
           medium: Memory
-          sizeLimit: 10Mi
