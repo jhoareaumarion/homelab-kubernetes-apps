@@ -16,8 +16,8 @@ spec:
       nodeSelector:
         affected_vlan: "50"
       securityContext:
-        runAsUser: 1000
-        fsGroup: 1000
+        runAsUser: 3104
+        fsGroup: 3100
       containers:
       - name: qbittorrent
         image: qbittorrentofficial/qbittorrent-nox:5.1.4-lt2-2
