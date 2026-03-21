@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: media-data-pvc
+  namespace: radarr
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 6000Gi
+  storageClassName: media-nas
+  volumeName: radarr-media-data-pv
