@@ -1,0 +1,15 @@
+# apps/sonarr/sonarr-downloads-pv.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sonarr-downloads-pv
+spec:
+  capacity:
+    storage: 1000Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: media-nas
+  nfs:
+    server: truenas.local.hoareau-marion.eu
+    path: /mnt/homelab-pool/media/downloads

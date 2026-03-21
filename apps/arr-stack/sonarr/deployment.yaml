@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarr
+  namespace: sonarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sonarr
+  template:
+    metadata:
+      labels:
+        app: sonarr
+    spec:
+      nodeSelector:
+        affected_vlan: "50"
+      containers:
+      - name: sonarr
+        image: lscr.io/linuxserver/sonarr:4.0.17
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+        envFrom:
+        - configMapRef:
+            name: config-map
+        ports:
+        - name: sonarr
+          containerPort: 8989
+          protocol: TCP
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: downloads
+          mountPath: /downloads
+        - name: animes
+          mountPath: /animes
+        - name: shows
+          mountPath: /shows
+        - name: run-tmpfs
+          mountPath: /run
+          mountPropagation: HostToContainer
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "1Gi"
+            cpu: "1"
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: config-pvc
+      - name: animes
+        persistentVolumeClaim:
+          claimName: animes-pvc
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: downloads-pvc
+      - name: shows
+        persistentVolumeClaim:
+          claimName: shows-pvc
+      - name: run-tmpfs
+        emptyDir:
+          medium: Memory
+          sizeLimit: 10Mi

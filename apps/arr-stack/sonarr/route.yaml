@@ -1,0 +1,17 @@
+# apps/arr-stack/sonarr/route.yaml
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: sonarr-route
+  namespace: sonarr
+spec:
+  parentRefs:
+    - name: ingress-gateway
+      namespace: cluster-gateway
+      sectionName: sonarr-https     
+  hostnames:
+    - "sonarr.hoareau-marion.eu"
+  rules:
+    - backendRefs:
+        - name: sonarr-webui
+          port: 8989
