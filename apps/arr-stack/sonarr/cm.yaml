@@ -4,4 +4,6 @@ metadata:
   name: config-map
   namespace: sonarr
 data:
+  PUID: "3102"
+  PGID: "3100"
   TZ: "Europe/Paris"
