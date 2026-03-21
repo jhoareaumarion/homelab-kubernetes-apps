@@ -5,5 +5,5 @@ metadata:
   namespace: prowlarr
 data:
   PUID: "3101"
-  GUID: "3100"
+  PGID: "3100"
   TZ: "Europe/Paris"
