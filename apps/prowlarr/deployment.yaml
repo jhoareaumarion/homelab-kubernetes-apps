@@ -55,4 +55,5 @@ spec:
         persistentVolumeClaim:
           claimName: config-pvc
       - name: run
-        emptyDir: {}
+        persistentVolumeClaim:
+          claimName: run-pvc
