@@ -4,6 +4,4 @@ metadata:
   name: config-map
   namespace: prowlarr
 data:
-  PUID: "3101"
-  PGID: "3100"
   TZ: "Europe/Paris"

@@ -15,16 +15,12 @@ spec:
     spec:
       nodeSelector:
         affected_vlan: "50"
-      securityContext:
-        runAsUser: 3101
-        fsGroup: 3100
       containers:
       - name: prowlarr
         image: lscr.io/linuxserver/prowlarr:2.3.0.5236-ls139
         securityContext:
           allowPrivilegeEscalation: false
-          runAsNonRoot: true
-          readOnlyRootFilesystem: false
+          readOnlyRootFilesystem: true
         envFrom:
         - configMapRef:
             name: config-map
@@ -35,8 +31,9 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /config
-        - name: run
+        - name: run-tmpfs
           mountPath: /run
+          mountPropagation: HostToContainer
         resources:
           requests:
             memory: "256Mi"
@@ -48,7 +45,7 @@ spec:
       - name: config
         persistentVolumeClaim:
           claimName: config-pvc
-      - name: run
+      - name: run-tmpfs
         emptyDir:
           medium: Memory
           sizeLimit: 10Mi
