@@ -1,15 +1,13 @@
-# apps/sonarr/sonarr-shows-pv.yaml
 apiVersion: v1
-kind: PersistentVolume
+kind: PersistentVolumeClaim
 metadata:
-  name: sonarr-shows-pv
+  name: shows-pvc
+  namespace: sonarr
 spec:
-  capacity:
-    storage: 1000Gi
   accessModes:
     - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
+  resources:
+    requests:
+      storage: 1000Gi
   storageClassName: media-nas
-  nfs:
-    server: truenas.local.hoareau-marion.eu
-    path: /mnt/homelab-pool/media/shows
+  volumeName: sonarr-shows-pv

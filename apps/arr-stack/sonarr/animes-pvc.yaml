@@ -1,15 +1,13 @@
-# apps/sonarr/sonarr-animes-pv.yaml
 apiVersion: v1
-kind: PersistentVolume
+kind: PersistentVolumeClaim
 metadata:
-  name: sonarr-animes-pv
+  name: animes-pvc
+  namespace: sonarr
 spec:
-  capacity:
-    storage: 1000Gi
   accessModes:
     - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
+  resources:
+    requests:
+      storage: 1000Gi
   storageClassName: media-nas
-  nfs:
-    server: truenas.local.hoareau-marion.eu
-    path: /mnt/homelab-pool/media/animes
+  volumeName: sonarr-animes-pv
