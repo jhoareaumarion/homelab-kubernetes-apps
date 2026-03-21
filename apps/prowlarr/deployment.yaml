@@ -18,6 +18,13 @@ spec:
       securityContext:
         runAsUser: 1000  
         fsGroup: 1000
+      initContainers:
+        - name: fix-run-permissions
+          image: alpine
+          command: ["sh", "-c", "chown 1000:1000 /run && chmod 755 /run"]
+          volumeMounts:
+            - name: run
+              mountPath: /run
       containers:
       - name: prowlarr
         image: lscr.io/linuxserver/prowlarr:2.3.0.5236-ls139
