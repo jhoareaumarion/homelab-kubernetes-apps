@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
     targetRevision: HEAD
-    path: apps/prowlarr
+    path: apps/arr-stack/prowlarr
     directory:  
       recurse: true
   destination:
