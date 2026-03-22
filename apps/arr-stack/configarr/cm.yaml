@@ -17,6 +17,7 @@ data:
 
         include:
           - template: radarr-quality-definition-movie
+          - template: radarr-quality-profile-movie-remux-1080p  # Standard movie remux 1080p
           - template: radarr-quality-profile-anime-remux-1080p  # TRaSH anime profile
           - template: radarr-custom-formats-anime              # Base anime CFs
 
