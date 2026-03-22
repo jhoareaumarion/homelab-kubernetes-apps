@@ -16,8 +16,6 @@ spec:
               imagePullPolicy: Always
               tty: true 
               envFrom:
-                - configMapRef:
-                    name: common-deployment-environment
                 - secretRef:
                     name: configarr-secrets
               volumeMounts:
