@@ -25,11 +25,17 @@ spec:
           - sh
           - -c
           - |
+            # Change UID/GID of abc user to 3103/3100
+            sed -i 's/abc:x:911:1001/abc:x:3103:3100/' /etc/passwd
+            sed -i 's/abc:x:1001:abc/abc:x:3100:abc/' /etc/group
             chmod 0755 /run
             chown 3103:3100 /run
+            chown -R 3103:3100 /config
         volumeMounts:
         - name: run-tmpfs
           mountPath: /run
+        - name: config
+          mountPath: /config
       containers:
       - name: radarr
         image: lscr.io/linuxserver/radarr:6.0.4.10291-ls295
