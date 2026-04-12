@@ -117,6 +117,9 @@ data:
         quality_definition:
           type: series
 
-        include:
-          - template: anime-remux-1080p
-          - template: web-1080p
+        quality_profiles:
+          - name: "Anime (1080p)'
+              trash_ids: 
+                - anime-remux-1080p          
+          - name: "Shows (English)'
+              trash_ids: web-1080p
