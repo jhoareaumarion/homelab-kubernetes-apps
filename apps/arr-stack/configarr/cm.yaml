@@ -136,31 +136,19 @@ data:
               allowed: true
               until_quality: WEB 1080p
             qualities:
-              - name: HDTV-1080p
-                allowed: true
-              - name: WEBRip-1080p
-                allowed: true
-              - name: WEBDL-1080p
-                allowed: true
-              - name: HDTV-720p
-                allowed: true
-              - name: WEBRip-720p
-                allowed: true
-              - name: WEBDL-720p
-                allowed: true
-              - name: WEBRip-480p
-                allowed: true
-              - name: WEBDL-480p
-                allowed: true
+              - name: WEB 1080p
+                qualities:
+                  - WEBDL-1080p
+                  - WEBRip-1080p
+                  - HDTV-1080p
+              - name: WEB 720p
+                qualities:
+                  - WEBDL-720p
+                  - WEBRip-720p
+                  - HDTV-720p
+              - name: WEB 480p
+                qualities:
+                  - WEBDL-480p
+                  - WEBRip-480p
               - name: DVD
-                allowed: true
               - name: SDTV
-                allowed: true
-              - name: Bluray-1080p Remux
-                allowed: false
-              - name: Bluray-1080p
-                allowed: false
-              - name: Bluray-720p
-                allowed: false
-              - name: Bluray-480p
-                allowed: false
