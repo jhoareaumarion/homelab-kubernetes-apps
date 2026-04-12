@@ -129,23 +129,35 @@ data:
         renameQualityProfiles:
           - from: "[Anime] Remux-1080p"
             to: "Anime (1080p)"
-            
+
         quality_profiles:
           - name: "Anime (1080p)"
             qualities:
-              - name: WEB 1080p
+              - name: HDTV-1080p
                 allowed: true
-              - name: WEB 720p
+              - name: WEBRip-1080p
                 allowed: true
-              - name: WEB 480p
+              - name: WEBDL-1080p
+                allowed: true
+              - name: HDTV-720p
+                allowed: true
+              - name: WEBRip-720p
+                allowed: true
+              - name: WEBDL-720p
+                allowed: true
+              - name: WEBRip-480p
+                allowed: true
+              - name: WEBDL-480p
                 allowed: true
               - name: DVD
                 allowed: true
               - name: SDTV
                 allowed: true
-              - name: Bluray 1080p
+              - name: Bluray-1080p Remux
                 allowed: false
-              - name: Bluray 720p
+              - name: Bluray-1080p
                 allowed: false
-              - name: Bluray 480p
+              - name: Bluray-720p
+                allowed: false
+              - name: Bluray-480p
                 allowed: false
