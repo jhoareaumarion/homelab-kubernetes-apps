@@ -342,30 +342,25 @@ data:
 
           # --- 2. FRENCH SOURCE GROUPS (The Winners) ---
           - trash_ids:
-              - d844321db5e126d2e7e46152f0706532 # FR HD Bluray Tier 01
+              - ddb8eaa9c85a549c50034d280539d54d # FR WEB Tier 01
             assign_scores_to:
               - name: "Shows French DUB"
                 score: 1800
           - trash_ids:
-              - ddb8eaa9c85a549c50034d280539d54d # FR WEB Tier 01
+              - a4c51febd4d8b2a0db10a3c974f21d92 # FR WEB Tier 02
             assign_scores_to:
               - name: "Shows French DUB"
                 score: 1700
           - trash_ids:
-              - a4c51febd4d8b2a0db10a3c974f21d92 # FR WEB Tier 02
+              - dbfc0a4b5cb4cbd693311c4482ae9683 # FR WEB Tier 03
             assign_scores_to:
               - name: "Shows French DUB"
                 score: 1650
           - trash_ids:
-              - dbfc0a4b5cb4cbd693311c4482ae9683 # FR WEB Tier 03
-            assign_scores_to:
-              - name: "Shows French DUB"
-                score: 1600
-          - trash_ids:
               - 2f3422339d185eb227a324644a2fbfca # FR Scene Groups
             assign_scores_to:
               - name: "Shows French DUB"
-                score: 1500
+                score: 1600
 
           # --- 3. GLOBAL SOURCE GROUPS ---
           - trash_ids:
