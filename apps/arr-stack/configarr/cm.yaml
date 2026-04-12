@@ -193,3 +193,58 @@ data:
                   - WEBRip-480p
               - name: DVD
               - name: SDTV
+              
+        assign_scores_to:
+          - name: "Anime (1080p)"
+          assign_scores_to:
+          - name: "Anime (1080p)"
+            scores:
+              # --- WEB TIERS ---
+              e0014372773c8f0e1bef8824f00c7dc4: 1400    # Anime Web Tier 01
+              19180499de5ef2b84b6ec59aae444696: 1300    # Anime Web Tier 02
+              c27f2ae6a4e82373b0f1da094e2489ad: 1200    # Anime Web Tier 03
+              4fd5528a3a8024e6b49f9c67053ea5f3: 1100    # Anime Web Tier 04
+              29c2a13d091144f63307e4a8ce963a39: 1000    # Anime Web Tier 05
+              dc262f88d74c651b12e9d90b39f6c753: 900     # Anime Web Tier 06
+
+              # --- STREAMING SERVICES ---
+              3e0b26604165f463f3e8e192261e7284: 100     # CR
+              89358767a60cc28783cdc3d0be9388a4: 100     # DSNP
+              d34870697c9db575f17700212167be23: 100     # NF
+              d660701077794679fd59e8bdf4ce3a29: 100     # AMZN
+              44a8ee6403071dd7b8a3a8dd3fe8cb20: 100     # VRV
+              1284d18e693de8efe0fe7d6b3e0b9170: 100     # FUNi
+              a370d974bc7b80374de1d9ba7519760b: 100     # ABEMA
+              d54cd2bf1326287275b56bccedb72ee2: 100     # ADN
+              7dd31f3dee6d2ef8eeaa156e23c3857e: 100     # B-Global
+              4c67ff059210182b59cdd41697b8cb08: 100     # Bilibili
+
+              # --- BD/REMUX TIERS ---
+              949c16fe0a8147f50ba82cc2df9411c9: 0       # Anime BD Tier 01
+              ed7f1e315e000aef424a58517fa48727: 0       # Anime BD Tier 02
+              096e406c92baa713da4a72d88030b815: 0       # Anime BD Tier 03
+              30feba9da3030c5ed1e0f7d610bcadc4: 0       # Anime BD Tier 04
+              545a76b14ddc349b8b185a6344e28b04: 0       # Anime BD Tier 05
+              25d2afecab632b1582eaf03b63055f72: 0       # Anime BD Tier 06
+              0329044e3d9137b08502a9f84a7e58db: 0       # Anime BD Tier 07
+              c81bbfb47fed3d5a3ad027d077f889de: 0       # Anime BD Tier 08
+
+              9965a052eb87b0d10313b1cea89eb451: -10000  # Remux Tier 01
+              8a1d0c3d7497e741736761a1da866a2e: -10000  # Remux Tier 02
+
+              # --- PREFERENCE & COMPATIBILITY FILTERS ---
+              15a05bc7c1a36e2b57fd628f8977e2fc: -10000  # AV1
+              b4a1b3d705159cdca36d71e57ca86871: -10000  # Anime Raws
+              e3515e519f3b1360cbfc17651944354c: -10000  # Anime LQ Groups
+              9c14d194486c4014d422adc64092d794: -10000  # Dubs Only
+              07a32f77690263bb9fda1842db7e273f: -10000  # VOSTFR
+              026d5aadd1a6b4e550b134cb6c72b3ca: 0       # Uncensored
+              b2550eb333d27b75833e25b8c2557b38: 0       # 10bit
+              418f50b10f1907201b6cfdf881f467b7: 0       # Anime Dual Audio
+
+              # --- RELEASE VERSIONS (v-scores) ---
+              d2d7b8a9d39413da5f44054080e028a3: -51     # v0
+              273bd326df95955e1b6c26527d1df89b: 1       # v1
+              228b8ee9aa0a609463efca874524a6b8: 2       # v2
+              0e5833d3af2cc5fa96a0c29cd4477feb: 3       # v3
+              4fc15eeb8f2f9a749f918217d4234ad8: 4       # v4
