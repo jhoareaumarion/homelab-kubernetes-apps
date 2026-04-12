@@ -118,17 +118,11 @@ data:
           type: series
 
         # see https://github.com/TRaSH-Guides/Guides/tree/master/docs/json/sonarr
-        include:
-          - template: 20e0fc959f1f1704bed501f23bdae76f        # anime-remux-1080p
-            source: TRASH
-          - template: 72dae194fc92bf828f32cde7744e51a1        # web-1080p
-            source: TRASH
-          - template: 387e6278d8e06083d813358762e0ac63        # anime-size
-            source: TRASH
-
-        renameQualityProfiles:
-          - from: "[Anime] Remux-1080p"
-            to: "Anime (1080p)"
+        # include:
+        #   - template: 20e0fc959f1f1704bed501f23bdae76f        # anime-remux-1080p
+        #     source: TRASH
+        #   - template: 72dae194fc92bf828f32cde7744e51a1        # web-1080p
+        #     source: TRASH
 
         quality_profiles:
           - name: "Anime (1080p)"
@@ -171,7 +165,7 @@ data:
                 - 418f50b10f1907201b6cfdf881f467b7             # Anime Dual Audio
                 - 9c14d194486c4014d422adc64092d794             # Dubs Only
                 - 07a32f77690263bb9fda1842db7e273f             # VOSTFR
-                
+
                 - 3e0b26604165f463f3e8e192261e7284             # CR
                 - 89358767a60cc28783cdc3d0be9388a4             # DSNP
                 - d34870697c9db575f17700212167be23             # NF
