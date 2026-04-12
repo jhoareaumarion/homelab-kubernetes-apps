@@ -117,10 +117,16 @@ data:
         quality_definition:
           type: series
 
-        quality_profiles:
-          - name: "Anime (1080p)"
-            trash_ids: 
-              - anime-remux-1080p          
-          - name: "Shows (English)"
-            trash_ids: 
-              - web-1080p
+        include:
+          - template: anime-remux-1080p
+            source: TRASH
+          - template: web-1080p
+            source: TRASH
+          - template: audio-formats
+            source: TRASH
+          - template: hdr-formats-dv-boost
+            source: TRASH
+          - template: streaming-services-general
+            source: TRASH
+          - template: optional-misc
+            source: TRASH
