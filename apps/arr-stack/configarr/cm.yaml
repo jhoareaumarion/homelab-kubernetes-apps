@@ -118,8 +118,9 @@ data:
           type: series
 
         quality_profiles:
-          - name: "Anime (1080p)'
+          - name: "Anime (1080p)"
               trash_ids: 
                 - anime-remux-1080p          
-          - name: "Shows (English)'
-              trash_ids: web-1080p
+          - name: "Shows (English)"
+              trash_ids: 
+                - web-1080p
