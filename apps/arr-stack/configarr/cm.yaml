@@ -154,11 +154,26 @@ data:
                   - WEBDL-720p
                   - WEBRip-720p
                   - HDTV-720p
+          - name: "Shows French DUB"
+            upgrade:
+              allowed: true
+              until_quality: WEB 1080p
+            qualities:
+              - name: WEB 1080p
+                qualities:
+                  - WEBDL-1080p
+                  - WEBRip-1080p
+                  - HDTV-1080p
+              - name: WEB 720p
+                qualities:
+                  - WEBDL-720p
+                  - WEBRip-720p
+                  - HDTV-720p
 
         custom_formats:
-          ######################
-          ### Anime 1080p QP ###
-          ######################
+          ##########################
+          ### Anime Japanese DUB ###
+          ##########################
           # --- 1. WEB TIERS (The "Gold Standard" for Chromecast HD) ---
           - trash_ids:
               - e0014372773c8f0e1bef8824f00c7dc4 # Anime Web Tier 01
@@ -221,9 +236,9 @@ data:
             assign_scores_to:
               - name: "Anime Japanese DUB"
                 score: 10
-          ######################
-          ### Shows 1080p QP ###
-          ######################
+          #########################
+          ### Shows English DUB ###
+          #########################
           # --- 1. UNWANTED / BLOCKING (Transcode Traps for Chromecast HD) ---
           - trash_ids:
               - 85c61753df5da1fb2aab6f2a47426b09 # BR-DISK
@@ -299,3 +314,73 @@ data:
             assign_scores_to:
               - name: "Shows English DUB"
                 score: 7
+          ########################
+          ### Shows French DUB ###
+          ########################
+          # --- 1. LANGUAGE LOGIC (Shows French DUB) ---
+          - trash_ids:
+              - 10e77b96ae4770a7de645a91a53ce29a # Language: Original + French
+            assign_scores_to:
+              - name: "Shows French DUB"
+                score: 500
+          - trash_ids:
+              - ae575f95ab639ba5d15f663bf019e3e8 # Language: Not Original
+              - 322fca6f8f3694acc1401ddb530fd33d # Language: Not French
+            assign_scores_to:
+              - name: "Shows French DUB"
+                score: -10000
+          - trash_ids:
+              - 07a32f77690263bb9fda1842db7e273f # VOSTFR
+            assign_scores_to:
+              - name: "Shows French DUB"
+                score: 0
+          - trash_ids:
+              - 7ba05c6e0e14e793538174c679126996 # MULTi
+            assign_scores_to:
+              - name: "Shows French DUB"
+                score: 0
+
+          # --- 2. FRENCH SOURCE GROUPS (The Winners) ---
+          - trash_ids:
+              - d844321db5e126d2e7e46152f0706532 # FR HD Bluray Tier 01
+            assign_scores_to:
+              - name: "Shows French DUB"
+                score: 1800
+          - trash_ids:
+              - ddb8eaa9c85a549c50034d280539d54d # FR WEB Tier 01
+            assign_scores_to:
+              - name: "Shows French DUB"
+                score: 1700
+          - trash_ids:
+              - a4c51febd4d8b2a0db10a3c974f21d92 # FR WEB Tier 02
+            assign_scores_to:
+              - name: "Shows French DUB"
+                score: 1650
+          - trash_ids:
+              - dbfc0a4b5cb4cbd693311c4482ae9683 # FR WEB Tier 03
+            assign_scores_to:
+              - name: "Shows French DUB"
+                score: 1600
+          - trash_ids:
+              - 2f3422339d185eb227a324644a2fbfca # FR Scene Groups
+            assign_scores_to:
+              - name: "Shows French DUB"
+                score: 1500
+
+          # --- 3. GLOBAL SOURCE GROUPS ---
+          - trash_ids:
+              - e6258996055b9fbab7e9cb2f75819294 # WEB Tier 01
+            assign_scores_to:
+              - name: "Shows French DUB"
+                score: 1700
+          - trash_ids:
+              - 58790d4e2fdcd9733aa7ae68ba2bb503 # WEB Tier 02
+            assign_scores_to:
+              - name: "Shows French DUB"
+                score: 1650
+          - trash_ids:
+              - d84935abd3f8556dcd51d4f27e22d0a6 # WEB Tier 03
+              - d0c516558625b04b363fa6c5c2c7cfd4 # WEB Scene
+            assign_scores_to:
+              - name: "Shows French DUB"
+                score: 1600
