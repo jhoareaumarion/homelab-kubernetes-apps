@@ -196,8 +196,6 @@ data:
               
         assign_scores_to:
           - name: "Anime (1080p)"
-          assign_scores_to:
-          - name: "Anime (1080p)"
             scores:
               # --- WEB TIERS ---
               e0014372773c8f0e1bef8824f00c7dc4: 1400    # Anime Web Tier 01
