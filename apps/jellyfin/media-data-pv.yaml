@@ -1,0 +1,15 @@
+# apps/arr-stack/jellyfin/jellyfin-media-data-pv.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jellyfin-media-data-pv
+spec:
+  capacity:
+    storage: 6000Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: media-nas
+  nfs:
+    server: truenas.local.hoareau-marion.eu
+    path: /mnt/homelab-pool/media_data/media

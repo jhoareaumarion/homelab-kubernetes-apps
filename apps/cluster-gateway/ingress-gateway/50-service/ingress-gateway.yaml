@@ -172,6 +172,33 @@ spec:
           matchLabels:
             gateway-access: radarr
   ###
+  # JELLYFIN
+  ###
+  - name: jellyfin-http
+    hostname: "jellyfin.hoareau-marion.eu"
+    port: 80
+    protocol: HTTP
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: jellyfin
+  - name: jellyfin-https
+    hostname: "jellyfin.hoareau-marion.eu"
+    port: 443  
+    protocol: HTTPS
+    tls:
+      mode: Terminate
+      certificateRefs:
+        - name: jellyfin-hoareau-marion-eu-tls
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: jellyfin
+  ###
   # CODE SERVER
   ###
   - name: code-server-http
