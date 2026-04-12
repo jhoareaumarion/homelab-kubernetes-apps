@@ -118,10 +118,9 @@ data:
           type: series
 
         include:
-          - template: sonarr-quality-definition-series
-          - template: sonarr-quality-profile-anime-remux-1080p  # TRaSH anime profile
-          - template: sonarr-quality-profile-tv-remux-1080p     # Standard TV remux 1080p
-          - template: sonarr-custom-formats-anime                # Base anime CFs
+          - template: quality-definition-series # Standard name
+          - template: anime-remux-1080p           # Matches anime-remux-1080p.json
+          - template: web-1080p
 
         custom_formats:
           - trash_ids:
