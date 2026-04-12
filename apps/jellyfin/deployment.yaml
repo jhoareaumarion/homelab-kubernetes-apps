@@ -13,22 +13,11 @@ spec:
       labels:
         app: jellyfin
     spec:
-      # Matches your Sonarr setup to ensure it runs on the correct VLAN nodes
       nodeSelector:
         affected_vlan: "50"
-      
-      # Using the same initContainer logic to handle permissions for shared volumes
-      initContainers:
-      - name: setup-permissions
-        image: busybox
-        securityContext:
-          runAsUser: 0
-        command:
-          - sh
-          - -c
-          - |
-            chown -R 3105:3100 /config /cache
-      
+      securityContext:
+        runAsUser: 3105
+        runAsGroup: 3100
       containers:
       - name: jellyfin
         image: jellyfin/jellyfin:10.11
