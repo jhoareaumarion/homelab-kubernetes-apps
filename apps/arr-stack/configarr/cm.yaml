@@ -117,10 +117,31 @@ data:
         quality_definition:
           type: series
 
+        # see https://github.com/TRaSH-Guides/Guides/tree/master/docs/json/sonarr
         include:
           - template: 20e0fc959f1f1704bed501f23bdae76f        # anime-remux-1080p
             source: TRASH
+            rename: "Anime (1080p)"
           - template: 72dae194fc92bf828f32cde7744e51a1        # web-1080p
             source: TRASH
           - template: 387e6278d8e06083d813358762e0ac63        # anime-size
             source: TRASH
+        quality_profiles:
+          - name: "Anime (1080p)"
+            qualities:
+              - name: WEB 1080p
+                allowed: true
+              - name: WEB 720p
+                allowed: true
+              - name: WEB 480p
+                allowed: true
+              - name: DVD
+                allowed: true
+              - name: SDTV
+                allowed: true
+              - name: Bluray 1080p
+                allowed: false
+              - name: Bluray 720p
+                allowed: false
+              - name: Bluray 480p
+                allowed: false
