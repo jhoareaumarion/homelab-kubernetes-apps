@@ -132,6 +132,7 @@ data:
 
         quality_profiles:
           - name: "Anime (1080p)"
+            upgrade_until_quality: WEB 1080p
             qualities:
               - name: HDTV-1080p
                 allowed: true
