@@ -7,9 +7,11 @@ spec:
   selector:
     app: jellyfin
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 8096
       targetPort: 8096
-    - protocol: UDP
+    - name: discovery
+      protocol: UDP
       port: 7359
       targetPort: 7359
