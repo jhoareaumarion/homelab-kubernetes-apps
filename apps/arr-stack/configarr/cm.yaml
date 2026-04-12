@@ -16,10 +16,10 @@ data:
           type: movie
 
         include:
-          - template: radarr-quality-definition-movie
-          - template: radarr-quality-profile-movie-remux-1080p  # Standard movie remux 1080p
-          - template: radarr-quality-profile-anime-remux-1080p  # TRaSH anime profile
-          - template: radarr-custom-formats-anime              # Base anime CFs
+          - template: quality-definition-movie
+          - template: quality-profile-movie-remux-1080p  # Standard movie remux 1080p
+          - template: quality-profile-anime-remux-1080p  # TRaSH anime profile
+          - template: custom-formats-anime              # Base anime CFs
 
         custom_formats:
           - trash_ids:
@@ -118,10 +118,5 @@ data:
           type: series
 
         include:
-          - template: quality-definition-series # Standard name
-          - template: anime-remux-1080p           # Matches anime-remux-1080p.json
+          - template: anime-remux-1080p
           - template: web-1080p
-          - template: audio-formats
-          - template: hdr-formats-dv-boost
-          - template: streaming-services-general
-          - template: optional-misc
