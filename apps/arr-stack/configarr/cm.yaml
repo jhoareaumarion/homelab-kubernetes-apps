@@ -118,15 +118,9 @@ data:
           type: series
 
         include:
-          - template: anime-remux-1080p
+          - template: 20e0fc959f1f1704bed501f23bdae76f        # anime-remux-1080p
             source: TRASH
-          - template: web-1080p
+          - template: 72dae194fc92bf828f32cde7744e51a1        # web-1080p
             source: TRASH
-          - template: audio-formats
-            source: TRASH
-          - template: hdr-formats-dv-boost
-            source: TRASH
-          - template: streaming-services-general
-            source: TRASH
-          - template: optional-misc
+          - template: 387e6278d8e06083d813358762e0ac63        # anime-size
             source: TRASH
