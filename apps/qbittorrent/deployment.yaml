@@ -19,6 +19,24 @@ spec:
         runAsUser: 3104
         runAsGroup: 3100
       containers:
+      - name: vpn
+        image: qmcgaw/gluetun:latest
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]
+          readOnlyRootFilesystem: false 
+        envFrom:
+          - configMapRef:
+              name: gluetun-cm
+          - secretRef:
+              name: secrets
+        ports:
+        - name: webui
+          containerPort: 8080 
+        - name: torrent-tcp
+          containerPort: 6881
+        - name: torrent-udp
+          containerPort: 6881
       - name: qbittorrent
         image: qbittorrentofficial/qbittorrent-nox:5.1.4-lt2-2
         securityContext:
@@ -26,16 +44,6 @@ spec:
         envFrom:
         - configMapRef:
             name: config-map
-        ports:
-        - name: webui
-          containerPort: 8080
-          protocol: TCP
-        - name: torrent-tcp
-          containerPort: 6881
-          protocol: TCP
-        - name: torrent-udp
-          containerPort: 6881
-          protocol: UDP
         volumeMounts:
         - name: config
           mountPath: /config

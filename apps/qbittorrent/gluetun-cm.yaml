@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gluetun-cm
+  namespace: qbittorrent
+data:
+  VPN_SERVICE_PROVIDER: "PROTONVPN"
+  VPN_PORT_FORWARDING: "on"
+  VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/forwarded_port"
+  TZ: "Europe/Paris"
+  VPN_TYPE: "wireguard"
+  DOT: "off"
+  FIREWALL_OUTBOUND_SUBNETS: "10.42.0.0/16,10.43.0.0/16"
