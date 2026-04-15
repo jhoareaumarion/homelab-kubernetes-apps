@@ -15,9 +15,6 @@ spec:
     spec:
       nodeSelector:
         affected_vlan: "50"
-      securityContext:
-        runAsUser: 3104
-        runAsGroup: 3100
       containers:
       - name: vpn
         image: qmcgaw/gluetun:latest
@@ -41,6 +38,8 @@ spec:
         image: qbittorrentofficial/qbittorrent-nox:5.1.4-lt2-2
         securityContext:
           readOnlyRootFilesystem: true
+          runAsUser: 3104
+          runAsGroup: 3100
         envFrom:
         - configMapRef:
             name: config-map
