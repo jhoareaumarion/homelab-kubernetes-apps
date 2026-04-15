@@ -16,7 +16,7 @@ spec:
       nodeSelector:
         affected_vlan: "50"
       containers:
-      - name: vpn
+      - name: gluetun
         image: qmcgaw/gluetun:latest
         securityContext:
           capabilities:
