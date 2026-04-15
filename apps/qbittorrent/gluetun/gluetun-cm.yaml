@@ -9,6 +9,7 @@ data:
   VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/forwarded_port"
   SERVER_COUNTRIES: "France"
   PORT_FORWARD_ONLY: "true"
+  VPN_INTERFACE_MTU: "1320"
   TZ: "Europe/Paris"
   VPN_TYPE: "wireguard"
   DOT: "off"
