@@ -12,6 +12,12 @@ spec:
   hostnames:
     - "jellyfin.hoareau-marion.eu"
   rules:
+    - filters:
+        - type: RequestHeaderModifier
+          requestHeaderModifier:
+            set:
+              - name: "X-Forwarded-Proto"
+                value: "https"
     - backendRefs:
         - name: jellyfin
           port: 8096
