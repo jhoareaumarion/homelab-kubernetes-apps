@@ -4,9 +4,11 @@ metadata:
   name: gluetun-cm
   namespace: qbittorrent
 data:
-  VPN_SERVICE_PROVIDER: "PROTONVPN"
+  VPN_SERVICE_PROVIDER: "protonvpn"
   VPN_PORT_FORWARDING: "on"
   VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/forwarded_port"
+  SERVER_COUNTRIES: "France"
+  PORT_FORWARD_ONLY: "true"
   TZ: "Europe/Paris"
   VPN_TYPE: "wireguard"
   DOT: "off"
