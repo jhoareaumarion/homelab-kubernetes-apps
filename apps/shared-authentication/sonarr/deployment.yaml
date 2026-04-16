@@ -13,6 +13,8 @@ spec:
       labels:
         app: oauth2-proxy-sonarr
     spec:
+      nodeSelector:
+        affected_vlan: "50"
       volumes:
         - name: config-volume
           configMap:
