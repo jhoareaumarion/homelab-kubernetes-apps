@@ -35,6 +35,7 @@ spec:
                 key: cookie-secret
         args:
           - --config=/etc/oauth2-proxy/oauth2-proxy.cfg
+          - --cookie-secret=base64:$(OAUTH2_PROXY_COOKIE_SECRET)
         volumeMounts:
           - name: config-volume
             mountPath: /etc/oauth2-proxy
