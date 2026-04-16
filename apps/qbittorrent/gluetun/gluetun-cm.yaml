@@ -4,7 +4,6 @@ metadata:
   name: gluetun-cm
   namespace: qbittorrent
 data:
-  WIREGUARD_IMPLEMENTATION: "userspace"
   VPN_SERVICE_PROVIDER: "protonvpn"
   VPN_TYPE: "wireguard"
   SERVER_COUNTRIES: "France"
