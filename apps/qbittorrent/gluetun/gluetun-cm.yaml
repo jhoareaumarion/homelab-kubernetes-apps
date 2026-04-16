@@ -14,4 +14,6 @@ data:
   BORINGPOLL_GLUETUNCOM: "on"
   DOT: "off"
   DNS_KEEP_NAMESERVER: "on"
+  VPN_IPV6: "off"
+  BLOCK_IPV6: "off"
   WIREGUARD_MTU: "1200"
