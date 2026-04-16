@@ -19,6 +19,7 @@ spec:
       - name: gluetun
         image: qmcgaw/gluetun:latest
         securityContext:
+          privileged: true
           capabilities:
             add: ["NET_ADMIN"]
           readOnlyRootFilesystem: false 
