@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oauth2-proxy-radarr
+  namespace: shared-authentication
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oauth2-proxy-radarr
+  template:
+    metadata:
+      labels:
+        app: oauth2-proxy-radarr
+    spec:
+      nodeSelector:
+        affected_vlan: "50"
+      volumes:
+        - name: config-volume
+          configMap:
+            name: oauth2-proxy-radarr-cm
+      containers:
+      - name: oauth2-proxy
+        image: quay.io/oauth2-proxy/oauth2-proxy:v7.4.0
+        env:
+          - name: OAUTH2_PROXY_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: oauth2-proxy-creds-radarr
+                key: client-secret
+          - name: OAUTH2_PROXY_COOKIE_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: oauth2-proxy-creds-radarr
+                key: cookie-secret
+        args:
+          - --config=/etc/oauth2-proxy/oauth2-proxy.cfg
+        volumeMounts:
+          - name: config-volume
+            mountPath: /etc/oauth2-proxy
+            readOnly: true
+        ports:
+        - containerPort: 4180

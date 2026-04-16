@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: oauth2-proxy-radarr-cm
+  namespace: shared-authentication
+data:
+  oauth2-proxy.cfg: |
+    provider = "keycloak-oidc"
+    oidc_issuer_url = "https://keycloak.hoareau-marion.eu/realms/milkyway"
+    client_id = "radarr_v2"
+    http_address = "0.0.0.0:4180"
+    email_domains = [ "*" ]
+    allowed_roles = [ "radarr_v2:radarr-user" ]
+    whitelist_domains = [ ".hoareau-marion.eu" ]
+    upstreams = [ "http://radarr-webui.radarr.svc.cluster.local:7878/" ]
+    pass_host_header = true
+    reverse_proxy = true

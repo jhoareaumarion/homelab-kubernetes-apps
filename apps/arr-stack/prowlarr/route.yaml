@@ -13,5 +13,6 @@ spec:
     - "prowlarr.hoareau-marion.eu"
   rules:
     - backendRefs:
-        - name: prowlarr-webui
-          port: 9696
+        - name: auth-prowlarr
+          namespace: shared-authentication
+          port: 80

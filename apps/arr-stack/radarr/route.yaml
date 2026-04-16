@@ -13,5 +13,6 @@ spec:
     - "radarr.hoareau-marion.eu"
   rules:
     - backendRefs:
-        - name: radarr-webui
-          port: 7878
+        - name: auth-radarr
+          namespace: shared-authentication
+          port: 80

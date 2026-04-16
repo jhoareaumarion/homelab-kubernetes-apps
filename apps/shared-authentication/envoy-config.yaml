@@ -14,3 +14,17 @@ spec:
           uri: http://auth-sonarr.shared-authentication.svc.cluster.local
           cluster: "shared-authentication/auth-sonarr"
           timeout: 5s
+    - "@type": type.googleapis.com/envoy.config.filter.http.ext_authz.v3.ExtAuthz
+      name: prowlarr-auth-filter
+      http_service:
+        server_uri:
+          uri: http://auth-prowlarr.shared-authentication.svc.cluster.local
+          cluster: "shared-authentication/auth-prowlarr"
+          timeout: 5s
+    - "@type": type.googleapis.com/envoy.config.filter.http.ext_authz.v3.ExtAuthz
+      name: radarr-auth-filter
+      http_service:
+        server_uri:
+          uri: http://auth-radarr.shared-authentication.svc.cluster.local
+          cluster: "shared-authentication/auth-radarr"
+          timeout: 5s
