@@ -12,3 +12,4 @@ data:
   PORT_FORWARD_ONLY: "on"
   TZ: "Europe/Paris"
   BORINGPOLL_GLUETUNCOM: "on"
+  DOT: "off"
