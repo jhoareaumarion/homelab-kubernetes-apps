@@ -15,3 +15,4 @@ data:
     upstreams = [ "http://sonarr-webui.sonarr.svc.cluster.local:8989/" ]
     pass_host_header = true
     reverse_proxy = true
+    skip_provider_button = true
