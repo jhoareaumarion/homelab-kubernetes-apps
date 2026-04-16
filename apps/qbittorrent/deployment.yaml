@@ -17,7 +17,7 @@ spec:
         affected_vlan: "50"
       containers:
       - name: gluetun
-        image: qmcgaw/gluetun:latest
+        image: qmcgaw/gluetun:v3.41.1
         securityContext:
           privileged: true
           capabilities:
