@@ -7,6 +7,7 @@ data:
   VPN_SERVICE_PROVIDER: "protonvpn"
   VPN_TYPE: "wireguard"
   SERVER_COUNTRIES: "France"
+  DNS_OUTBOUND_DOT: 'off'
   VPN_PORT_FORWARDING: "on"
   VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/forwarded_port"
   PORT_FORWARD_ONLY: "on"
