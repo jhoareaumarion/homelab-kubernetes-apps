@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oauth2-proxy-sonarr
+  namespace: shared-authentication
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oauth2-proxy-sonarr
+  template:
+    metadata:
+      labels:
+        app: oauth2-proxy-sonarr
+    spec:
+      containers:
+      - name: oauth2-proxy
+        image: quay.io/oauth2-proxy/oauth2-proxy:v7.4.0
+        args:
+          - --config=/etc/oauth2-proxy/oauth2-proxy.cfg
+        volumeMounts:
+          - name: config-volume
+            mountPath: /etc/oauth2-proxy
+            readOnly: true
+        ports:
+        - containerPort: 4180

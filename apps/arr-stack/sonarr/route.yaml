@@ -4,6 +4,9 @@ kind: HTTPRoute
 metadata:
   name: sonarr-route
   namespace: sonarr
+  annotations:
+    cilium.io/auth-method: "external-auth"
+    cilium.io/auth-type: "sonarr-auth-filter"
 spec:
   parentRefs:
     - name: ingress-gateway

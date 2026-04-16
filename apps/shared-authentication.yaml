@@ -1,0 +1,29 @@
+# apps/shared-authentication.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: shared-authentication
+  namespace: argocd
+spec:
+  project: homelab
+  source:
+    repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
+    targetRevision: HEAD
+    path: apps/shared-authentication
+    directory:  
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: shared-authentication
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 0
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

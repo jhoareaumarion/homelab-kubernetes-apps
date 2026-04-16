@@ -1,0 +1,16 @@
+apiVersion: cilium.io/v2
+kind: CiliumClusterwideEnvoyConfig
+metadata:
+  name: external-auth-oauth2-proxy
+spec:
+  services:
+    - name: oauth2-proxy-arr
+      namespace: cluster-gateway
+  resources:
+    - "@type": type.googleapis.com/envoy.config.filter.http.ext_authz.v3.ExtAuthz
+      name: sonarr-auth-filter
+      http_service:
+        server_uri:
+          uri: http://auth-sonarr.shared-authentication.svc.cluster.local
+          cluster: "shared-authentication/auth-sonarr"
+          timeout: 5s
