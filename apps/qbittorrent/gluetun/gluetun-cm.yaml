@@ -8,7 +8,7 @@ data:
   VPN_TYPE: "wireguard"
   WIREGUARD_IMPLEMENTATION: "userspace"
   SERVER_COUNTRIES: "France"
-  WIREGUARD_MTU: "1320"
+  WIREGUARD_MTU: "1280"
   
   VPN_PORT_FORWARDING: "on"
   VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/forwarded_port"
