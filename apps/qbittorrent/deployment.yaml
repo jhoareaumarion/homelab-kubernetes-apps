@@ -27,6 +27,9 @@ spec:
               name: gluetun-cm
           - secretRef:
               name: gluetun-secrets
+        volumeMounts:
+          - name: tun
+            mountPath: /dev/net/tun
         ports:
         - name: webui
           containerPort: 8080 
@@ -61,4 +64,7 @@ spec:
           claimName: config-pvc
       - name: torrents
         persistentVolumeClaim:
-          claimName: torrents-pvc
+          claimName: torrents
+      - name: tun
+        hostPath:
+          path: /dev/net/tun

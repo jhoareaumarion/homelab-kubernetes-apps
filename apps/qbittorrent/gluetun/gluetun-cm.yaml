@@ -4,6 +4,7 @@ metadata:
   name: gluetun-cm
   namespace: qbittorrent
 data:
+  BORINGPOLL_GLUETUNCOM: "on"
   VPN_SERVICE_PROVIDER: "protonvpn"
   VPN_PORT_FORWARDING: "on"
   VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/forwarded_port"
