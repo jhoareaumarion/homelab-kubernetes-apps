@@ -10,6 +10,5 @@ data:
   VPN_PORT_FORWARDING: "on"
   VPN_PORT_FORWARDING_STATUS_FILE: "/gluetun/forwarded_port"
   PORT_FORWARD_ONLY: "on"
-  WIREGUARD_MTU: "1280"
   TZ: "Europe/Paris"
   BORINGPOLL_GLUETUNCOM: "on"
