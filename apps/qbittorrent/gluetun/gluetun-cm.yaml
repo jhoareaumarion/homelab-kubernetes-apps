@@ -6,6 +6,7 @@ metadata:
 data:
   VPN_SERVICE_PROVIDER: "protonvpn"
   VPN_TYPE: "wireguard"
+  WIREGUARD_IMPLEMENTATION: "userspace"
   SERVER_COUNTRIES: "France"
   WIREGUARD_MTU: "1320"
   
