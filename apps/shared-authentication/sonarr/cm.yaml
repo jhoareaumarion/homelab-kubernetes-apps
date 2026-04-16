@@ -13,4 +13,5 @@ data:
     allowed_roles = [ "sonarr_v2:sonarr-user" ]
     whitelist_domains = [ ".hoareau-marion.eu" ]
     upstreams = [ "http://sonarr-webui.sonarr.svc.cluster.local:8989/" ]
-    pass_host_header = trueproxy_set_x_forwarded_for = true
+    pass_host_header = true
+    proxy_set_x_forwarded_for = true
