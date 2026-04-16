@@ -22,6 +22,17 @@ spec:
       containers:
       - name: oauth2-proxy
         image: quay.io/oauth2-proxy/oauth2-proxy:v7.4.0
+        env:
+          - name: OAUTH2_PROXY_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: oauth2-proxy-creds-sonarr
+                key: client-secret
+          - name: OAUTH2_PROXY_COOKIE_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: oauth2-proxy-creds-sonarr
+                key: cookie-secret
         args:
           - --config=/etc/oauth2-proxy/oauth2-proxy.cfg
         volumeMounts:
