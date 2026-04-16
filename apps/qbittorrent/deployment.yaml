@@ -64,7 +64,7 @@ spec:
           claimName: config-pvc
       - name: torrents
         persistentVolumeClaim:
-          claimName: torrents
+          claimName: torrents-pvc
       - name: tun
         hostPath:
           path: /dev/net/tun
