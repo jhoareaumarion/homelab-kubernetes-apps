@@ -14,4 +14,4 @@ data:
     whitelist_domains = [ ".hoareau-marion.eu" ]
     upstreams = [ "http://sonarr-webui.sonarr.svc.cluster.local:8989/" ]
     pass_host_header = true
-    proxy_set_x_forwarded_for = true
+    reverse_proxy = true
