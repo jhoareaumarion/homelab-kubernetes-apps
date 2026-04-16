@@ -19,5 +19,3 @@ spec:
         - name: auth-sonarr
           namespace: shared-authentication
           port: 80
-        # - name: sonarr-webui
-        #   port: 8989

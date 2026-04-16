@@ -11,5 +11,6 @@ data:
     http_address = "0.0.0.0:4180"
     email_domains = [ "*" ]
     allowed_roles = [ "sonarr_v2:sonarr-user" ]
-    upstreams = [ "http://sonarr-webui.sonarr.svc.cluster.local:8989" ]
-    pass_host_header = true
+    whitelist_domains = [ ".hoareau-marion.eu" ]
+    upstreams = [ "http://sonarr-webui.sonarr.svc.cluster.local:8989/" ]
+    pass_host_header = trueproxy_set_x_forwarded_for = true
