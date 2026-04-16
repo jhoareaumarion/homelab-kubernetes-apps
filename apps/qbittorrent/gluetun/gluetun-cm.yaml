@@ -13,3 +13,4 @@ data:
   TZ: "Europe/Paris"
   BORINGPOLL_GLUETUNCOM: "on"
   DOT: "off"
+  DNS_KEEP_NAMESERVER: "on"
