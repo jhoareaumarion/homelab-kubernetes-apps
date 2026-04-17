@@ -32,7 +32,7 @@ spec:
           mountPath: /run
       containers:
       - name: prowlarr
-        image: lscr.io/linuxserver/prowlarr:2.3.0.5236-ls139
+        image: lscr.io/linuxserver/prowlarr:2.3.5.5327-ls142
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
