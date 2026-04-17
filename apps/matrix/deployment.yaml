@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        app: synapse
+        app: matrix
         gateway-access: matrix
     spec:
       securityContext:
