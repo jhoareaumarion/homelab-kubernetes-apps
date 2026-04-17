@@ -44,7 +44,7 @@ spec:
       volumes:
       - name: data
         persistentVolumeClaim:
-          claimName: synapse-data-pvc
+          claimName: data-pvc
       - name: config-volume
         secret:
           secretName: synapse-secrets 
