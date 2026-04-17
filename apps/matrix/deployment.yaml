@@ -30,7 +30,7 @@ spec:
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: matrix-secrets
+              name: synapse-secrets
               key: POSTGRES_PASSWORD
         volumeMounts:
         - name: data

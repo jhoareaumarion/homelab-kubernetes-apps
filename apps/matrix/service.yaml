@@ -9,9 +9,5 @@ spec:
   ports:
     - name: http
       protocol: TCP
-      port: 8096
-      targetPort: 8096
-    - name: discovery
-      protocol: UDP
-      port: 7359
-      targetPort: 7359
+      port: 8008
+      targetPort: 8008
