@@ -11,6 +11,7 @@ data:
     http_address = "0.0.0.0:4180"
     email_domains = [ "*" ]
     allowed_roles = [ "sonarr_v2:sonarr-user" ]
+    trusted_ips = [ "10.42.0.0/16", "10.43.0.0/16" ]
     whitelist_domains = [ ".hoareau-marion.eu" ]
     upstreams = [ "http://sonarr-webui.sonarr.svc.cluster.local:8989/" ]
     pass_host_header = true
