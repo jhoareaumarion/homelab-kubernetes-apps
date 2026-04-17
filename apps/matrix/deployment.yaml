@@ -1,0 +1,53 @@
+# Requires docker run [...] generate first!
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: matrix
+  namespace: matrix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: matrix
+  template:
+    metadata:
+      labels:
+        app: synapse
+        gateway-access: matrix
+    spec:
+      securityContext:
+        runAsUser: 991
+        runAsGroup: 991
+        fsGroup: 991
+      containers:
+      - name: synapse
+        image: matrixdotorg/synapse:v1.151.0
+        ports:
+        - containerPort: 8008
+        env:
+        - name: SYNAPSE_CONFIG_PATH
+          value: "/data/homeserver.yaml"
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: matrix-secrets
+              key: POSTGRES_PASSWORD
+        volumeMounts:
+        - name: data
+          mountPath: /data
+        - name: config-volume
+          mountPath: /data/homeserver.yaml
+          subPath: homeserver.yaml
+        - name: signing-key-volume
+          mountPath: /data/matrix.hoareau-marion.eu.signing.key
+          subPath: signing.key
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: synapse-data-pvc
+      - name: config-volume
+        secret:
+          secretName: synapse-secrets 
+      - name: signing-key-volume
+        secret:
+          secretName: signing-key 

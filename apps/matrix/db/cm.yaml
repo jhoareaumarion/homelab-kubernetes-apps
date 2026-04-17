@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-cm
+  namespace: matrix
+data:
+  POSTGRES_DB: "matrix"
+  POSTGRES_USER: "matrix"

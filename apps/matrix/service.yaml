@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: matrix
+  namespace: matrix
+spec:
+  selector:
+    app: matrix
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8096
+      targetPort: 8096
+    - name: discovery
+      protocol: UDP
+      port: 7359
+      targetPort: 7359

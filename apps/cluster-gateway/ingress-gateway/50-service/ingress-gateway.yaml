@@ -5,7 +5,6 @@ metadata:
   namespace: cluster-gateway
   annotations:
     argocd.argoproj.io/sync-wave: "1"    
-    gateway.cilium.io/nodeSelector: "kubernetes.io/hostname=home-desk-r04-mer01-20-wkub-03"
 spec:
   gatewayClassName: cilium
   listeners:

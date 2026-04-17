@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+  namespace: matrix
+data:
+  SYNAPSE_CONFIG_PATH: "/data/homeserver.yaml"
+  SYNAPSE_REPORT_STATS: "yes"
+  SYNAPSE_SERVER_NAME: "matrix.hoareau-marion.eu"
