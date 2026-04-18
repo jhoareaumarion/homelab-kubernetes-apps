@@ -10,7 +10,7 @@ spec:
       namespace: cluster-gateway
       sectionName: auth-private-https  
   hostnames: 
-    - "admin.auth.hoareau-marion.eu"
+    - "auth.private.hoareau-marion.eu"
   rules:
     - filters:
         - type: RequestHeaderModifier
