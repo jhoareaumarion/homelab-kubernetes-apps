@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+  namespace: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      nodeSelector:
+        affected_vlan: "50" 
+      containers:
+      - name: keycloak
+        image: quay.io/keycloak/keycloak:26.1.1
+        args: ["start", "--http-enabled=true", "--hostname-strict=false"]
+        envFrom:
+          - secretRef:
+              name: secrets
+        ports:
+        - name: http
+          containerPort: 8080

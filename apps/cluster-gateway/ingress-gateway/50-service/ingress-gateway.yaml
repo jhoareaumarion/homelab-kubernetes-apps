@@ -380,3 +380,20 @@ spec:
         selector:
           matchLabels:
             gateway-access: matrix  
+  ###
+  # KEYCLOAK
+  ###
+  - name: auth-https
+    hostname: "auth.hoareau-marion.eu"
+    port: 443  
+    protocol: HTTPS
+    tls:
+      mode: Terminate
+      certificateRefs:
+        - name: auth-hoareau-marion-eu-tls
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: auth  
