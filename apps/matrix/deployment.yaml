@@ -15,6 +15,8 @@ spec:
         app: matrix
         gateway-access: matrix
     spec:
+      nodeSelector:
+        affected_vlan: "50"
       securityContext:
         runAsUser: 991
         runAsGroup: 991
