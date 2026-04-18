@@ -38,9 +38,6 @@ spec:
         - name: config-volume
           mountPath: /data/homeserver.yaml
           subPath: homeserver.yaml
-        - name: config-volume
-          mountPath: /data/matrix.hoareau-marion.eu.log.config
-          subPath: matrix.hoareau-marion.eu.log.config
         - name: signing-key-volume
           mountPath: /data/matrix.hoareau-marion.eu.signing.key
           subPath: signing.key
