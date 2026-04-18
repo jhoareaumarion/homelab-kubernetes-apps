@@ -6,3 +6,4 @@ metadata:
 data:
   KC_HOSTNAME: "auth.hoareau-marion.eu"
   KC_PROXY_HEADERS: "xforwarded"
+  KC_HTTP_ENABLED: "true"
