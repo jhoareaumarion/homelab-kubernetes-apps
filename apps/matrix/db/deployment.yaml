@@ -29,7 +29,7 @@ spec:
                   key: POSTGRES_PASSWORD
           volumeMounts:
             - name: pgdata
-              mountPath: /var/lib/postgresql/data
+              mountPath: /var/lib/postgresql
               subPath: pgdata
       volumes:
         - name: pgdata
