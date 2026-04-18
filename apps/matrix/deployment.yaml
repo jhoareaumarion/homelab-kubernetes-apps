@@ -24,9 +24,10 @@ spec:
         image: matrixdotorg/synapse:v1.151.0
         ports:
         - containerPort: 8008
+        envFrom:
+        - configMapRef:
+            name: config-map
         env:
-        - name: SYNAPSE_CONFIG_PATH
-          value: "/data/homeserver.yaml"
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
