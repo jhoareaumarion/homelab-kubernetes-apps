@@ -37,12 +37,13 @@ spec:
         - name: data
           mountPath: /data
         - name: config-volume
-          mountPath: /data/homeserver.yaml
+          mountPath: /etc/synapse/homeserver.yaml
           subPath: homeserver.yaml
-        - name: config-volume 
-          mountPath: /data/matrix.hoareau-marion.eu.log.config
+        - name: config-volume
+          mountPath: /etc/synapse/log.config
+          subPath: matrix.hoareau-marion.eu.log.config
         - name: signing-key-volume
-          mountPath: /data/matrix.hoareau-marion.eu.signing.key
+          mountPath: /etc/synapse/signing.key
           subPath: signing.key
       volumes:
       - name: data
