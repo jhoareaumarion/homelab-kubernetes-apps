@@ -15,9 +15,11 @@ spec:
     - filters:
         - type: RequestHeaderModifier
           requestHeaderModifier:
-            set:
+            add: # 'add' or 'set' both work, but 'add' is safer for headers
               - name: "X-Forwarded-Proto"
                 value: "https"
+              - name: "X-Forwarded-Host"
+                value: "auth.hoareau-marion.eu"
     - backendRefs:
         - name: keycloak
           port: 8080
