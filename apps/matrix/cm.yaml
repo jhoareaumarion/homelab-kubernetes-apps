@@ -7,3 +7,4 @@ data:
   SYNAPSE_CONFIG_PATH: "/data/homeserver.yaml"
   SYNAPSE_REPORT_STATS: "yes"
   SYNAPSE_SERVER_NAME: "matrix.hoareau-marion.eu"
+  SYNAPSE_LOG_CONFIG: "/data/matrix.hoareau-marion.eu.log.config"
