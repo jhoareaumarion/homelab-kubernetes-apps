@@ -20,6 +20,6 @@ spec:
                 value: "https"
               - name: "X-Forwarded-Host"
                 value: "auth.hoareau-marion.eu"
-    - backendRefs:
+      backendRefs:
         - name: keycloak
           port: 8080
