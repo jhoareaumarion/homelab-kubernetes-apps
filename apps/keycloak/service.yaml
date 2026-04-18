@@ -5,7 +5,7 @@ metadata:
   namespace: keycloak
 spec:
   selector:
-    app: jellyfin
+    app: keycloak
   ports:
     - name: http
       protocol: TCP
