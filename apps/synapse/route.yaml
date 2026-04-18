@@ -1,16 +1,16 @@
-# apps/matrix/route.yaml
+# apps/synapse/route.yaml
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
   name: route
-  namespace: matrix
+  namespace: synapse
 spec:
   parentRefs:
     - name: ingress-gateway
       namespace: cluster-gateway
-      sectionName: matrix-https     
+      sectionName: synapse-https     
   hostnames:
-    - "matrix.hoareau-marion.eu"
+    - "synapse.hoareau-marion.eu"
   rules:
     - filters:
         - type: RequestHeaderModifier
@@ -19,5 +19,5 @@ spec:
               - name: "X-Forwarded-Proto"
                 value: "https"
     - backendRefs:
-        - name: matrix
+        - name: synapse
           port: 8008

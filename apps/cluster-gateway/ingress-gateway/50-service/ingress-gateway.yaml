@@ -364,22 +364,22 @@ spec:
           matchLabels:
             gateway-access: sroom-prt01-scanner
   ###
-  # MATRIX
+  # SYNAPSE
   ###
-  - name: matrix-https
-    hostname: "matrix.hoareau-marion.eu"
+  - name: synapse-https
+    hostname: "synapse.hoareau-marion.eu"
     port: 443  
     protocol: HTTPS
     tls:
       mode: Terminate
       certificateRefs:
-        - name: matrix-hoareau-marion-eu-tls
+        - name: synapse-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
         from: Selector
         selector:
           matchLabels:
-            gateway-access: matrix  
+            gateway-access: synapse  
   ###
   # KEYCLOAK
   ###

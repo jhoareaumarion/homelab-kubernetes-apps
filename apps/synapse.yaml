@@ -1,20 +1,20 @@
-# apps/matrix.yaml
+# apps/synapse.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: matrix
+  name: synapse
   namespace: argocd
 spec:
   project: homelab
   source:
     repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
     targetRevision: HEAD
-    path: apps/matrix
+    path: apps/synapse
     directory:  
       recurse: true
   destination:
     server: https://kubernetes.default.svc
-    namespace: matrix
+    namespace: synapse
   syncPolicy:
     automated:
       prune: true

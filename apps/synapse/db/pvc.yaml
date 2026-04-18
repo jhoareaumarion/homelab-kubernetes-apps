@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: config-pvc
-  namespace: matrix
+  name: db-pvc
+  namespace: synapse
 spec:
   accessModes:
     - ReadWriteMany
   resources:
     requests:
-      storage: 1Gi
+      storage: 20Gi
   storageClassName: nfs-client

@@ -3,12 +3,12 @@ apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
   name: signing-key
-  namespace: matrix
+  namespace: synapse
 spec:
   encryptedData:
     signing.key: AgC+W7azjx6te9q6jRMmRzq3N9S+lGhHOluo9IIWG/c/TTBBaj2KmZVW6fDoclUjQ0cWnxeyi/ON9sgyO6dE7wksmMNrg5YqpEbVHaFrrfcKZijWtW6plGZmZyE1C+aJ+vX3DKnJ5fWO93YFfaMeA+mzdCykthmFtSO38oDVz0R2UcoqzSmymYXm2wGbN2nP9u4UP8pN0kSEwtNP4w9690gMpAQqmhGZkpwLV+Eq4aaPsf5u/v3FGtPjf6ZKGC+A/p7n4nfAzWdr/kMf6Ov3JwOA/zu1FCOWkJx8WFnTLypLeemHhj4RH30+U/NnzjbeM7fQzm0lKd8WDxDxpZbQ3AE7eBIcOhXOBXoTkXAc4rIOG26dQec9zTGXXKt3Mc+mr5fZ1ZWo8v/Vh3WFxPubd6pi/oHXFLY9e9K+b2ruqEO2uNNEz88+KnnFgmRMzuADrX4g2jCXwb3xJJ3Y9ImUaRi16VumzTYXzIj88AxlJQw6qDWep095vFlqDGJmhDlikR1y/jTQJli0wpsdFxMLMogxPTn3xOzUPe3p6TmhI0bkYvAt8vNmfYSO8y5XP3ouoVtf4hu33KyKWrj2AaZUXH+5HtQCWkXibaWmpYTT8LSxg0DYomPf/heXPtg2j5dCG9EWeriaBRW4/KgmU+Cg5k6W6VxKmNK4yKh3N0l2AgD4fQ6jxXgd4weq9l+mQDF0Zv5UEdA37CRHSoVVfjMbKXCn75BiD4yxgaw0KPkhy1+3Fp5Z2RLbwltuxBYSaRAjSaAkAOY1ouRb99yicQ==
   template:
     metadata:
       name: signing-key
-      namespace: matrix
+      namespace: synapse
     type: Opaque

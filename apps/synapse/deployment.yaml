@@ -2,18 +2,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: matrix
-  namespace: matrix
+  name: synapse
+  namespace: synapse
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: matrix
+      app: synapse
   template:
     metadata:
       labels:
-        app: matrix
-        gateway-access: matrix
+        app: synapse
+        gateway-access: synapse
     spec:
       nodeSelector:
         affected_vlan: "50"
@@ -43,7 +43,7 @@ spec:
           subPath: homeserver.yaml
         - name: config-volume
           mountPath: /etc/synapse/log.config
-          subPath: matrix.hoareau-marion.eu.log.config
+          subPath: synapse.hoareau-marion.eu.log.config
         - name: signing-key-volume
           mountPath: /etc/synapse/signing.key
           subPath: signing.key
