@@ -397,3 +397,20 @@ spec:
         selector:
           matchLabels:
             gateway-access: auth  
+  ###
+  # KEYCLOAK ADMIN
+  ###
+  - name: auth-private-https
+    hostname: "auth.private.hoareau-marion.eu"
+    port: 443  
+    protocol: HTTPS
+    tls:
+      mode: Terminate
+      certificateRefs:
+        - name: auth-private-hoareau-marion-eu-tls
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: auth

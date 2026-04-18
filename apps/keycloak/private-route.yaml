@@ -1,32 +1,25 @@
-# apps/keycloak/route.yaml
+# apps/keycloak/private-route.yaml
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: route
+  name: private-route
   namespace: keycloak
 spec:
   parentRefs:
-    - name: public-ingress-gateway
+    - name: ingress-gateway
       namespace: cluster-gateway
-      sectionName: auth-https  
-  hostnames:
-    - "auth.hoareau-marion.eu"
+      sectionName: auth-private-https  
+  hostnames: 
+    - "admin.auth.hoareau-marion.eu"
   rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: "/realms/milkyway"
-        - path:
-            type: PathPrefix
-            value: "/resources"
-      filters:
+    - filters:
         - type: RequestHeaderModifier
           requestHeaderModifier:
             add:
               - name: "X-Forwarded-Proto"
                 value: "https"
               - name: "X-Forwarded-Host"
-                value: "auth.hoareau-marion.eu"
+                value: "auth.private.hoareau-marion.eu"
       backendRefs:
         - name: keycloak
           port: 8080
