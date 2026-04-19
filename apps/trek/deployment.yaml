@@ -22,7 +22,7 @@ spec:
         fsGroup: 1000 # Ensures NFS permissions match the container user
       containers:
       - name: trek
-        image: mauriceboe/trek:v2.9.14
+        image: mauriceboe/trek:2.9.14
         ports:
         - containerPort: 3000
         securityContext:
