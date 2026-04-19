@@ -15,7 +15,7 @@ spec:
     - filters:
         - type: RequestHeaderModifier
           requestHeaderModifier:
-            add:
+            set:
               - name: "X-Forwarded-Proto"
                 value: "https"
               - name: "X-Forwarded-Host"
