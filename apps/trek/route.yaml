@@ -1,0 +1,17 @@
+# apps/trek/route.yaml
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: trek-route
+  namespace: trek
+spec:
+  parentRefs:
+    - name: ingress-gateway
+      namespace: cluster-gateway
+      sectionName: trek-https     
+  hostnames:
+    - "trek.hoareau-marion.eu"
+  rules:
+    - backendRefs:
+        - name: trek
+          port: 3000

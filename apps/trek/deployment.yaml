@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trek
+  namespace: trek
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trek
+  template:
+    metadata:
+      labels:
+        app: trek
+    spec:
+      nodeSelector:
+        affected_vlan: "50"
+      securityContext:
+        # Standard security hardening
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000 # Ensures NFS permissions match the container user
+      containers:
+      - name: trek
+        image: mauriceboe/trek:v2.9.14
+        ports:
+        - containerPort: 3000
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+            add: ["CHOWN", "SETUID", "SETGID"]
+          readOnlyRootFilesystem: true
+        envFrom:
+        - configMapRef:
+            name: config-map
+        - secretRef:
+            name: secrets
+        volumeMounts:
+        - name: trek-data-vol
+          mountPath: /app/data
+        - name: trek-uploads-vol
+          mountPath: /app/uploads
+        - name: tmp-volume
+          mountPath: /tmp
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 3000
+          initialDelaySeconds: 15
+          periodSeconds: 30
+      volumes:
+      - name: tmp-volume
+        emptyDir: {}
+      - name: trek-data-vol
+        persistentVolumeClaim:
+          claimName: data-pvc # Matches your created PVC
+      - name: trek-uploads-vol
+        persistentVolumeClaim:
+          claimName: upload-pvc # Matches your created PVC
