@@ -15,11 +15,24 @@ spec:
     spec:
       nodeSelector:
         affected_vlan: "50"
+
+      initContainers:
+      - name: fix-permissions
+        image: busybox
+        command: ["sh", "-c", "chown -R 1000:1000 /app/data /app/uploads"]
+        securityContext:
+          runAsUser: 0 # Needs root to chown the NFS mount
+        volumeMounts:
+        - name: trek-data-vol
+          mountPath: /app/data
+        - name: trek-uploads-vol
+          mountPath: /app/uploads
+
       securityContext:
         # Standard security hardening
         runAsNonRoot: true
         runAsUser: 1000
-        fsGroup: 1000 # Ensures NFS permissions match the container user
+        fsGroup: 1000
       containers:
       - name: trek
         image: mauriceboe/trek:2.9.14
