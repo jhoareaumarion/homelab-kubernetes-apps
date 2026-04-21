@@ -13,5 +13,5 @@ spec:
     - "mas.synapse.hoareau-marion.eu"
   rules:
     - backendRefs: 
-        - name: matrix-auth
+        - name: matrix-auth-service
           port: 8080

@@ -32,7 +32,7 @@ spec:
             type: PathPrefix
             value: /_matrix/client/r0/refresh
       backendRefs:
-        - name: matrix-auth
+        - name: matrix-auth-service
           port: 8080
     - matches:
         - path:
