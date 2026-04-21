@@ -20,7 +20,7 @@ spec:
           image: docker.io/library/postgres:18
           envFrom:
             - configMapRef:
-                name: db-cm 
+                name: mas-db-cm 
           env:
             - name: POSTGRES_PASSWORD
               valueFrom:

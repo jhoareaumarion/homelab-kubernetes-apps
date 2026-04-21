@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: db-cm
+  name: mas-db-cm
   namespace: synapse
 data:
   POSTGRES_DB: "mas"
