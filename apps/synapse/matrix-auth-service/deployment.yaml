@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: matrix-auth-service
+  namespace: synapse
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: matrix-auth-service
+  template:
+    metadata:
+      labels:
+        app: matrix-auth-service
+    spec:
+      containers:
+      - name: mas
+        image: ghcr.io/element-hq/matrix-authentication-service:1.15.0
+        ports:
+        - containerPort: 8080
+          name: http
+        args: 
+          - "server"
+        env:
+        - name: MAS_CONFIG
+          value: /etc/mas/config.yaml
+        volumeMounts:
+        - name: config
+          mountPath: /etc/mas/config.yaml
+          subPath: config.yaml
+      volumes:
+      - name: config
+        secret:
+          secretName: mas-secrets

@@ -381,6 +381,23 @@ spec:
           matchLabels:
             gateway-access: synapse  
   ###
+  # MATRIX AUTH SERVICE
+  ###
+  - name: mas-synapse-https
+    hostname: "mas.synapse.hoareau-marion.eu"
+    port: 443  
+    protocol: HTTPS
+    tls:
+      mode: Terminate
+      certificateRefs:
+        - name: mas-synapse-hoareau-marion-eu-tls
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: synapse  
+  ###
   # KEYCLOAK
   ###
   - name: auth-https

@@ -1,0 +1,17 @@
+# apps/synapse/matrix-auth-service/route.yaml
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: mas-route
+  namespace: synapse
+spec:
+  parentRefs: 
+    - name: ingress-gateway
+      namespace: cluster-gateway
+      sectionName: mas-https
+  hostnames:
+    - "mas.synapse.hoareau-marion.eu"
+  rules:
+    - backendRefs: 
+        - name: matrix-auth
+          port: 8080
