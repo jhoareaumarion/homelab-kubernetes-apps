@@ -8,7 +8,7 @@ spec:
   parentRefs: 
     - name: ingress-gateway
       namespace: cluster-gateway
-      sectionName: mas-https
+      sectionName: mas-synapse-https
   hostnames:
     - "mas.synapse.hoareau-marion.eu"
   rules:

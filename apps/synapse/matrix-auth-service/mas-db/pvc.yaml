@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: db-pvc
+  name: mas-db-pvc
   namespace: synapse
 spec:
   accessModes:
