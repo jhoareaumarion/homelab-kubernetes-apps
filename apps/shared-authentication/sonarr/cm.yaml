@@ -7,7 +7,7 @@ data:
   oauth2-proxy.cfg: |
     provider = "keycloak-oidc"
     oidc_issuer_url = "https://auth.hoareau-marion.eu/realms/milkyway"
-    client_id = "sonarr_v2"
+    client_id = "sonarr"
     http_address = "0.0.0.0:4180"
     email_domains = [ "*" ]
     allowed_roles = [ "sonarr_v2:sonarr-user" ]
