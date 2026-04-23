@@ -10,7 +10,7 @@ data:
     client_id = "radarr"
     http_address = "0.0.0.0:4180"
     email_domains = [ "*" ]
-    allowed_roles = [ "radarr_v2:radarr-user" ]
+    allowed_roles = [ "radarr:radarr-user" ]
     skip_auth_regex = [ "^/api/.*", "^/[0-9]+/api.*" ]
     whitelist_domains = [ ".hoareau-marion.eu" ]
     upstreams = [ "http://radarr-webui.radarr.svc.cluster.local:7878/" ]

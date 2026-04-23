@@ -10,7 +10,7 @@ data:
     client_id = "prowlarr"
     http_address = "0.0.0.0:4180"
     email_domains = [ "*" ]
-    allowed_roles = [ "prowlarr_v2:prowlarr-user" ]
+    allowed_roles = [ "prowlarr:prowlarr-user" ]
     skip_auth_regex = [ "^/api/.*", "^/[0-9]+/api.*" ]
     whitelist_domains = [ ".hoareau-marion.eu" ]
     upstreams = [ "http://prowlarr-webui.prowlarr.svc.cluster.local:9696/" ]
