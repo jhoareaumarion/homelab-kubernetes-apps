@@ -6,7 +6,7 @@ metadata:
 data:
   oauth2-proxy.cfg: |
     provider = "keycloak-oidc"
-    oidc_issuer_url = "https://keycloak.hoareau-marion.eu/realms/milkyway"
+    oidc_issuer_url = "https://auth.hoareau-marion.eu/realms/milkyway"
     client_id = "radarr_v2"
     http_address = "0.0.0.0:4180"
     email_domains = [ "*" ]
