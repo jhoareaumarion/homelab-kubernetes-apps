@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: immich
+  namespace: immich
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: immich
+  template:
+    metadata:
+      labels:
+        app: immich
+    spec:
+      containers:
+      - name: immich
+        image: ghcr.io/immich-app/immich-server:v2
+        envFrom:
+        - configMapRef:
+            name: cm
+        - secretRef:
+            name: secrets
+        env:
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: POSTGRES_PASSWORD
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: POSTGRES_USER
+        - name: DB_DATABASE_NAME
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: POSTGRES_DB
+        ports:
+        - containerPort: 2283
+        volumeMounts:
+        - name: library
+          mountPath: /usr/src/app/upload
+      volumes:
+      - name: library
+        persistentVolumeClaim:
+          claimName: immich-library-pvc

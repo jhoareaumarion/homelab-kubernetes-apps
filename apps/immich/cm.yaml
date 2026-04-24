@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm
+  namespace: immich
+data:
+  # Database & Redis
+  DB_HOSTNAME: postgres
+  REDIS_HOSTNAME: redis
+  IMMICH_MACHINE_LEARNING_URL: "false"
