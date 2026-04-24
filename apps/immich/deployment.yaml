@@ -52,5 +52,5 @@ spec:
         persistentVolumeClaim:
           claimName: library-pvc
       - name: config-volume
-        configMap:
-          name: immich-config
+        secret:
+          secretName: secrets
