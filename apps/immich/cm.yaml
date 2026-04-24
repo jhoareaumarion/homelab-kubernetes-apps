@@ -4,7 +4,7 @@ metadata:
   name: cm
   namespace: immich
 data:
-  # Database & Redis
-  DB_HOSTNAME: postgres
-  REDIS_HOSTNAME: redis
+  DB_HOSTNAME: "postgres"
+  REDIS_HOSTNAME: "redis"
   IMMICH_MACHINE_LEARNING_URL: "false"
+  IMMICH_PORT: "2283"

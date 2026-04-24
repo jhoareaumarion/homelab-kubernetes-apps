@@ -17,7 +17,7 @@ spec:
         affected_vlan: "50"
       containers:
       - name: immich
-        image: ghcr.io/immich-app/immich-server:v2
+        image: ghcr.io/immich-app/immich-server:v2.7.5
         envFrom:
         - configMapRef:
             name: cm
