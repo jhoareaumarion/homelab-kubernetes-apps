@@ -21,9 +21,9 @@ spec:
         envFrom:
         - configMapRef:
             name: cm
-        - secretRef:
-            name: secrets
         env:
+        - name: IMMICH_CONFIG_FILE 
+          value: /config/immich-config.yaml
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -38,13 +38,19 @@ spec:
           valueFrom:
             secretKeyRef:
               name: db-secrets
-              key: POSTGRES_DB
+              key: POSTGRES_DB          
         ports:
         - containerPort: 2283
         volumeMounts:
         - name: library
           mountPath: /usr/src/app/upload
+        - name: config-volume
+          mountPath: /config
+          readOnly: true
       volumes:
       - name: library
         persistentVolumeClaim:
           claimName: library-pvc
+      - name: config-volume
+        configMap:
+          name: immich-config
