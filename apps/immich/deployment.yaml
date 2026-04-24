@@ -13,6 +13,8 @@ spec:
       labels:
         app: immich
     spec:
+      nodeSelector:
+        affected_vlan: "50"
       containers:
       - name: immich
         image: ghcr.io/immich-app/immich-server:v2

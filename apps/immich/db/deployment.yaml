@@ -13,6 +13,8 @@ spec:
       labels:
         app: immich-postgres
     spec:
+      nodeSelector:
+        affected_vlan: "50"
       containers:
       - name: postgres
         image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3
