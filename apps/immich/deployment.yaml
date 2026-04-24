@@ -47,4 +47,4 @@ spec:
       volumes:
       - name: library
         persistentVolumeClaim:
-          claimName: immich-library-pvc
+          claimName: library-pvc
