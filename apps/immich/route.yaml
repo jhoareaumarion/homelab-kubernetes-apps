@@ -8,7 +8,7 @@ spec:
   - name: ingress-gateway 
     namespace: cluster-gateway 
   hostnames:
-  - "immich.hoaraeu-marion.eu"
+  - "immich.hoareau-marion.eu"
   rules:
   - matches:
     - path:
