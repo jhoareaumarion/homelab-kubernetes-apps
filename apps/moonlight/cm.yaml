@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+data:
+  WEBRTC_NAT_1TO1_HOST: "moonlight.hoareau-marion.eu"

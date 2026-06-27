@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moonlight-web
+  labels:
+    app: moonlight
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moonlight
+  template:
+    metadata:
+      labels:
+        app: moonlight
+        gateway-access: moonlight
+    spec:
+      containers:
+      - name: moonlight
+        image: mrcreativ3001/moonlight-web-stream:2.10.0
+        envFrom:
+        - configMapRef:
+            name: config-map
+        ports:
+        - containerPort: 8080
