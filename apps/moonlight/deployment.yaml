@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: moonlight
-        image: mrcreativ3001/moonlight-web-stream:2.10.0
+        image: mrcreativ3001/moonlight-web-stream:v2.10.0
         envFrom:
         - configMapRef:
             name: config-map
