@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: oauth2-proxy-sonarr-cm
+  name: oauth2-proxy-moonlight-cm
   namespace: shared-authentication
 data:
   oauth2-proxy.cfg: |
