@@ -6,7 +6,7 @@ rm -f /etc/apt/sources.list.d/yarn.list* 2>/dev/null || true
 
 # Update packages and install dependencies
 apt-get update
-apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release
+apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release jq curl git
 
 mkdir -p -m 755 /etc/apt/keyrings/
 
@@ -23,14 +23,20 @@ sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list   # helps tools such as c
 apt-get update
 apt-get install -y kubectl
 
-# Fetch the latest sealed-secrets version using GitHub API
-KUBESEAL_VERSION=$(curl -s https://api.github.com/repos/bitnami-labs/sealed-secrets/tags | jq -r '.[0].name' | cut -c 2-)
+# Récupération sécurisée
+RESPONSE=$(curl -L -s https://api.github.com/repos/bitnami/sealed-secrets/tags)
 
-# Check if the version was fetched successfully
-if [ -z "$KUBESEAL_VERSION" ]; then
-    echo "Failed to fetch the latest KUBESEAL_VERSION"
+# Extraction de la version
+KUBESEAL_VERSION=$(echo "$RESPONSE" | jq -r '.[0].name' 2>/dev/null | cut -c 2-)
+
+# Validation
+if [ -z "$KUBESEAL_VERSION" ] || [ "$KUBESEAL_VERSION" = "null" ]; then
+    echo "Erreur : impossible d'extraire la version du JSON."
+    echo "Réponse reçue : $RESPONSE"
     exit 1
 fi
+
+echo "Version détectée : $KUBESEAL_VERSION"
 
 curl -OL "https://github.com/bitnami-labs/sealed-secrets/releases/download/v${KUBESEAL_VERSION}/kubeseal-${KUBESEAL_VERSION}-linux-amd64.tar.gz"
 tar -xvzf kubeseal-${KUBESEAL_VERSION}-linux-amd64.tar.gz kubeseal

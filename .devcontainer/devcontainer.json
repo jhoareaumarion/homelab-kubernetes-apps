@@ -15,7 +15,7 @@
     }
   },
   "postCreateCommand": "",
-  "remoteUser": "root",
+  "remoteUser": "vscode",
   "features": {},
   "forwardPorts": [],
   "mounts": [],

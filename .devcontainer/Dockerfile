@@ -7,6 +7,7 @@ LABEL org.opencontainers.image.licenses="MPL 2.0"
 
 WORKDIR /workspace
 
+
 # Copy the installation script
 COPY install_kubectl.sh /tmp/install_kubectl.sh
 
