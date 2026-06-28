@@ -28,3 +28,10 @@ spec:
           uri: http://auth-radarr.shared-authentication.svc.cluster.local
           cluster: "shared-authentication/auth-radarr"
           timeout: 5s
+    - "@type": type.googleapis.com/envoy.config.filter.http.ext_authz.v3.ExtAuthz
+      name: moonlight-auth-filter
+      http_service:
+        server_uri:
+          uri: http://auth-radarr.shared-authentication.svc.cluster.local
+          cluster: "shared-authentication/moonlight"
+          timeout: 5s
