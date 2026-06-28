@@ -13,8 +13,7 @@ spec:
     - "moonlight.hoareau-marion.eu"
   rules:
     - backendRefs:
-        - name: auth-moonlight
-          namespace: shared-authentication
-          port: 80
+        - name: moonlight
+          port: 8080
       timeouts:
         backendRequest: 3600s
