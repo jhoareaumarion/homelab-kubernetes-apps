@@ -14,7 +14,8 @@ data:
     set_xauthrequest = true
     pass_user_headers = true
     set_authorization_header = true
-    set_xheader_user = true
+    set_xauthrequest = true
+    set_preferred_username_claim = "preferred_username"
     whitelist_domains = [ ".hoareau-marion.eu" ]
     upstreams = [ "http://moonlight.moonlight.svc.cluster.local:8080" ]
     pass_host_header = true
