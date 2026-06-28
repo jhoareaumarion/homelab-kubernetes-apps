@@ -23,3 +23,11 @@ spec:
             name: config-map
         ports:
         - containerPort: 8080
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/server/config.json
+          subPath: config.json
+      volumes:
+      - name: config-volume
+        configMap:
+          name: config-map 

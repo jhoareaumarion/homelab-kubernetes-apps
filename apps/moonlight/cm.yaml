@@ -4,3 +4,12 @@ metadata:
   name: config-map
 data:
   WEBRTC_NAT_1TO1_HOST: "127.0.0.1"
+  config.json: |
+    {
+      "web_server": {
+        "forwarded_header": {
+          "username_header": "X-Forwarded-User",
+          "auto_create_missing_user": true
+        }
+      }
+    }

@@ -11,9 +11,12 @@ data:
     http_address = "0.0.0.0:4180"
     email_domains = [ "*" ]
     allowed_roles = [ "moonlight:moonlight-user" ]
-    skip_auth_regex = [ "^/api/.*", "^/[0-9]+/api.*" ]
+    set_xauthrequest = true
+    pass_user_headers = true
+    set_authorization_header = true
+    set_xheader_user = true
     whitelist_domains = [ ".hoareau-marion.eu" ]
-    upstreams = [ "https://moonlight.hoareau-marion.eu/" ]
+    upstreams = [ "http://moonlight-service.moonlight.svc.cluster.local:47989" ]
     pass_host_header = true
     reverse_proxy = true
     skip_provider_button = true
