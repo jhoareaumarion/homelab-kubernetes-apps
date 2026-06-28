@@ -16,7 +16,7 @@ data:
     set_authorization_header = true
     set_xheader_user = true
     whitelist_domains = [ ".hoareau-marion.eu" ]
-    upstreams = [ "http://moonlight-service.moonlight.svc.cluster.local:8080" ]
+    upstreams = [ "http://moonlight.moonlight.svc.cluster.local:8080" ]
     pass_host_header = true
     reverse_proxy = true
     skip_provider_button = true
