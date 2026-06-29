@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Endpoints
 metadata:
-  name: sunshine-external
+  name: sunshine
   namespace: sunshine
 subsets:
   - addresses:
