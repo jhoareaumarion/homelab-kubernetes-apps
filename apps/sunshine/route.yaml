@@ -1,6 +1,6 @@
 # apps/sunshine/route.yaml
 apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
+kind: TLSRoute
 metadata:
   name: sunshine-route
   namespace: sunshine
