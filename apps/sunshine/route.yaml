@@ -1,0 +1,17 @@
+# apps/sunshine/route.yaml
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: sunshine-route
+  namespace: sunshine
+spec:
+  parentRefs:
+    - name: ingress-gateway
+      namespace: cluster-gateway
+      sectionName: sunshine-https     
+  hostnames:
+    - "sunshine.hoareau-marion.eu"
+  rules:
+    - backendRefs:
+        - name: sunshine
+          port: 47984
