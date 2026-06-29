@@ -8,10 +8,10 @@ spec:
   parentRefs:
     - name: ingress-gateway
       namespace: cluster-gateway
-      sectionName: sunshine-https     
+      sectionName: sunshine-https   
   hostnames:
     - "sunshine.hoareau-marion.eu"
   rules:
     - backendRefs:
         - name: sunshine
-          port: 47984
+          port: 47990
