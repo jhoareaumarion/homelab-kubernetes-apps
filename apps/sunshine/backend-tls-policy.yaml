@@ -4,11 +4,12 @@ metadata:
   name: sunshine-tls-policy
   namespace: sunshine
 spec:
-  targetRef:
+  targetRefs:
     group: ""
     kind: Service
     name: sunshine 
   validation:
+    hostname: sunshine.hoareau-marion.eu # Replace with your backend's expected TLS hostname
     caCertificateRefs:
       - name: sunshine-ca-secret
         group: ""
