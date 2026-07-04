@@ -9,7 +9,7 @@ spec:
       kind: Service
       name: sunshine-service
   validation:
-    hostname: localhost
+    hostname: "Sunshine Gamestream Host"
     caCertificateRefs:
       - group: ""
         kind: Secret
