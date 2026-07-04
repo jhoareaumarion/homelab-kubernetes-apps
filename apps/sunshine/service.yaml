@@ -8,4 +8,4 @@ metadata:
     io.cilium/tls-insecure-skip-verify: "true"
 spec:
   type: ExternalName
-  externalName: 10.10.30.10
+  externalName: earth.local.hoareau-marion.eu
