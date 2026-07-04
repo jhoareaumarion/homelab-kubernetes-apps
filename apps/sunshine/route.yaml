@@ -1,3 +1,4 @@
+# apps/sunshine/route.yaml
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
@@ -11,15 +12,6 @@ spec:
   hostnames:
     - "sunshine.hoareau-marion.eu"
   rules:
-    - filters:
-        - type: RequestHeaderModifier
-          requestHeaderModifier:
-            remove:
-              - "X-Forwarded-For"
-              - "X-Forwarded-Proto"
-            set:
-              - name: "Host"
-                value: "sunshine.hoareau-marion.eu"
     - backendRefs:
         - name: sunshine-service
           port: 47990
