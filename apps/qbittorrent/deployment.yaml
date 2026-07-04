@@ -39,7 +39,7 @@ spec:
         - name: torrent-udp
           containerPort: 6881
       - name: qbittorrent
-        image: qbittorrentofficial/qbittorrent-nox:5.1.4-lt2-2
+        image: qbittorrentofficial/qbittorrent-nox:5.2.2-1
         securityContext:
           readOnlyRootFilesystem: true
           runAsUser: 3104
