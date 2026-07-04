@@ -7,5 +7,8 @@ metadata:
     io.cilium/backend-protocol: "HTTPS"
     io.cilium/tls-insecure-skip-verify: "true"
 spec:
-  type: ExternalName
-  externalName: earth.local.hoareau-marion.eu
+  ports:
+    - name: https
+      protocol: TCP
+      port: 47990
+      targetPort: 47990

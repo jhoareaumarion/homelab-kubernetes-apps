@@ -1,0 +1,17 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: BackendTLSPolicy
+metadata:
+  name: sunshine-backend-tls
+  namespace: sunshine
+spec:
+  targetRefs:
+    - group: ""
+      kind: Service
+      name: sunshine-service
+  validation:
+    # Syntaxe FQDN 100% valide pour Kubernetes
+    hostname: "sunshine.hoareau-marion.eu" 
+    caCertificateRefs:
+      - group: ""
+        kind: Secret
+        name: sunshine-ca-secret
