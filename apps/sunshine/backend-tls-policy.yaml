@@ -5,9 +5,9 @@ metadata:
   namespace: sunshine
 spec:
   targetRefs:
-    group: ""
-    kind: Service
-    name: sunshine 
+    - group: ""
+      kind: Service
+      name: sunshine 
   validation:
     hostname: sunshine.hoareau-marion.eu # Replace with your backend's expected TLS hostname
     caCertificateRefs:
