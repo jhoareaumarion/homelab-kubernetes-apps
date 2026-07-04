@@ -6,6 +6,7 @@ metadata:
   annotations:
     io.cilium/backend-protocol: "HTTPS"
     io.cilium/tls-insecure-skip-verify: "true"
+    io.cilium/http-version: "1.1"
 spec:
   ports:
     - name: https
