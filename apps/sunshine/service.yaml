@@ -4,5 +4,7 @@ metadata:
   name: sunshine
   namespace: sunshine
 spec:
-  type: ExternalName
-  externalName: 10.10.30.10
+  ports:
+    - protocol: TCP
+      port: 47990
+      targetPort: 47990
