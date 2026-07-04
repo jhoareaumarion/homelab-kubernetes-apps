@@ -11,6 +11,12 @@ spec:
   hostnames:
     - "sunshine.hoareau-marion.eu"
   rules:
+    - filters:
+        - type: RequestHeaderModifier
+          requestHeaderModifier:
+            set:
+              - name: "Host"
+                value: "sunshine.hoareau-marion.eu"
     - backendRefs:
         - name: sunshine-service
           port: 47990
