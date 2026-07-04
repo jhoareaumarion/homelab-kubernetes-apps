@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: renovate
+  namespace: renovate
+spec:
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: renovate
+            image: renovate/renovate:latest
+            env:
+            - name: RENOVATE_PLATFORM
+              value: "github"
+            - name: GITHUB_COM_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: renovate-secrets
+                  key: token
+            - name: RENOVATE_AUTODISCOVER
+              value: "true"
+          restartPolicy: OnFailure

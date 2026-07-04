@@ -1,0 +1,14 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: renovate-secrets
+  namespace: renovate
+spec:
+  encryptedData:
+    token: AgBgJQ/g4FUbxdS6kuCFTx9QjMnxrNdv9gfuxgJx6wbTFviRWv/Xw1cSa/sP1SwgABCdla7mXtn3Wyvz2HpPvTOnW4JEAORYL9h1Tv7Pe94BQ5UkSZ1ozxe5MQRCwL1g3QWxdTuHnv42mCj34R1XBNvt6cFxn4lr52Pmf6yAJdyo/EWNq7tebLC6xnBI8q4FpvQrzgDWWNrwNQ5W8CMLI5jW7SOQIP7nphzaWJU/VmMAt4s4LUZFEmoUdM8Sf2DX91DTwKqexiCqauL6WrtRknmqRed7kZWfn2BLMKna0hZbJOUePHseAZ1BRuIeN858KH08ZOUPl1nW6l+LLCQqV89twSswbl/f0tJde6oOVP548ppcOZRDdOGED0s21J5BaUjCCCxhbms6HEOEn4VEE+mvT9Gy5I+T+fYhWb9V7khD3XaLMBMOaBaXB4hFh5n61upPydrVzOCat2dt5Fo2t4033UXtTqxtgQPw/2qa8ztzo3xgm3YtcERKWCXPGKMM+J9euK55y1hYMUxtDc5ZgkxrcFVJ4qcaO2MsxGRHZD171kcJKa/JPCpsvMjiyNSqb+OuhtiVCTIVWR1ZG7c3D4LCyFCxcAwTSPnxz9Skl+nb0n1ros24/vy614roV/TF/zL8cpvzijqE+xt0IHoL4DI3HTGR/CkiAYHK5DLbVuQmrWBLYB8UjVwbwGF+vhB/W1B5kDXoO2yoCLkKGzK+6t8f2Gs9HpYgLc4LMCaJlIA5yLVRSY17y4xVP3a8g6ICa3RJVEcUcJOuW4TXAemxva1ZdSY/DwU6hVIFRzuAymvSTkjzq1dwww7hniD5jAE=
+  template:
+    metadata:
+      name: renovate-secrets
+      namespace: renovate
+    type: Opaque
