@@ -4,9 +4,5 @@ metadata:
   name: sunshine-service
   namespace: sunshine
 spec:
-  ports:
-    - name: https-backend
-      protocol: TCP
-      port: 47990
-      targetPort: 47990
-  clusterIP: None
+  type: ExternalName
+  externalName: 10.10.30.10

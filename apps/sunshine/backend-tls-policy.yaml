@@ -1,0 +1,16 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: BackendTLSPolicy
+metadata:
+  name: sunshine-backend-tls
+  namespace: sunshine
+spec:
+  targetRefs:
+    - group: ""
+      kind: Service
+      name: sunshine-service
+  validation:
+    hostname: localhost
+    caCertificateRefs:
+      - group: ""
+        kind: Secret
+        name: sunshine-ca-secret
