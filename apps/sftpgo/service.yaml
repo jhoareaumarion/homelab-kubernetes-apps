@@ -5,6 +5,8 @@ metadata:
   namespace: sftpgo
   labels:
     app: sftpgo
+  annotations:
+    io.cilium/lb-ipam-ips: "sftpgo-pool"
 spec:
   type: LoadBalancer
   ports:
