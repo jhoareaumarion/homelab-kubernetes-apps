@@ -3,6 +3,9 @@ kind: Service
 metadata:
   name: sunshine-service
   namespace: sunshine
+  annotations:
+    io.cilium/backend-protocol: "HTTPS"
+    io.cilium/tls-insecure-skip-verify: "true"
 spec:
   type: ExternalName
   externalName: 10.10.30.10
