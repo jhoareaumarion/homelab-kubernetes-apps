@@ -1,0 +1,18 @@
+# apps/sunshine/endpointslice.yaml
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: sunshine-service-slice
+  namespace: sunshine
+  labels:
+    kubernetes.io/service-name: sunshine-service
+addressType: IPv4
+ports:
+  - name: https-backend
+    protocol: TCP
+    port: 47990
+endpoints:
+  - addresses:
+      - "10.10.30.10"
+    conditions:
+      ready: true
