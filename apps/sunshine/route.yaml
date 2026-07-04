@@ -14,6 +14,9 @@ spec:
     - filters:
         - type: RequestHeaderModifier
           requestHeaderModifier:
+            remove:
+              - "X-Forwarded-For"
+              - "X-Forwarded-Proto"
             set:
               - name: "Host"
                 value: "sunshine.hoareau-marion.eu"
