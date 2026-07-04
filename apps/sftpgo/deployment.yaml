@@ -17,7 +17,7 @@ spec:
         affected_vlan: "50"
       containers:        
         - name: sftpgo
-          image: ghcr.io/drakkan/sftpgo:v2.6.6
+          image: ghcr.io/drakkan/sftpgo:v2.7.4
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
