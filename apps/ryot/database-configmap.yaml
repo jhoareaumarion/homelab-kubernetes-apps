@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: database-cm
-  namespace: ryot
-data:
-  POSTGRES_DB: "ryot"
-  POSTGRES_USER: "ryot"
