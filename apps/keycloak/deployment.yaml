@@ -4,7 +4,7 @@ metadata:
   name: keycloak
   namespace: keycloak
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: keycloak
@@ -24,6 +24,13 @@ spec:
               name: secrets
           - configMapRef:
               name: config-map
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
         ports:
         - name: http
           containerPort: 8080
