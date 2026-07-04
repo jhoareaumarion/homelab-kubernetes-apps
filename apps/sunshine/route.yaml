@@ -11,6 +11,10 @@ spec:
   hostnames:
     - "sunshine.hoareau-marion.eu"
   rules:
-    - backendRefs:
-        - name: sunshine-service
-          port: 47990
+    - filters:
+        - type: RequestRedirect
+          requestRedirect:
+            scheme: https
+            hostname: 10.10.30.10
+            port: 47990
+            statusCode: 302
