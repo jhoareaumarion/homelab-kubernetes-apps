@@ -22,7 +22,7 @@ spec:
     spec:
       containers:        
         - name: sroom-prt01-scanner
-          image: ghcr.io/jhoareaumarion/brotherscannerdocker:latest
+          image: ghcr.io/jhoareaumarion/brotherscannerdocker:latest@sha256:4fa8e084362c658803453930fe016cc688abd3bf124bffefa1085b3f006f604c
           imagePullPolicy: Always
           envFrom:
             - configMapRef:

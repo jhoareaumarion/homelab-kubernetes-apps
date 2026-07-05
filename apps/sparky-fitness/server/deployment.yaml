@@ -17,7 +17,7 @@ spec:
         affected_vlan: "50"
       containers:
         - name: server
-          image: codewithcj/sparkyfitness_server:v0.16.5.3
+          image: codewithcj/sparkyfitness_server:v0.16.5.3@sha256:971e2f3b790cf37ee787879ea74667695bfeafa4b15a6ad6563e9c7ba84f23bf
           envFrom:
             - configMapRef:
                 name: server-cm

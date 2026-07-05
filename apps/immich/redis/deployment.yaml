@@ -17,6 +17,6 @@ spec:
         affected_vlan: "50"
       containers:
       - name: redis
-        image: valkey/valkey:9
+        image: valkey/valkey:9@sha256:4963247afc4cd33c7d3b2d2816b9f7f8eeebab148d29056c2ca4d7cbc966f2d9
         ports:
         - containerPort: 6379

@@ -17,7 +17,7 @@ spec:
         affected_vlan: "50"
       initContainers:
       - name: setup-run
-        image: busybox
+        image: busybox@sha256:fd8d9aa63ba2f0982b5304e1ee8d3b90a210bc1ffb5314d980eb6962f1a9715d
         securityContext:
           runAsUser: 0
           runAsGroup: 0
@@ -35,7 +35,7 @@ spec:
           mountPath: /config
       containers:
       - name: radarr
-        image: lscr.io/linuxserver/radarr:6.2.1
+        image: lscr.io/linuxserver/radarr:6.2.1@sha256:39da107b5a9371fdaa651bd188049b863716a815385eb3a30d41071b7e1aeb33
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 3103

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: mas
-        image: ghcr.io/element-hq/matrix-authentication-service:1.15.0
+        image: ghcr.io/element-hq/matrix-authentication-service:1.15.0@sha256:6e1408ebd143184a1d5dac0cf587448d58ee35f66524ba1523ed671671276d7e
         ports:
         - containerPort: 8080
           name: http
