@@ -1,7 +1,7 @@
 apiVersion: cilium.io/v2alpha1
 kind: CiliumL2AnnouncementPolicy
 metadata:
-  name: vlan50-services-announcement
+  name: sftpgo-announcement
 spec:
   interfaces:
     - ens18.50
