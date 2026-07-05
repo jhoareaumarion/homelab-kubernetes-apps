@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: home-assistant-hoareau-marion-eu-tls
+  namespace: cluster-gateway
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  secretName: home-assistant-hoareau-marion-eu-tls
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  dnsNames:
+    - home-assistant.hoareau-marion.eu

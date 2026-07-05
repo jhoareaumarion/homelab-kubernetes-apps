@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+  namespace: home-assistant
+spec:
+  type: ExternalName
+  externalName: home-assistant.local.hoareau-marion.eu
+  ports:
+    - name: http
+      port: 8123
