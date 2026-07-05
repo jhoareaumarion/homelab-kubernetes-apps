@@ -17,7 +17,7 @@ spec:
         affected_vlan: "50"
       containers:
         - name: frontend
-          image: codewithcj/sparkyfitness:v0.16.5.3
+          image: codewithcj/sparkyfitness:v0.16.5.3@sha256:88d9412d054e9e44980f7cbdc41c28652051bf4a4e663cc49b01b4bc3cd8e7f3
           envFrom:
             - configMapRef:
                 name: frontend-cm

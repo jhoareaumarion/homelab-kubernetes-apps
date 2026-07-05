@@ -17,7 +17,7 @@ spec:
         affected_vlan: "50"
       containers:
       - name: gluetun
-        image: qmcgaw/gluetun:v3.41.1
+        image: qmcgaw/gluetun:v3.41.1@sha256:1a5bf4b4820a879cdf8d93d7ef0d2d963af56670c9ebff8981860b6804ebc8ab
         securityContext:
           privileged: true
           capabilities:
@@ -39,7 +39,7 @@ spec:
         - name: torrent-udp
           containerPort: 6881
       - name: qbittorrent
-        image: qbittorrentofficial/qbittorrent-nox:5.2.2-1
+        image: qbittorrentofficial/qbittorrent-nox:5.2.2-1@sha256:a41fbfe983349e2d81baad1d2a40544143c9e0ec1e79493d091554406e0eab1a
         securityContext:
           readOnlyRootFilesystem: true
           runAsUser: 3104

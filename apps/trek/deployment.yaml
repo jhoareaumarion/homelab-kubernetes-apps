@@ -19,7 +19,7 @@ spec:
         fsGroup: 1000
       containers:
       - name: trek
-        image: mauriceboe/trek:3.1.4
+        image: mauriceboe/trek:3.1.4@sha256:815b19a45b264d1ddfd8f3df394308f9d6307b26de45378630ba8179bc7691ad
         ports:
         - containerPort: 3000
           name: http
