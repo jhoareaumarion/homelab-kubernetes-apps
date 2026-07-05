@@ -20,10 +20,25 @@ spec:
     protocol: TCP
     port: 2121            
     targetPort: 2121
-  - name: ftp-passive
+  - name: ftp-passive-0
     protocol: TCP
     port: 50000
     targetPort: 50000
-    endPort: 50030
+  - name: ftp-passive-1
+    protocol: TCP
+    port: 50001
+    targetPort: 50001
+  - name: ftp-passive-2
+    protocol: TCP
+    port: 50002
+    targetPort: 50002
+  - name: ftp-passive-3
+    protocol: TCP
+    port: 50003
+    targetPort: 50003
+  - name: ftp-passive-4
+    protocol: TCP
+    port: 50004
+    targetPort: 50004
   selector:
     app: sftpgo
