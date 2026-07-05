@@ -11,7 +11,7 @@ spec:
         spec:
           containers:
           - name: renovate
-            image: renovate/renovate:latest
+            image: renovate/renovate:43.251
             args: ["jhoareaumarion/homelab-kubernetes-apps"]
             env:
             - name: RENOVATE_PLATFORM
