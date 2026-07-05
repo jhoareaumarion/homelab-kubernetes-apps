@@ -7,7 +7,7 @@ spec:
   parentRefs:
     - name: ingress-gateway
       namespace: cluster-gateway
-      sectionName: home-assistant--https   
+      sectionName: home-assistant-https   
   hostnames:
     - "home-assistant.hoareau-marion.eu"
   rules:
