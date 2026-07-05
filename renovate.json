@@ -1,3 +1,15 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":dependencyDashboard"],
+  "enabledManagers": ["kubernetes"],
+  "kubernetes": {
+    "fileMatch": ["apps/.+/deployment\\.yaml$"]
+  },
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "pinDigests": true,
+      "automerge": false
+    }
+  ]
 }
