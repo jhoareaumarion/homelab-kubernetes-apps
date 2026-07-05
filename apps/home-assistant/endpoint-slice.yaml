@@ -1,0 +1,17 @@
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: home-assistant-slice 
+  namespace: home-assistant
+  labels:
+    kubernetes.io/service-name: service
+addressType: IPv4
+ports:
+  - name: http
+    port: 8123
+    protocol: TCP
+endpoints:
+  - addresses:
+      - "10.10.50.6" # Your HA VM IP
+    conditions:
+      ready: true
