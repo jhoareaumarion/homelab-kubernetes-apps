@@ -3,7 +3,7 @@
   "extends": ["config:recommended", ":dependencyDashboard"],
   "enabledManagers": ["kubernetes"],
   "kubernetes": {
-    "fileMatch": ["(^|/)deployment\\.yaml$"]
+    "fileMatch": ["apps/.+/deployment\\.yaml$"]
   },
   "packageRules": [
     {

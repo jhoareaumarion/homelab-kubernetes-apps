@@ -12,6 +12,7 @@ spec:
           containers:
           - name: renovate
             image: renovate/renovate:latest
+            args: ["jhoareaumarion/homelab-kubernetes-apps"]
             env:
             - name: RENOVATE_PLATFORM
               value: "github"
@@ -22,4 +23,6 @@ spec:
                   key: token
             - name: RENOVATE_AUTODISCOVER
               value: "true"
+            - name: RENOVATE_AUTODISCOVER_FILTER
+              value: "jhoareaumarion/homelab-kubernetes-apps"
           restartPolicy: OnFailure
