@@ -1,0 +1,14 @@
+apiVersion: cilium.io/v2alpha1
+kind: CiliumL2AnnouncementPolicy
+metadata:
+  name: vlan50-services-announcement
+spec:
+  interfaces:
+    - ens18.50
+  loadBalancerIPs: true
+  nodeSelector:
+    matchLabels:
+      affected_vlan: "50"
+  serviceSelector:
+    matchLabels:
+      app: sftpgo
