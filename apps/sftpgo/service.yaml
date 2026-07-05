@@ -16,5 +16,14 @@ spec:
   - name: sftp
     port: 2022
     targetPort: 2022
+  - name: ftp-control
+    protocol: TCP
+    port: 2121            
+    targetPort: 2121
+  - name: ftp-passive
+    protocol: TCP
+    port: 50000
+    targetPort: 50000
+    endPort: 50030
   selector:
     app: sftpgo
