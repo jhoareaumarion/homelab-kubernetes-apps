@@ -12,11 +12,10 @@ spec:
           containers:
           - name: renovate
             image: renovate/renovate:43.251
-            args: ["jhoareaumarion/homelab-kubernetes-apps"]
             env:
             - name: RENOVATE_PLATFORM
               value: "github"
-            - name: GITHUB_COM_TOKEN
+            - name: RENOVATE_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: renovate-secrets
