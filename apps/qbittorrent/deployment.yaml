@@ -54,11 +54,11 @@ spec:
           mountPath: /torrents
         resources:
           requests:
-            memory: "96Mi"
-            cpu: "20m"
+            memory: "256Mi"
+            cpu: "50m"
           limits:
-            memory: "512Mi"
-            cpu: "200m"
+            memory: "2Gi"
+            cpu: "1000m"
       volumes:
       - name: config
         persistentVolumeClaim:
