@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: local-cert
+  namespace: sftpgo
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  secretName: local-cert
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  dnsNames:
+    - sftpgo.local.hoareau-marion.eu

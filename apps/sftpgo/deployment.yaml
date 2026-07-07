@@ -27,6 +27,7 @@ spec:
           ports:
             - containerPort: 8080
             - containerPort: 2022
+            - containerPort: 2021
           volumeMounts:
             - name: sftpgo-home-volume
               mountPath: /var/lib/sftpgo
@@ -34,6 +35,9 @@ spec:
               mountPath: /srv/sftpgo
             - name: shared-consume-volume
               mountPath: /mnt/paperless-consume
+            - name: cert-volume
+              mountPath: /etc/sftpgo/certs
+              readOnly: true
       volumes:
         - name: sftpgo-home-volume
           persistentVolumeClaim:
@@ -44,3 +48,6 @@ spec:
         - name: shared-consume-volume         
           persistentVolumeClaim:
             claimName: shared-consume-pvc
+        - name: cert-volume
+          secret:
+            secretName: local-cert
