@@ -11,4 +11,4 @@ spec:
     name: letsencrypt
     kind: ClusterIssuer
   dnsNames:
-    - sftpgo.local.hoareau-marion.eu
+    - ftp.hoareau-marion.eu
