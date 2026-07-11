@@ -15,6 +15,10 @@ spec:
     spec:
       nodeSelector:
         affected_vlan: "60"
+        securityContext:
+        sysctls:
+        - name: net.ipv4.ip_nonlocal_bind
+          value: "1"
       containers:
         - name: sroom-prt01-scanner
           image: ghcr.io/philippmundhenk/brotherscannerdocker:v1.1.1@sha256:d60f5ca09119e87f24a926b07d07cb0ee4ac1c555a7e210758796fd913bd0495
