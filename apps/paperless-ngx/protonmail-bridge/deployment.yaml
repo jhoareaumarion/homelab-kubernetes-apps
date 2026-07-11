@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: protonmail-bridge
+  namespace: paperless-ngx
+  labels:
+    app: protonmail-bridge
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: protonmail-bridge
+  template:
+    metadata:
+      labels:
+        app: protonmail-bridge
+    spec:
+      containers:
+        - name: bridge
+          image: shenxn/protonmail-bridge:v3.19.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 25
+              name: smtp
+            - containerPort: 143
+              name: imap
+          volumeMounts:
+            - mountPath: "/root/"
+              name: protonmail-data
+      volumes:
+        - name: protonmail-storage
+          persistentVolumeClaim:
+            claimName: protonmail-bridge-pvc
