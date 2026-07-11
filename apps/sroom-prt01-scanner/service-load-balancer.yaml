@@ -4,7 +4,7 @@ metadata:
   name: sroom-prt01-scanner-lb
   namespace: sroom-prt01-scanner
   annotations:
-    svc.k3s.io/loadbalancer: "false"
+    k3s.io/cloud-provider: "external"
   labels:
     app: sroom-prt01-scanner
     vlan60-loadbalancer: "true"
