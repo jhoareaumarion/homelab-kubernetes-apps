@@ -19,6 +19,15 @@ data:
     else
       # Extract only the file name (e.g., 2026-07-11-22-10-10.pdf) from the absolute path
       filename=$(basename "${file}")
+      
+      echo "========================================="
+      echo "EXECUTING FTP UPLOAD WITH CONFIGURATION:"
+      echo "Working Directory: $(pwd)"
+      echo "Target URL: ftp://${address}${filepath}"
+      echo "Local Target File: ${filename}"
+      echo "Full Command Preview below:"
+      echo "curl -v --ssl-reqd --user \"${user}:*****\" --upload-file \"${filename}\" \"ftp://${address}${filepath}\""
+      echo "========================================="
 
       if curl --silent \
           --show-error \
