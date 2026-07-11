@@ -16,9 +16,6 @@ spec:
       nodeSelector:
         affected_vlan: "60"
       hostNetwork: true
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
       containers:
         - name: sroom-prt01-scanner
           image: ghcr.io/philippmundhenk/brotherscannerdocker:v1.1.1@sha256:d60f5ca09119e87f24a926b07d07cb0ee4ac1c555a7e210758796fd913bd0495
