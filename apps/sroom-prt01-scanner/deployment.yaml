@@ -15,7 +15,7 @@ spec:
     spec:
       nodeSelector:
         affected_vlan: "60"
-        securityContext:
+      securityContext:
         sysctls:
         - name: net.ipv4.ip_nonlocal_bind
           value: "1"
