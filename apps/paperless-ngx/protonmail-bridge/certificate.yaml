@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: protonmail-bridge-cert
+  namespace: paperless-ngx
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  secretName: local-cert
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  dnsNames:
+    - proton-bridge.paperless-ngx.svc.hoareau-marion.eu 
+    - protonmail-bridge-service.paperless-ngx.svc.cluster.local
