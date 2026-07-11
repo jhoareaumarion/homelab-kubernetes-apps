@@ -29,7 +29,8 @@ spec:
           volumeMounts:
             - mountPath: "/root/"
               name: protonmail-data
-      volumes:
+      volumes: 
         - name: protonmail-data
-          persistentVolumeClaim:
-            claimName: protonmail-bridge-pvc
+          hostPath:
+            path: /var/lib/protonmail-data
+            type: DirectoryOrCreate
