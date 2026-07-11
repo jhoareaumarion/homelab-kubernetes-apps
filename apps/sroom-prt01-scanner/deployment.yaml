@@ -14,8 +14,8 @@ spec:
         app: sroom-prt01-scanner 
     spec:
       nodeSelector:
-        affected_vlan: "50"
-      containers:        
+        affected_vlan: "60"
+      containers:
         - name: sroom-prt01-scanner
           image: ghcr.io/philippmundhenk/brotherscannerdocker:v1.1.1@sha256:d60f5ca09119e87f24a926b07d07cb0ee4ac1c555a7e210758796fd913bd0495
           imagePullPolicy: Always
@@ -25,7 +25,7 @@ spec:
             - secretRef:
                 name: secrets
           ports:
-            - containerPort: 33555            
+            - containerPort: 33555
             - containerPort: 54925
               protocol: UDP
               name: scanner-udp

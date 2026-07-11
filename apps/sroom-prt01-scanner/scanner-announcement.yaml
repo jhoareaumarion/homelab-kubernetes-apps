@@ -1,0 +1,14 @@
+apiVersion: cilium.io/v2alpha1
+kind: CiliumL2AnnouncementPolicy
+metadata:
+  name: vlan60-gateway-announcement
+  namespace: kube-system
+spec:
+  interfaces: ["ens18.60"]
+  loadBalancerIPs: true
+  serviceSelector:
+    matchLabels:
+      app: sroom-prt01-scanner
+  nodeSelector:
+    matchLabels:
+      affected_vlan: "60"
