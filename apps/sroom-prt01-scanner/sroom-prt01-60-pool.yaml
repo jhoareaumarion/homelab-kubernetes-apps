@@ -1,11 +1,12 @@
 apiVersion: cilium.io/v2alpha1
 kind: CiliumLoadBalancerIPPool
 metadata:
-  name: scanner-pool
+  name: sroom-prt01-60-pool
 spec:
   blocks:
   - start: "10.10.60.160" 
     stop: "10.10.60.160"
   serviceSelector:
     matchLabels:
-      vlan60-loadbalancer: "true"
+      io.kubernetes.service.name: "sroom-prt016-60-service"
+      io.kubernetes.service.namespace: "sroom-prt01-scanner"
