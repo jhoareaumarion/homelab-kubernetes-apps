@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: proton-bridge
+  namespace: paperless-ngx
+spec:
+  selector:
+    app: proton-bridge
+  ports:
+    - protocol: TCP
+      port: 1143
+      targetPort: 1143
+      name: imap
+    - protocol: TCP
+      port: 1025
+      targetPort: 1025
+      name: smtp
