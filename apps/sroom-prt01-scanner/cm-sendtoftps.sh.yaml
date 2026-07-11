@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sendtoftps-sh
+  namespace: sroom-prt01-scanner
+data:
+  sendtoftps.sh: |
+    #!/bin/bash
+    user=$1
+    password=$2
+    address=$3
+    filepath=$4
+    file=$5
+
+    cd /scans
+
+    if [ -z "${user}" ] || [ -z "${password}" ] || [ -z "${address}" ] || [ -z "${filepath}" ] || [ -z "${file}" ]; then
+      echo "FTP environment variables not set, skipping FTP upload."
+    else
+      # Extract only the file name (e.g., 2026-07-11-22-10-10.pdf) from the absolute path
+      filename=$(basename "${file}")
+
+      if curl --silent \
+          --show-error \
+          --ssl-reqd \
+          --user "${user}:${password}" \
+          --upload-file "${filename}" \
+          "ftp://${address}${filepath}" ; then
+        echo "Uploading to ftp server ${address} successful."
+      else
+        echo "Uploading to ftp failed while using curl"
+        echo "user: ${user}"
+        echo "address: ${address}"
+        echo "filepath: ${filepath}"
+        echo "file: ${file} (uploaded as local reference: ${filename})"
+        exit 1
+      fi
+    fi

@@ -36,4 +36,12 @@ spec:
             - containerPort: 161
               protocol: UDP
               name: snmp-udp
-              
+          volumeMounts:
+            - name: ftp-script-override
+              mountPath: /opt/brother/scanner/brscan-skey/script/sendtoftps.sh
+              subPath: sendtoftps.sh
+      volumes:
+        - name: ftp-script-override
+          configMap:
+            name: sendtoftps-sh
+            defaultMode: 0755
