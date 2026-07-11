@@ -30,6 +30,6 @@ spec:
             - mountPath: "/root/"
               name: protonmail-data
       volumes:
-        - name: protonmail-storage
+        - name: protonmail-data
           persistentVolumeClaim:
             claimName: protonmail-bridge-pvc
