@@ -5,6 +5,7 @@ metadata:
   namespace: sroom-prt01-scanner
   annotations:
     k3s.io/cloud-provider: "external"
+    io.cilium/lb-ipam-ips: "10.10.60.160"
   labels:
     app: sroom-prt01-scanner
     vlan60-loadbalancer: "true"
