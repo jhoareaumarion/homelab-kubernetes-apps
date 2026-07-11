@@ -7,7 +7,5 @@ spec:
   - start: "10.10.60.160" 
     stop: "10.10.60.160"
   serviceSelector:
-    matchExpressions:
-    - key: gateway.networking.k8s.io/gateway-name
-      operator: In
-      values: ["ingress-gateway"]
+    matchLabels:
+      vlan60-loadbalancer: "true"

@@ -8,7 +8,7 @@ spec:
   loadBalancerIPs: true
   serviceSelector:
     matchLabels:
-      app: sroom-prt01-scanner
+      vlan60-loadbalancer: "true"
   nodeSelector:
     matchLabels:
       affected_vlan: "60"
