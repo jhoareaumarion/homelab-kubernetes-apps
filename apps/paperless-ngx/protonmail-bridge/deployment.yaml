@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: bridge
-          image: shenxn/protonmail-bridge:3.19.0
+          image: shenxn/protonmail-bridge:3.19.0-1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 25
