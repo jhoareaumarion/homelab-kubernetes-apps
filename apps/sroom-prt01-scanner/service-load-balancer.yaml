@@ -5,6 +5,7 @@ metadata:
   namespace: sroom-prt01-scanner
   labels:
     app: sroom-prt01-scanner
+    vlan60-loadbalancer: "true"
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
