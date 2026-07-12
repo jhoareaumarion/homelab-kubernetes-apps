@@ -4,6 +4,9 @@
     "dockerfile": "Dockerfile",
     "context": "."
   },
+  "containerEnv": {
+    "GPG_TTY": "/dev/tty"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -11,7 +14,12 @@
         "redhat.vscode-yaml",
         "ms-kubernetes-tools.vscode-kubernetes-tools",
         "redhat.ansible"
-      ]
+      ],
+      "settings":{
+        "git.enableCommitSigning": true,
+        "git.commitSigningOffloading": true
+
+      }
     }
   },
   "postCreateCommand": "",
