@@ -34,8 +34,8 @@ data:
       if curl --silent \
         --show-error \
         --ssl-reqd \
+        --ssl-no-reuse \
         --ftp-pasv \
-        --ftp-ssl-ccc \
         --user "${user}:${password}" \
         --upload-file "${filename}" \
         "ftp://${address}${filepath}" ; then
