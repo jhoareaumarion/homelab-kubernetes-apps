@@ -19,7 +19,9 @@ data:
     else
       # Extract only the file name (e.g., 2026-07-11-22-10-10.pdf) from the absolute path
       filename=$(basename "${file}")
-      
+
+      sync
+
       echo "========================================="
       echo "EXECUTING FTP UPLOAD WITH CONFIGURATION:"
       echo "Working Directory: $(pwd)"
@@ -30,12 +32,14 @@ data:
       echo "========================================="
 
       if curl --silent \
-          --show-error \
-          --ssl-reqd \
-          --user "${user}:${password}" \
-          --upload-file "${filename}" \
-          "ftp://${address}${filepath}" ; then
-        echo "Uploading to ftp server ${address} successful."
+        --show-error \
+        --ssl-reqd \
+        --ftp-pasv \
+        --ftp-ssl-ccc \
+        --user "${user}:${password}" \
+        --upload-file "${filename}" \
+        "ftp://${address}${filepath}" ; then
+      echo "Uploading to ftp server ${address} successful."
       else
         echo "Uploading to ftp failed while using curl"
         echo "user: ${user}"
