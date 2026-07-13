@@ -16,7 +16,7 @@ spec:
         - path:
             type: PathPrefix
             value: "/"
-    - filters:
+      filters:
       - type: RequestHeaderModifier
         requestHeaderModifier:
           add:
@@ -24,6 +24,6 @@ spec:
             value: https
           - name: X-Forwarded-Host
             value: code-server.hoareau-marion.eu
-    - backendRefs:
+      backendRefs:
         - name: code-server
           port: 8080
