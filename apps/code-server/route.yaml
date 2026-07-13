@@ -18,6 +18,8 @@ spec:
           add:
           - name: X-Forwarded-Proto
             value: https
+          - name: X-Forwarded-Host
+            value: code-server.hoareau-marion.eu
     - backendRefs:
         - name: code-server
           port: 8080
