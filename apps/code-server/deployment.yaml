@@ -35,6 +35,10 @@ spec:
           env:
             - name: TZ
               value: "Europe/Paris"
+            - name: CODE_SERVER_PROXY_DOMAIN
+              value: "code-server.hoareau-marion.eu"
+            - name: PROXY_DOMAIN
+              value: "code-server.hoareau-marion.eu"
             - name: PASSWORD
               valueFrom:
                 secretKeyRef:
