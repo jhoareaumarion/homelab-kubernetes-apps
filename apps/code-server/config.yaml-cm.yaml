@@ -10,3 +10,4 @@ data:
     password: ${PASSWORD}
     cert: /etc/code-server/certs/tls.crt
     cert-key: /etc/code-server/certs/tls.key
+    base-path: /
