@@ -12,6 +12,12 @@ spec:
   hostnames:
     - "code-server.hoareau-marion.eu"
   rules:
+    - filters:
+      - type: RequestHeaderModifier
+        requestHeaderModifier:
+          add:
+          - name: X-Forwarded-Proto
+            value: https
     - backendRefs:
         - name: code-server
           port: 8080
