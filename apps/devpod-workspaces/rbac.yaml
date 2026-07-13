@@ -1,11 +1,12 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: devpod-admin
+  name: code-server-devpod-binding
   namespace: devpod-workspaces
 subjects:
 - kind: ServiceAccount
-  name: devpod-provisioner
+  name: code-server-devpod-sa
+  namespace: code-server
 roleRef:
   kind: ClusterRole
   name: edit

@@ -13,6 +13,7 @@ spec:
       labels:
         app: code-server
     spec:
+      serviceAccountName: code-server-devpod-sa
       initContainers:
       - name: init-workspace
         image: busybox
