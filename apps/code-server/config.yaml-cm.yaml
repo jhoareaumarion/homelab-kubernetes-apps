@@ -10,3 +10,5 @@ data:
     password: ${PASSWORD}
     cert: false
     proxy-domain: code-server.hoareau-marion.eu
+    cert: /etc/code-server/certs/tls.crt
+    cert-key: /etc/code-server/certs/tls.key

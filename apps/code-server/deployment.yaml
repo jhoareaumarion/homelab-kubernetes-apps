@@ -43,6 +43,9 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /home/coder
+            - name: tls-certs
+              mountPath: /etc/code-server/certs
+              readOnly: true
             - name: config-yaml
               mountPath: /home/coder/.config/code-server/config.yaml
               subPath: config.yaml
@@ -54,3 +57,6 @@ spec:
         - name: config-yaml
           configMap:
             name: code-server-config
+        - name: tls-certs
+          secret:
+            secretName: code-server-tls
