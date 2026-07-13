@@ -1,6 +1,6 @@
 # apps/code-server/route.yaml
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1alpha3
+kind: TLSRoute
 metadata:
   name: code-server-route
   namespace: code-server
@@ -8,7 +8,7 @@ spec:
   parentRefs:
     - name: ingress-gateway
       namespace: cluster-gateway
-      sectionName: code-server-https     # Attach to the HTTPS listener
+      sectionName: code-server-https
   hostnames:
     - "code-server.hoareau-marion.eu"
   rules:
