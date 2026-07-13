@@ -7,7 +7,7 @@ spec:
   selector:
     app: code-server
   ports:
-    - port: 443
-      targetPort: 8443
+    - port: 8080
+      targetPort: 8080
       protocol: TCP
   type: ClusterIP
