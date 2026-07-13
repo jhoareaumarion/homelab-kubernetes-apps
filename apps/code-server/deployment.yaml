@@ -15,16 +15,16 @@ spec:
     spec:
       nodeSelector:
         affected_vlan: "50"
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       containers:
         - name: code-server
-          image: lscr.io/linuxserver/code-server:4.128.0@sha256:dfc5e74083f43f3cb217fedfead149f32b319ee663744351c001bdc5e4245441
+          image: codercom/code-server:4.128.0@sha256:bd4a3a022ff016954bf9ae6ea0bce6c7eef96a69da4d2fe34552638f32d4820c
           ports:
-            - containerPort: 8443
+            - containerPort: 8080
           env:
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
             - name: TZ
               value: "Europe/Paris"
             - name: PASSWORD
@@ -32,17 +32,11 @@ spec:
                 secretKeyRef:
                   name: code-server-password
                   key: password
-            - name: PROXY_DOMAIN
-              value: "code-server.hoareau-marion.eu"
-            - name: DEFAULT_WORKSPACE
-              value: "/config/workspace"
-            - name: PWA_APPNAME
-              value: "code-server"
           volumeMounts:
             - name: config
-              mountPath: /config                     
+              mountPath: /home/coder
             - name: config-yaml
-              mountPath: /config/config.yaml         
+              mountPath: /home/coder/.config/code-server/config.yaml
               subPath: config.yaml
               readOnly: true
       volumes:
