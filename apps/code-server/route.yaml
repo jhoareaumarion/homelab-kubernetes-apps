@@ -11,7 +11,11 @@ spec:
       sectionName: code-server-https
   hostnames:
     - "code-server.hoareau-marion.eu"
-  rules:
+  rules:  
+    - matches:
+        - path:
+            type: PathPrefix
+            value: "/"
     - filters:
       - type: RequestHeaderModifier
         requestHeaderModifier:
