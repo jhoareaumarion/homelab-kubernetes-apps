@@ -13,6 +13,13 @@ spec:
       labels:
         app: code-server
     spec:
+      initContainers:
+      - name: init-workspace
+        image: busybox
+        command: ["sh", "-c", "mkdir -p /home/coder/workspace && chown 1000:1000 /home/coder/workspace"]
+        volumeMounts:
+          - name: config
+            mountPath: /home/coder
       nodeSelector:
         affected_vlan: "50"
       securityContext:

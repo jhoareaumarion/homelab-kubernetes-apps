@@ -1,9 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended", ":dependencyDashboard"],
-  "enabledManagers": ["kubernetes"],
+  "enabledManagers": ["kubernetes", "dockerfile"], 
   "kubernetes": {
     "fileMatch": ["apps/.+/deployment\\.yaml$"]
+  },
+  "dockerfile": {
+    "fileMatch": ["apps/.+/Dockerfile$"]
   },
   "packageRules": [
     {
