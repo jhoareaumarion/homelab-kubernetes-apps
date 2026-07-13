@@ -214,9 +214,9 @@ spec:
   - name: code-server-https
     hostname: "code-server.hoareau-marion.eu"
     port: 443
-    protocol: TLS
+    protocol: HTTPS
     tls:
-      mode: Passthrough
+      mode: Terminate
       certificateRefs:
         - name: code-server-hoareau-marion-eu-tls   # Secret must exist in gateway’s namespace
     allowedRoutes:

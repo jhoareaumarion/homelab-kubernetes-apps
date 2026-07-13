@@ -1,6 +1,6 @@
 # apps/code-server/route.yaml
 apiVersion: gateway.networking.k8s.io/v1alpha3
-kind: TLSRoute
+kind: HTTPRoute
 metadata:
   name: code-server-route
   namespace: code-server
