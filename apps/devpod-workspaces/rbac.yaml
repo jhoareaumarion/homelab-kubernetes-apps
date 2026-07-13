@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: devpod-admin
+  namespace: devpod-workspaces
+subjects:
+- kind: ServiceAccount
+  name: devpod-provisioner
+roleRef:
+  kind: ClusterRole
+  name: edit
+  apiGroup: rbac.authorization.k8s.io
