@@ -28,7 +28,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: code-server
-          image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.1@sha256:aa033d2a0faef9e7058dcadfc756abd0d07e4324a457d58eec27ce604591e7f6
+          image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.2-renovate-docker-io-library-postgres-18.0
           args: ["--bind-addr", "0.0.0.0:8080", "/home/coder/workspace"]
           ports:
             - containerPort: 8080
