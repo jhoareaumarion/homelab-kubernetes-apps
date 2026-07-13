@@ -10,4 +10,3 @@ data:
     password: ${PASSWORD}
     cert: false
     proxy-domain: code-server.hoareau-marion.eu
-    default-workspace: "/config/workspace"
