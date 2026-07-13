@@ -8,6 +8,5 @@ data:
     bind-addr: 0.0.0.0:8080
     auth: password
     password: ${PASSWORD}
-    proxy-domain: code-server.hoareau-marion.eu
     cert: /etc/code-server/certs/tls.crt
     cert-key: /etc/code-server/certs/tls.key
