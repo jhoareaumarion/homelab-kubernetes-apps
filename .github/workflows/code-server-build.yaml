@@ -3,8 +3,8 @@ name: Build and Push Code-Server
 on:
   push:
     paths:
-      - 'apps/code-server/**' # Changed to trigger on all files in this directory
-
+      - 'apps/code-server/**'
+  workflow_dispatch:
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -16,16 +16,15 @@ jobs:
         with:
           fetch-depth: 0
 
+      # 1. ONLY bump version if not a renovate commit
       - name: Bump version and push tag
         id: bump_version
+        if: "!contains(github.event.head_commit.message, 'renovate')"
         uses: mathieudutour/github-tag-action@v6.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: patch
           tag_prefix: "code-server-v"
-          # This forces the action to ONLY look at tags starting with code-server-v
-          # It prevents it from seeing renovate tags
-          custom_tag: ${{ steps.bump_version.outputs.new_tag }} 
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -37,10 +36,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      # 2. Build with conditional tags
       - name: Build and push
         env:
-          # Extract the numeric version (e.g., 1.2.3) from code-server-v1.2.3
-          VERSION: ${{ steps.bump_version.outputs.new_version }}
+          # Use the bumped version if available, otherwise use the short SHA
+          VERSION: ${{ steps.bump_version.outputs.new_version || github.sha }}
         run: |
           docker buildx build \
             --push \
@@ -48,11 +48,12 @@ jobs:
             --tag ghcr.io/${{ github.repository }}/code-server:$VERSION \
             apps/code-server
 
+      # 3. ONLY update deployment manifest if not a renovate commit
       - name: Update deployment manifest
+        if: "!contains(github.event.head_commit.message, 'renovate')"
         run: |
           VERSION=${{ steps.bump_version.outputs.new_version }}
           
-          # Use a safer sed delimiter (using | is good, but ensure variable expansion is correct)
           sed -i "s|image: ghcr.io/${{ github.repository }}/code-server:.*|image: ghcr.io/${{ github.repository }}/code-server:$VERSION|" apps/code-server/deployment.yaml
           
           git config user.name "github-actions[bot]"
