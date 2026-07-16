@@ -48,7 +48,7 @@ jobs:
             --push \
             --tag ghcr.io/${{ github.repository }}/code-server:latest \
             --tag ghcr.io/${{ github.repository }}/code-server:$VERSION \
-            apps/code-server
+            apps/code-server/docker
 
       # 3. Update deployment
       - name: Update deployment manifest
