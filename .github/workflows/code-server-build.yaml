@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'apps/code-server/Dockerfile'
+      - 'apps/code-server/docker/**'
   workflow_dispatch:
 jobs:
   docker:

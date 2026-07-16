@@ -19,4 +19,9 @@ RUN curl -fsSL -o /tmp/install-devcontainer.sh https://raw.githubusercontent.com
     sh /tmp/install-devcontainer.sh --prefix /usr/local && \
     rm /tmp/install-devcontainer.sh
 
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 USER coder
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
