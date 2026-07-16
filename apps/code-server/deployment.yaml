@@ -29,7 +29,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: code-server
-          image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.6@sha256:1692b0d873e40b6432b8a3b7ea1321e0535213a6c26853fa71ab40057fde188b
+          image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.8
           args: ["--bind-addr", "0.0.0.0:8080", "/home/coder/workspace"]
           ports:
             - containerPort: 8080
