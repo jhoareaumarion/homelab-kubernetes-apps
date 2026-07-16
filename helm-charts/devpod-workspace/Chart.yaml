@@ -1,0 +1,4 @@
+apiVersion: v2
+name: devpod-workspace
+description: A Helm chart for ephemeral DevPod Web IDE workspaces
+version: 0.1.0

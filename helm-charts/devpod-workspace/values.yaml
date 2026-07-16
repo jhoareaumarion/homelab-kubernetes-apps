@@ -1,0 +1,4 @@
+projectName: "alpha"
+image: "codercom/code-server:latest"
+storageSize: "20Gi"
+domain: "alpha.dev.yourdomain.com"
