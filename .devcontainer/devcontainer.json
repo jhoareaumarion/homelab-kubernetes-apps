@@ -1,31 +1,16 @@
 {
-  "name": "Kubernetes",
-  "build":{
-    "dockerfile": "Dockerfile",
-    "context": "."
-  },
-  "containerEnv": {
-    "GPG_TTY": "/dev/tty"
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "opentofu.vscode-opentofu",
-        "redhat.vscode-yaml",
-        "ms-kubernetes-tools.vscode-kubernetes-tools",
-        "redhat.ansible"
-      ],
-      "settings":{
-        "git.enableCommitSigning": true,
-        "git.commitSigningOffloading": true
-
-      }
+  "name": "Kubernetes Dev Container",
+  "image": "ghcr.io/jhoareaumarion/devcontainers/kubernetes:1.0.3",
+  "workspaceFolder": "/home/coder/workspace/homelab-kubernetes-apps",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:1": {},
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "port": 2222
     }
   },
-  "postCreateCommand": "",
-  "remoteUser": "vscode",
-  "features": {},
-  "forwardPorts": [],
-  "mounts": [],
-  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+  "customizations": {
+    "devpod":{
+      "project-id":"homelab-kubernetes-apps"
+    }
+  }
 }

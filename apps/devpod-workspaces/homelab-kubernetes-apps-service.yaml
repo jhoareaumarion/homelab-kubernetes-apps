@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: homelab-kubernetes-apps-svc
+  namespace: devpod-workspaces
+spec:
+  ports:
+    - port: 2222
+      targetPort: 2222
+      name: ssh
+  selector:
+    project-id: homelab-kubernetes-apps
