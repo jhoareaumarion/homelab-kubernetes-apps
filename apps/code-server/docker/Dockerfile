@@ -25,6 +25,8 @@ RUN curl -L -s https://github.com/loft-sh/devpod/releases/latest/download/devpod
     chmod +x /usr/local/bin/devpod
 
 # 3. Setup Kubernetes & Kubeseal (from your second Dockerfile)
+ENV KUBESEAL_VERSION=0.27.1
+
 RUN mkdir -p -m 755 /etc/apt/keyrings/ && \
     curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.35/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg && \
     echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.35/deb/ /' > /etc/apt/sources.list.d/kubernetes.list && \
@@ -32,11 +34,12 @@ RUN mkdir -p -m 755 /etc/apt/keyrings/ && \
     \
     # Kubeseal install logic
     ARCH="amd64" && [ "$(uname -m)" = "aarch64" ] && ARCH="arm64"; \
-    KUBESEAL_VERSION=$(curl -s https://api.github.com/repos/bitnami-labs/sealed-secrets/releases/latest | jq -r '.tag_name' | cut -c 2-) && \
-    curl -OL "https://github.com/bitnami-labs/sealed-secrets/releases/download/v${KUBESEAL_VERSION}/kubeseal-${KUBESEAL_VERSION}-linux-${ARCH}.tar.gz" && \
-    tar -xvzf "kubeseal-${KUBESEAL_VERSION}-linux-${ARCH}.tar.gz" kubeseal && \
+    # Using the hardcoded version avoids GitHub API rate limits
+    KUBESEAL_URL="https://github.com/bitnami-labs/sealed-secrets/releases/download/v${KUBESEAL_VERSION}/kubeseal-${KUBESEAL_VERSION}-linux-${ARCH}.tar.gz" && \
+    curl -fsSL --fail "$KUBESEAL_URL" -o kubeseal.tar.gz && \
+    tar -xvzf kubeseal.tar.gz kubeseal && \
     install -m 755 kubeseal /usr/local/bin/kubeseal && \
-    rm kubeseal*
+    rm -f kubeseal.tar.gz kubeseal
 
 # 4. Setup Hubble
 RUN HUBBLE_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/hubble/master/stable.txt) && \
