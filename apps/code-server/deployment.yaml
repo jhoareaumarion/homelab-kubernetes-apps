@@ -58,8 +58,6 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /home/coder
-            - name: tls-certs
-              mountPath: /etc/code-server/certs
               readOnly: true
             - name: config-yaml
               mountPath: /home/coder/.config/code-server/config.yaml
