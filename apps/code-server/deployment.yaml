@@ -71,7 +71,6 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /home/coder
-              readOnly: true
             - name: config-yaml
               mountPath: /home/coder/.config/code-server/config.yaml
               subPath: config.yaml
