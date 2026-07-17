@@ -24,4 +24,4 @@ fi
 export GPG_TTY=$(tty)
 
 # 4. Start code-server
-exec "$@"
+exec code-server "$@"
