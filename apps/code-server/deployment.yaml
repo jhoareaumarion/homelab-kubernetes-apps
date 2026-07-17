@@ -65,6 +65,10 @@ spec:
               mountPath: /home/coder/.config/code-server/config.yaml
               subPath: config.yaml
               readOnly: true
+            - name: kubeconfig
+              mountPath: /home/coder/.kube/config
+              subPath: config
+              readOnly: true
       volumes:
         - name: config
           persistentVolumeClaim:
@@ -72,6 +76,6 @@ spec:
         - name: config-yaml
           configMap:
             name: code-server-config
-        - name: tls-certs
+        - name: kubeconfig
           secret:
-            secretName: code-server-tls
+            secretName: kubeconfig
