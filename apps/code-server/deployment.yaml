@@ -85,7 +85,7 @@ spec:
         - name: config-yaml
           configMap:
             name: code-server-config
-        - name: kubeconfig
+        - name: kubeconfig-secret
           secret:
             secretName: kubeconfig
         - name: kube-writable
