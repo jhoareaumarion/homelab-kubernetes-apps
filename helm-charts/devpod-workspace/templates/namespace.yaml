@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: devpod-{{ .Values.projectName }}
-  labels:
-    is-devpod-workspace: "true"
-    gateway-access: devpod-{{ .Values.projectName }}

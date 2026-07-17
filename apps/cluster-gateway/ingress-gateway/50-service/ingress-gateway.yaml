@@ -516,20 +516,3 @@ spec:
         selector:
           matchLabels:
             gateway-access: home-assistant  
-  ###
-  # DEVPOD WORKSPACES
-  ###
-  - name: devpod-workspaces-https
-    hostname: "*.codeserver.hoareau-marion.eu"
-    port: 443  
-    protocol: HTTPS
-    tls:
-      mode: Terminate
-      certificateRefs:
-        - name: wildcard-codeserver-tls
-    allowedRoutes:
-      namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            is-devpod-workspace: "true"
