@@ -21,12 +21,19 @@ spec:
         args: 
           - |
             mkdir -p /home/coder/workspace
-            mkdir -p /home/coder/.kube
             chown -R 1000:1000 /home/coder/workspace
-            chown -R 1000:1000 /home/coder/.kube
+            mkdir -p /home/coder/.kube
+            cp /etc/secrets/config /home/coder/.kube/config
+            chown 1000:1000 /home/coder/.kube/config
+            chmod 600 /home/coder/.kube/config
         volumeMounts:
           - name: config
             mountPath: /home/coder
+          - name: kubeconfig-secret
+            mountPath: /etc/secrets
+            readOnly: true
+          - name: kube-writable
+            mountPath: /home/coder/.kube
       nodeSelector:
         affected_vlan: "50"
       securityContext:
@@ -69,10 +76,8 @@ spec:
               mountPath: /home/coder/.config/code-server/config.yaml
               subPath: config.yaml
               readOnly: true
-            - name: kubeconfig
-              mountPath: /home/coder/.kube/config
-              subPath: config
-              readOnly: true
+            - name: kube-writable
+              mountPath: /home/coder/.kube
       volumes:
         - name: config
           persistentVolumeClaim:
@@ -83,3 +88,5 @@ spec:
         - name: kubeconfig
           secret:
             secretName: kubeconfig
+        - name: kube-writable
+          emptyDir: {}
