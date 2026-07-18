@@ -15,16 +15,54 @@ spec:
     spec:
       initContainers:
       - name: init-workspace
-        image: busybox@sha256:fd8d9aa63ba2f0982b5304e1ee8d3b90a210bc1ffb5314d980eb6962f1a9715d
+        image: alpine:3.24.1
+        env:
+          - name: GIT_USER_NAME
+            valueFrom:
+              secretKeyRef:
+                name: git-identity-secret
+                key: GIT_USER_NAME
+          - name: GIT_USER_EMAIL
+            valueFrom:
+              secretKeyRef:
+                name: git-identity-secret
+                key: GIT_USER_EMAIL
         command: ["sh", "-c"]
         args: 
-          - |
+          - |          
+            apk add --no-cache gnupg git
+
             mkdir -p /home/coder/workspace
             chown -R 1000:1000 /home/coder/workspace
+
             mkdir -p /home/coder/.kube
             cp /etc/secrets/config /home/coder/.kube/config
             chown 1000:1000 /home/coder/.kube/config
             chmod 600 /home/coder/.kube/config
+
+            mkdir -p /home/coder/.gnupg
+            chmod 700 /home/coder/.gnupg
+            gpg --batch --import /etc/gpg-secret/GPG_KEY || true
+            chmod 600 /home/coder/.gnupg/*
+            chown -R 1000:1000 /home/coder/.gnupg
+
+            KEY_ID=$(gpg --list-secret-keys --keyid-format LONG --with-colons | grep "^sec" | cut -d: -f5 | head -n 1)
+            if [ -n "$KEY_ID" ]; then
+                git config --global user.signingkey "$KEY_ID"
+                git config --global commit.gpgsign true                
+                git config --global gpg.program gpg
+                git config --global pull.rebase false
+                git config --global user.name "$GIT_USER_NAME"
+                git config --global user.email "$GIT_USER_EMAIL"
+                git config --global --add safe.directory /home/coder/workspace
+            fi
+            if ! devpod provider list | grep -q "kubernetes"; then
+                devpod provider add kubernetes
+                devpod provider set-options kubernetes \
+                    --option KUBERNETES_NAMESPACE=devpod-workspaces \
+                    --option STORAGE_CLASS=nfs-client \
+                    --option ARCHITECTURE=amd64
+            fi
         volumeMounts:
           - name: config
             mountPath: /home/coder
@@ -33,6 +71,9 @@ spec:
             readOnly: true
           - name: kube-writable
             mountPath: /home/coder/.kube
+          - name: gpg-secret
+            mountPath: /etc/gpg-secret
+            readOnly: true
       nodeSelector:
         affected_vlan: "50"
       securityContext:
@@ -88,3 +129,9 @@ spec:
             secretName: kubeconfig
         - name: kube-writable
           emptyDir: {}
+        - name: gpg-secret
+          secret:
+            secretName: git-identity-secret
+            items:
+            - key: GPG_KEY
+              path: GPG_KEY
