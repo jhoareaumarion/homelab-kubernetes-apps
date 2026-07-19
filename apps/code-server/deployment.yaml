@@ -15,7 +15,9 @@ spec:
     spec:
       initContainers:
       - name: init-workspace
-        image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.13
+        image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.12@sha256:277da1d726cea85dea7bff582c514594aebee1d65747b45bf2ee1e621cbe7b7b
+        securityContext:
+          runAsUser: 0
         env:
           - name: GIT_USER_NAME
             valueFrom:
@@ -29,39 +31,37 @@ spec:
                 key: GIT_USER_EMAIL
         command: ["sh", "-c"]
         args: 
-          - |          
+          - |
+            # 1. Setup workspace/kube folders
             mkdir -p /home/coder/workspace
-            chown -R 1000:1000 /home/coder/workspace
-
             mkdir -p /home/coder/.kube
             cp /etc/secrets/config /home/coder/.kube/config
-            chown 1000:1000 /home/coder/.kube/config
-            chmod 600 /home/coder/.kube/config
 
+            # 2. GPG setup
             mkdir -p /home/coder/.gnupg
-            chmod 700 /home/coder/.gnupg
-            gpg --batch --import /etc/gpg-secret/GPG_KEY || true
-            chmod 600 /home/coder/.gnupg/*
-            chown -R 1000:1000 /home/coder/.gnupg
+            # Attempt to import. Redirect stderr to ignore warnings if already imported.
+            gpg --batch --import /etc/gpg-secret/GPG_KEY 2>/dev/null || true
 
-            KEY_ID=$(gpg --list-secret-keys --keyid-format LONG --with-colons | grep "^sec" | cut -d: -f5 | head -n 1)
+            # 3. Git config (only if a key is found)
+            KEY_ID=$(gpg --list-secret-keys --keyid-format LONG --with-colons 2>/dev/null | grep "^sec" | cut -d: -f5 | head -n 1)
             if [ -n "$KEY_ID" ]; then
                 git config --global user.signingkey "$KEY_ID"
-                git config --global commit.gpgsign true                
+                git config --global commit.gpgsign true
                 git config --global gpg.program gpg
                 git config --global pull.rebase false
                 git config --global user.name "$GIT_USER_NAME"
                 git config --global user.email "$GIT_USER_EMAIL"
                 git config --global --add safe.directory /home/coder/workspace
             fi
-            if ! devpod provider list | grep -q "kubernetes"; then
+
+            # 4. DevPod setup
+            if ! devpod provider list 2>/dev/null | grep -q "kubernetes"; then
                 devpod provider add kubernetes
                 devpod provider set-options kubernetes \
                     --option KUBERNETES_NAMESPACE=devpod-workspaces \
                     --option STORAGE_CLASS=nfs-client \
                     --option ARCHITECTURE=amd64
             fi
-            chown -R 1000:1000 /home/coder/
         volumeMounts:
           - name: config
             mountPath: /home/coder
