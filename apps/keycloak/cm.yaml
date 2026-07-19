@@ -5,7 +5,5 @@ metadata:
   namespace: keycloak
 data:
   KC_PROXY_HEADERS: "xforwarded"
+  KC_HOSTNAME: "auth.hoareau-marion.eu"
   KC_HTTP_ENABLED: "true"
-  KC_HOSTNAME_STRICT: "false"
-  KC_HOSTNAME_STRICT_BACKCHANNEL: "false"
-  KC_HOSTNAME_BACKCHANNEL_DYNAMIC: "false"
