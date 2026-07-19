@@ -15,7 +15,7 @@ spec:
     spec:
       initContainers:
       - name: init-workspace
-        image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.13
+        image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.13@sha256:48253329b1ddbf1c929908e5cbd1bd537b4d2c211621345d39a049cfc34943f1
         env:
           - name: GIT_USER_NAME
             valueFrom:
@@ -82,7 +82,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: code-server
-          image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.13
+          image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.13@sha256:48253329b1ddbf1c929908e5cbd1bd537b4d2c211621345d39a049cfc34943f1
           args: ["--bind-addr", "0.0.0.0:8080", "/home/coder/workspace"]
           ports:
             - containerPort: 8080
