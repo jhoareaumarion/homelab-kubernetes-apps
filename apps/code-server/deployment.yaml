@@ -65,6 +65,7 @@ spec:
                     --option STORAGE_CLASS=nfs-client \
                     --option ARCHITECTURE=amd64
             fi
+            chown -R 1000:1000 /home/coder/.gnupg
         volumeMounts:
           - name: config
             mountPath: /home/coder
