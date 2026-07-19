@@ -41,6 +41,9 @@ spec:
             mkdir -p /home/coder/.gnupg
             # Attempt to import. Redirect stderr to ignore warnings if already imported.
             gpg --batch --import /etc/gpg-secret/GPG_KEY 2>/dev/null || true
+            echo "pinentry-mode loopback" >> /home/coder/.gnupg/gpg.conf
+            echo "allow-loopback-pinentry" >> /home/coder/.gnupg/gpg-agent.conf
+            chmod 600 /home/coder/.gnupg/gpg.conf /home/coder/.gnupg/gpg-agent.conf
 
             # 3. Git config (only if a key is found)
             KEY_ID=$(gpg --list-secret-keys --keyid-format LONG --with-colons 2>/dev/null | grep "^sec" | cut -d: -f5 | head -n 1)
