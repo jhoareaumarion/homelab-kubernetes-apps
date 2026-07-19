@@ -15,7 +15,7 @@ spec:
     spec:
       initContainers:
       - name: init-workspace
-        image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.12@sha256:277da1d726cea85dea7bff582c514594aebee1d65747b45bf2ee1e621cbe7b7b
+        image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.13@sha256:48253329b1ddbf1c929908e5cbd1bd537b4d2c211621345d39a049cfc34943f1
         securityContext:
           runAsUser: 0
         env:
@@ -41,6 +41,9 @@ spec:
             mkdir -p /home/coder/.gnupg
             # Attempt to import. Redirect stderr to ignore warnings if already imported.
             gpg --batch --import /etc/gpg-secret/GPG_KEY 2>/dev/null || true
+            echo "pinentry-mode loopback" >> /home/coder/.gnupg/gpg.conf
+            echo "allow-loopback-pinentry" >> /home/coder/.gnupg/gpg-agent.conf
+            chmod 600 /home/coder/.gnupg/gpg.conf /home/coder/.gnupg/gpg-agent.conf
 
             # 3. Git config (only if a key is found)
             KEY_ID=$(gpg --list-secret-keys --keyid-format LONG --with-colons 2>/dev/null | grep "^sec" | cut -d: -f5 | head -n 1)
@@ -62,6 +65,7 @@ spec:
                     --option STORAGE_CLASS=nfs-client \
                     --option ARCHITECTURE=amd64
             fi
+            chown -R 1000:1000 /home/coder/.gnupg
         volumeMounts:
           - name: config
             mountPath: /home/coder
@@ -81,7 +85,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: code-server
-          image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.13
+          image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.13@sha256:48253329b1ddbf1c929908e5cbd1bd537b4d2c211621345d39a049cfc34943f1
           args: ["--bind-addr", "0.0.0.0:8080", "/home/coder/workspace"]
           ports:
             - containerPort: 8080
