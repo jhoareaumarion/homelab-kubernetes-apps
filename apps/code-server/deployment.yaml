@@ -15,7 +15,7 @@ spec:
     spec:
       initContainers:
       - name: init-workspace
-        image: alpine:3.24.1
+        image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.13
         env:
           - name: GIT_USER_NAME
             valueFrom:
