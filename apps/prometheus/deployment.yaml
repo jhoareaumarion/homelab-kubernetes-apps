@@ -32,8 +32,7 @@ spec:
       volumes:
         - name: prometheus-storage
           persistentVolumeClaim:
-            claimName: prometheus-pvc
-        # Provides a default minimal config map so Prometheus can boot successfully
+            claimName: pvc
         - name: prometheus-config
           configMap:
-            name: prometheus-server-conf
+            name: config-map
