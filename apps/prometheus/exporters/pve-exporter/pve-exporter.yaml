@@ -34,16 +34,16 @@ spec:
             - |
               cat <<EOF > /etc/pve/pve.yml
               default:
-                user: $TOKEN_ID
+                user: "$TOKEN_ID"
                 verify_ssl: false
               nodes:
-                - name: home-desk-r04-mars01
+                home-desk-r04-mars01:
                   address: mars.private.hoareau-marion.eu
                   token_value: "$MARS_TOKEN"
-                - name: home-desk-r04-mer01
+                home-desk-r04-mer01:
                   address: mercury.private.hoareau-marion.eu
                   token_value: "$MERCURY_TOKEN"
-                - name: home-desk-r04-jup01
+                home-desk-r04-jup01:
                   address: jupiter.private.hoareau-marion.eu
                   token_value: "$JUPITER_TOKEN"
               EOF
