@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pve-exporter
+  namespace: prometheus-exporters
+  labels:
+    app: pve-exporter
+    gateway-access: prometheus-exporters
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pve-exporter
+  template:
+    metadata:
+      labels:
+        app: pve-exporter
+    spec:
+      initContainers:
+        - name: build-config
+          image: busybox@sha256:fd8d9aa63ba2f0982b5304e1ee8d3b90a210bc1ffb5314d980eb6962f1a9715d
+          env:
+            - name: TOKEN_ID
+              valueFrom: { secretKeyRef: { name: tokens, key: TOKEN_ID } }
+            - name: MARS_TOKEN
+              valueFrom: { secretKeyRef: { name: tokens, key: MARS_TOKEN } }
+            - name: MERCURY_TOKEN
+              valueFrom: { secretKeyRef: { name: tokens, key: MERCURY_TOKEN } }
+            - name: JUPITER_TOKEN
+              valueFrom: { secretKeyRef: { name: tokens, key: JUPITER_TOKEN } }
+          command:
+            - /bin/sh
+            - -c
+            - |
+              cat <<EOF > /etc/pve/pve.yml
+              default:
+                user: $TOKEN_ID
+                verify_ssl: false
+              nodes:
+                - name: home-desk-r04-mars01
+                  address: mars.private.hoareau-marion.eu
+                  token_value: "$MARS_TOKEN"
+                - name: home-desk-r04-mer01
+                  address: mercury.private.hoareau-marion.eu
+                  token_value: "$MERCURY_TOKEN"
+                - name: home-desk-r04-jup01
+                  address: jupiter.private.hoareau-marion.eu
+                  token_value: "$JUPITER_TOKEN"
+              EOF
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/pve
+      containers:
+        - name: pve-exporter
+          image: prompve/prometheus-pve-exporter:3.9.0
+          args:
+            - "--config.file=/etc/pve/pve.yml"
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/pve
+      volumes:
+        - name: config-volume
+          emptyDir: {}
