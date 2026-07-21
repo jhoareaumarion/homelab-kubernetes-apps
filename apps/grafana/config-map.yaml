@@ -14,3 +14,4 @@ data:
   GF_AUTH_GENERIC_OAUTH_TOKEN_URL: "https://auth.hoareau-marion.eu/realms/milkyway/protocol/openid-connect/token"
   GF_AUTH_GENERIC_OAUTH_API_URL: "https://auth.hoareau-marion.eu/realms/milkyway/protocol/openid-connect/api/v1/userinfo"
   GF_USERS_AUTO_ASSIGN_ORG_ROLE: "Viewer"
+  GF_SERVER_ROOT_URL: "https://grafana.hoareau-marion.eu"
