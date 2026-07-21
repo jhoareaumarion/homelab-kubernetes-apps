@@ -4,6 +4,7 @@ metadata:
   name: config-map
   namespace: keycloak
 data:
+  KC_PROXY: "edge"
   KC_PROXY_HEADERS: "xforwarded"
   KC_HOSTNAME: "auth.hoareau-marion.eu"
   KC_HTTP_ENABLED: "true"
