@@ -4,8 +4,17 @@ metadata:
   name: grafana
   namespace: grafana
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
   template:
+    metadata:
+      labels:
+        app: grafana
     spec:
+      nodeSelector:
+        affected_vlan: "50" 
       containers:
         - name: grafana
           image: grafana/grafana:13.0.4
