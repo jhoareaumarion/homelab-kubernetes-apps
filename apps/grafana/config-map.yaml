@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+  namespace: grafana
+data:
+  GF_USERS_ALLOW_SIGN_UP: "false"
+  GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
+  GF_AUTH_GENERIC_OAUTH_NAME: "Keycloak"
+  GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP: "true"
+  GF_AUTH_GENERIC_OAUTH_CLIENT_ID: "grafana"
+  GF_AUTH_GENERIC_OAUTH_SCOPES: "openid email profile"
+  GF_AUTH_GENERIC_OAUTH_AUTH_URL: "https://auth.hoareau-marion.eu/realms/milkyway/protocol/openid-connect/auth"
+  GF_AUTH_GENERIC_OAUTH_TOKEN_URL: "https://auth.hoareau-marion.eu/realms/milkyway/protocol/openid-connect/token"
+  GF_AUTH_GENERIC_OAUTH_API_URL: "https://auth.hoareau-marion.eu/realms/milkyway/protocol/openid-connect/api/v1/userinfo"
+  GF_USERS_AUTO_ASSIGN_ORG_ROLE: "Viewer"

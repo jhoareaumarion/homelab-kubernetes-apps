@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+  namespace: grafana
+spec:
+  template:
+    spec:
+      containers:
+        - name: grafana
+          image: grafana/grafana:13.0.4
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: grafana-data
+              mountPath: /var/lib/grafana
+          envFrom:
+            - configMapRef:
+                name: config-map
+          env:
+            - name: GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
+      volumes:
+        - name: grafana-data
+          persistentVolumeClaim:
+            claimName: pvc
