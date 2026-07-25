@@ -32,6 +32,11 @@ spec:
                 secretKeyRef:
                   name: paperless-ngx-secrets
                   key: PAPERLESS_SOCIALACCOUNT_PROVIDERS
+            - name: PAPERLESS_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: paperless-ngx-secrets
+                  key: PAPERLESS_SECRET_KEY
             - name: PAPERLESS_APPS
               valueFrom:
                 secretKeyRef:
