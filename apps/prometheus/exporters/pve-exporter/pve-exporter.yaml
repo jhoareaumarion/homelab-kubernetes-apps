@@ -39,12 +39,15 @@ spec:
               nodes:
                 home-desk-r04-mars01:
                   address: mars.private.hoareau-marion.eu
+                  port: 443
                   token_value: "$MARS_TOKEN"
                 home-desk-r04-mer01:
                   address: mercury.private.hoareau-marion.eu
+                  port: 443
                   token_value: "$MERCURY_TOKEN"
                 home-desk-r04-jup01:
                   address: jupiter.private.hoareau-marion.eu
+                  port: 443
                   token_value: "$JUPITER_TOKEN"
               EOF
           volumeMounts:
