@@ -34,14 +34,14 @@ spec:
                 port: 443
 
               mercury:
-                user: "$TOKEN_ID"
-                token_name: "exporter"
+                user: "$USER"
+                token_name: "$TOKEN_ID"
                 token_value: "$MERCURY_TOKEN"
                 port: 443
 
               jupiter:
-                user: "$TOKEN_ID"
-                token_name: "exporter"
+                user: "$USER"
+                token_name: "$TOKEN_ID"
                 token_value: "$JUPITER_TOKEN"
                 port: 443
               EOF
