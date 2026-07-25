@@ -34,3 +34,14 @@ data:
           - source_labels: [__meta_kubernetes_service_name]
             action: keep
             regex: pve-exporter-svc
+            
+      # Scrape Kube State Metrics
+      - job_name: 'kube-state-metrics'
+        kubernetes_sd_configs:
+          - role: endpoints
+            namespaces:
+              names: ['prometheus-exporters']
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_service_name]
+            action: keep
+            regex: kube-state-metrics
