@@ -19,40 +19,31 @@ spec:
       initContainers:
         - name: build-config
           image: busybox@sha256:fd8d9aa63ba2f0982b5304e1ee8d3b90a210bc1ffb5314d980eb6962f1a9715d
-          env:
-            - name: TOKEN_ID
-              valueFrom: { secretKeyRef: { name: tokens, key: TOKEN_ID } }
-            - name: MARS_TOKEN
-              valueFrom: { secretKeyRef: { name: tokens, key: MARS_TOKEN } }
-            - name: MERCURY_TOKEN
-              valueFrom: { secretKeyRef: { name: tokens, key: MERCURY_TOKEN } }
-            - name: JUPITER_TOKEN
-              valueFrom: { secretKeyRef: { name: tokens, key: JUPITER_TOKEN } }
+          envFrom:
+            - secretRef:
+                name: tokens
           command:
             - /bin/sh
             - -c
             - |
               cat <<EOF > /etc/pve/pve.yml
               mars:
-                user: "$TOKEN_ID"
-                token_name: "exporter"
+                user: "$USER"
+                token_name: "$TOKEN_ID"
                 token_value: "$MARS_TOKEN"
                 port: 443
-                verify_ssl: false
 
               mercury:
                 user: "$TOKEN_ID"
                 token_name: "exporter"
                 token_value: "$MERCURY_TOKEN"
                 port: 443
-                verify_ssl: false
 
               jupiter:
                 user: "$TOKEN_ID"
                 token_name: "exporter"
                 token_value: "$JUPITER_TOKEN"
                 port: 443
-                verify_ssl: false
               EOF
           volumeMounts:
             - name: config-volume
