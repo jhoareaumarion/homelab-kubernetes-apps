@@ -33,22 +33,26 @@ spec:
             - -c
             - |
               cat <<EOF > /etc/pve/pve.yml
-              default:
+              mars:
                 user: "$TOKEN_ID"
+                token_name: "exporter"
+                token_value: "$MARS_TOKEN"
+                port: 443
                 verify_ssl: false
-              nodes:
-                home-desk-r04-mars01:
-                  address: mars.private.hoareau-marion.eu
-                  port: 443
-                  token_value: "$MARS_TOKEN"
-                home-desk-r04-mer01:
-                  address: mercury.private.hoareau-marion.eu
-                  port: 443
-                  token_value: "$MERCURY_TOKEN"
-                home-desk-r04-jup01:
-                  address: jupiter.private.hoareau-marion.eu
-                  port: 443
-                  token_value: "$JUPITER_TOKEN"
+
+              mercury:
+                user: "$TOKEN_ID"
+                token_name: "exporter"
+                token_value: "$MERCURY_TOKEN"
+                port: 443
+                verify_ssl: false
+
+              jupiter:
+                user: "$TOKEN_ID"
+                token_name: "exporter"
+                token_value: "$JUPITER_TOKEN"
+                port: 443
+                verify_ssl: false
               EOF
           volumeMounts:
             - name: config-volume
