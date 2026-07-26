@@ -20,7 +20,7 @@ spec:
            # OPNsense Webhook Sidecar Container
           webhook:
             image:
-              repository: ghcr.io/crutonjohn/external-dns-webhook
+              repository: ghcr.io/crutonjohn/external-dns-opnsense-webhook
               tag: main
             env:
               - name: OPNSENSE_HOST
