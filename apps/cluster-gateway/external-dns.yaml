@@ -37,6 +37,14 @@ spec:
                   secretKeyRef:
                     name: external-dns-opnsense-secret
                     key: api_secret
+            livenessProbe:
+              httpGet:
+                path: /healthz
+                port: 8080
+            readinessProbe:
+              httpGet:
+                path: /healthz
+                port: 8080
         # Sources to monitor for domain generation
         sources:
           - gateway-httproute
