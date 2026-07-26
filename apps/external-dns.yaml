@@ -1,0 +1,60 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-dns
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://kubernetes-sigs.github.io/external-dns/
+    chart: external-dns
+    targetRevision: 1.14.3
+    helm:
+      values: |
+        fullnameOverride: external-dns
+        logLevel: info
+        
+        # Configure External-DNS to use the webhook provider
+        provider:
+          name: webhook
+          
+        # Sources to monitor for domain generation
+        sources:
+          - ingress
+          - crd
+          
+        # Restrict automated management to your target domain
+        domainFilters:
+          - hoareau-marion.eu
+          
+        registry: "noop"
+        
+        # OPNsense Webhook Sidecar Container
+        webhook:
+          image:
+            repository: ghcr.io/crutonjohn/external-dns-webhook
+            tag: latest
+          env:
+            - name: OPNSENSE_HOST
+              value: "https://opnsense.home.hoareau-marion.eu" # Replace with your OPNsense internal IP/URL
+            - name: OPNSENSE_ALLOW_INVALID_CERTS
+              value: "true"
+            - name: OPNSENSE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: external-dns-secret
+                  key: api_key
+            - name: OPNSENSE_API_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: external-dns-secret
+                  key: api_secret
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cluster-gateway
+  syncPolicy:
+    automated:
+      prune: true
+      self_heal: true
+    syncOptions:
+      - CreateNamespace=true
