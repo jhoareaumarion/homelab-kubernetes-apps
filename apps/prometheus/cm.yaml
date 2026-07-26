@@ -54,7 +54,7 @@ data:
           # 4. Redirect the actual network scrape away from the target 
           # and into your K3S ClusterIP service
           - target_label: __address__
-            replacement: 'pve-exporter.prometheus-exporters.svc.cluster.local:9221'
+            replacement: 'pve-exporter-svc.prometheus-exporters.svc.cluster.local:9221'
 
       # Scrape Kube State Metrics
       - job_name: 'kube-state-metrics'
