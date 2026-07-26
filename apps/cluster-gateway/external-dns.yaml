@@ -39,8 +39,7 @@ spec:
                     key: api_secret
         # Sources to monitor for domain generation
         sources:
-          - ingress
-          - crd
+          - gateway-httproute
           
         # Restrict automated management to your target domain
         domainFilters:
