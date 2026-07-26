@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm
+  namespace: planka
+data:
+  BASE_URL: "https://planka.hoareau-marion.eu"
+  TRUST_PROXY: "true"
+  DATABASE_URL: "postgresql://postgres@postgres:5432/planka"
+  OIDC_ISSUER: "https://auth.hoareau-marion.eu/realms/milkyway"
+  OIDC_CLIENT_ID: "planka"
+  OIDC_SCOPES: "openid email profile"
+  OIDC_USE_OAUTH_CALLBACK: "true"
+  OIDC_ADMIN_ROLES: "admin"
+  OIDC_PROJECT_OWNER_ROLES: "project_owner"
+  OIDC_BOARD_USER_ROLES: "board_user"
+  OIDC_ENFORCED: "true"

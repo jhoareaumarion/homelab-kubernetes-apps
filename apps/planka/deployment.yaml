@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: planka
+  namespace: planka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: planka
+  template:
+    metadata:
+      labels:
+        app: planka
+    spec:
+      nodeSelector:
+        affected_vlan: "50"
+      containers:
+        - name: planka
+          image: ghcr.io/plankanban/planka:v2.1.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 1337
+          envFrom:
+            - configMapRef:
+                name: cm          
+            - secretRef:
+                name: secrets
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: POSTGRES_PASSWORD
+          volumeMounts:
+            - mountPath: /app/data
+              name: planka-data
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+      volumes:
+        - name: planka-data
+          persistentVolumeClaim:
+            claimName: pvc
