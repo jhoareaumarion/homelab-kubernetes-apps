@@ -32,6 +32,8 @@ spec:
                 secretKeyRef:
                   name: db-secrets
                   key: POSTGRES_PASSWORD
+            - name: DATABASE_URL
+              value: "postgresql://planka:$(POSTGRES_PASSWORD)@postgres.cluster-gateway.svc.cluster.local:5432/planka"
           volumeMounts:
             - mountPath: /app/data
               name: planka-data

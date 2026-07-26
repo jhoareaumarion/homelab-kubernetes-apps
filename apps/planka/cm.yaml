@@ -6,7 +6,6 @@ metadata:
 data:
   BASE_URL: "https://planka.hoareau-marion.eu"
   TRUST_PROXY: "true"
-  DATABASE_URL: "postgresql://postgres@postgres:5432/planka"
   OIDC_ISSUER: "https://auth.hoareau-marion.eu/realms/milkyway"
   OIDC_CLIENT_ID: "planka"
   OIDC_SCOPES: "openid email profile"
