@@ -21,7 +21,7 @@ spec:
           webhook:
             image:
               repository: ghcr.io/crutonjohn/external-dns-webhook
-              tag: latest
+              tag: main
             env:
               - name: OPNSENSE_HOST
                 value: "https://opnsense.home.hoareau-marion.eu" # Replace with your OPNsense internal IP/URL
