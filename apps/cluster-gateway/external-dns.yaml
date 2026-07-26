@@ -17,7 +17,26 @@ spec:
         # Configure External-DNS to use the webhook provider
         provider:
           name: webhook
-          
+           # OPNsense Webhook Sidecar Container
+          webhook:
+            image:
+              repository: ghcr.io/crutonjohn/external-dns-webhook
+              tag: latest
+            env:
+              - name: OPNSENSE_HOST
+                value: "https://opnsense.home.hoareau-marion.eu" # Replace with your OPNsense internal IP/URL
+              - name: OPNSENSE_ALLOW_INVALID_CERTS
+                value: "true"
+              - name: OPNSENSE_API_KEY
+                valueFrom:
+                  secretKeyRef:
+                    name: external-dns-secret
+                    key: api_key
+              - name: OPNSENSE_API_SECRET
+                valueFrom:
+                  secretKeyRef:
+                    name: external-dns-secret
+                    key: api_secret
         # Sources to monitor for domain generation
         sources:
           - ingress
@@ -29,26 +48,7 @@ spec:
           
         registry: "noop"
         
-        # OPNsense Webhook Sidecar Container
-        webhook:
-          image:
-            repository: ghcr.io/crutonjohn/external-dns-webhook
-            tag: latest
-          env:
-            - name: OPNSENSE_HOST
-              value: "https://opnsense.home.hoareau-marion.eu" # Replace with your OPNsense internal IP/URL
-            - name: OPNSENSE_ALLOW_INVALID_CERTS
-              value: "true"
-            - name: OPNSENSE_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: external-dns-secret
-                  key: api_key
-            - name: OPNSENSE_API_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: external-dns-secret
-                  key: api_secret
+       
   destination:
     server: https://kubernetes.default.svc
     namespace: cluster-gateway
