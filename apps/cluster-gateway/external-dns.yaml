@@ -25,8 +25,6 @@ spec:
             env:
               - name: OPNSENSE_HOST
                 value: "https://opnsense.home.hoareau-marion.eu" # Replace with your OPNsense internal IP/URL
-              - name: OPNSENSE_ALLOW_INVALID_CERTS
-                value: "true"
               - name: OPNSENSE_API_KEY
                 valueFrom:
                   secretKeyRef:

@@ -46,8 +46,6 @@ spec:
             env:
               - name: OPNSENSE_HOST
                 value: "https://opnsense.home.hoareau-marion.eu"
-              - name: OPNSENSE_ALLOW_INVALID_CERTS
-                value: "true"
               - name: OPNSENSE_API_KEY
                 valueFrom:
                   secretKeyRef:
@@ -98,7 +96,6 @@ For this application to function correctly, ensure the following are present in 
      - `api_secret`
 2. **OPNsense API Access:**
    - The API user must have permissions to manage Unbound DNS / Host Overrides.
-   - `OPNSENSE_ALLOW_INVALID_CERTS: "true"` handles self-signed SSL certificates on the OPNsense firewall.
 
 ---
 
