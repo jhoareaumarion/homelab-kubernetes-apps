@@ -21,6 +21,9 @@ spec:
         - name: graphite-exporter
           image: ghcr.io/supporterino/truenas-graphite-to-prometheus:v2.2.1
           imagePullPolicy: IfNotPresent
+          args:
+            - "--graphite.listen-address=:9109"
+            - "--web.listen-address=:9108"
           ports:
             - containerPort: 9109
               name: graphite-in
