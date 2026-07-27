@@ -29,10 +29,10 @@ spec:
               name: graphite-in
             - containerPort: 9108
               name: metrics
-          resources:
-            limits:
-              cpu: 500m
-              memory: 256Mi
-            requests:
-              cpu: 50m
-              memory: 64Mi
+          # resources:
+          #   limits:
+          #     cpu: 500m
+          #     memory: 256Mi
+          #   requests:
+          #     cpu: 50m
+          #     memory: 64Mi
