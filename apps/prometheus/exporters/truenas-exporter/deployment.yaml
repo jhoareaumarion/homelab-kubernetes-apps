@@ -35,4 +35,4 @@ spec:
               memory: 256Mi
             requests:
               cpu: 50m
-              memory: 364i
+              memory: 64Mi
