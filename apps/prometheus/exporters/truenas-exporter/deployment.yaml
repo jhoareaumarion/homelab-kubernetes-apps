@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: truenas-graphite-exporter
+  namespace: prometheus-exporters
+  labels:
+    app: truenas-graphite-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: truenas-graphite-exporter
+  template:
+    metadata:
+      labels:
+        app: truenas-graphite-exporter
+    spec:
+      nodeSelector:
+        affected_vlan: "50" 
+      containers:
+        - name: graphite-exporter
+          image: ghcr.io/supporterino/truenas-graphite-to-prometheus:v2.2.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9109
+              name: graphite-in
+            - containerPort: 9108
+              name: metrics
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 10m
+              memory: 32Mi
