@@ -6,14 +6,13 @@ metadata:
   labels:
     app: truenas-graphite-exporter
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: truenas-graphite-exporter
   ports:
     - name: graphite-in
       port: 9109
       targetPort: 9109
-      nodePort: 31909
     - name: metrics
       port: 9108
       targetPort: 9108
