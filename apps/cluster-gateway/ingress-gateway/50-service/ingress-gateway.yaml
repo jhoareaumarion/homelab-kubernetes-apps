@@ -11,16 +11,6 @@ spec:
   ###
   # ACTUAL BUDGET
   ###
-  - name: actual-budget-http
-    hostname: "actual-budget.hoareau-marion.eu"
-    port: 80
-    protocol: HTTP
-    allowedRoutes:
-      namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            gateway-access: actual-budget
   - name: actual-budget-https
     hostname: "actual-budget.hoareau-marion.eu"
     port: 443  
@@ -30,24 +20,16 @@ spec:
       certificateRefs:
         - name: actual-budget-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: actual-budget  
   ###
   # SPARKY FITNESS
   ###
-  - name: sparky-http
-    hostname: "sparky-fitness.hoareau-marion.eu"
-    port: 80
-    protocol: HTTP
-    allowedRoutes:
-      namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            gateway-access: sparky-fitness
   - name: sparky-https
     hostname: "sparky-fitness.hoareau-marion.eu"
     port: 443  
@@ -57,24 +39,16 @@ spec:
       certificateRefs:
         - name: sparky-fitness-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: sparky-fitness
   ###
   # QBITTORRENT
   ###
-  - name: qbittorrent-http
-    hostname: "qbittorrent.hoareau-marion.eu"
-    port: 80
-    protocol: HTTP
-    allowedRoutes:
-      namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            gateway-access: qbittorrent
   - name: qbittorrent-https
     hostname: "qbittorrent.hoareau-marion.eu"
     port: 443  
@@ -84,24 +58,16 @@ spec:
       certificateRefs:
         - name: qbittorrent-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: qbittorrent
   ###
   # PROWLARR
   ###
-  - name: prowlarr-http
-    hostname: "prowlarr.hoareau-marion.eu"
-    port: 80
-    protocol: HTTP
-    allowedRoutes:
-      namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            gateway-access: prowlarr
   - name: prowlarr-https
     hostname: "prowlarr.hoareau-marion.eu"
     port: 443  
@@ -111,24 +77,16 @@ spec:
       certificateRefs:
         - name: prowlarr-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: prowlarr
   ###
   # SONARR
   ###
-  - name: sonarr-http
-    hostname: "sonarr.hoareau-marion.eu"
-    port: 80
-    protocol: HTTP
-    allowedRoutes:
-      namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            gateway-access: sonarr
   - name: sonarr-https
     hostname: "sonarr.hoareau-marion.eu"
     port: 443  
@@ -138,24 +96,16 @@ spec:
       certificateRefs:
         - name: sonarr-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: sonarr
   ###
   # RADARR
   ###
-  - name: radarr-http
-    hostname: "radarr.hoareau-marion.eu"
-    port: 80
-    protocol: HTTP
-    allowedRoutes:
-      namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            gateway-access: radarr
   - name: radarr-https
     hostname: "radarr.hoareau-marion.eu"
     port: 443  
@@ -165,24 +115,16 @@ spec:
       certificateRefs:
         - name: radarr-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: radarr
   ###
   # JELLYFIN
   ###
-  - name: jellyfin-http
-    hostname: "jellyfin.hoareau-marion.eu"
-    port: 80
-    protocol: HTTP
-    allowedRoutes:
-      namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            gateway-access: jellyfin
   - name: jellyfin-https
     hostname: "jellyfin.hoareau-marion.eu"
     port: 443  
@@ -192,25 +134,16 @@ spec:
       certificateRefs:
         - name: jellyfin-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: jellyfin
   ###
   # CODE SERVER
   ###
-  - name: code-server-http
-    hostname: "code-server.hoareau-marion.eu"
-    port: 80
-    protocol: HTTP
-    allowedRoutes:
-      namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            gateway-access: code-server
-
   - name: code-server-https
     hostname: "code-server.hoareau-marion.eu"
     port: 443
@@ -218,55 +151,18 @@ spec:
     tls:
       mode: Terminate
       certificateRefs:
-        - name: code-server-hoareau-marion-eu-tls   # Secret must exist in gateway’s namespace
+        - name: code-server-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: code-server
   ###
-  # RYOT
-  ###
-  - name: ryot-http
-    hostname: "ryot.hoareau-marion.eu"
-    port: 80
-    protocol: HTTP
-    allowedRoutes:
-      namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            gateway-access: ryot
-
-  - name: ryot-https
-    hostname: "ryot.hoareau-marion.eu"
-    port: 443
-    protocol: HTTPS
-    tls:
-      mode: Terminate
-      certificateRefs:
-        - name: ryot-hoareau-marion-eu-tls   # Secret must exist in gateway’s namespace
-    allowedRoutes:
-      namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            gateway-access: ryot  
-  ###
   # UPTIME KUMA
   ###
-  - name: uptime-kuma-http
-    hostname: "uptime-kuma.hoareau-marion.eu"
-    port: 80
-    protocol: HTTP
-    allowedRoutes:
-      namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            gateway-access: uptime-kuma
-
   - name: uptime-kuma-https
     hostname: "uptime-kuma.hoareau-marion.eu"
     port: 443
@@ -276,25 +172,16 @@ spec:
       certificateRefs:
         - name: uptime-kuma-hoareau-marion-eu-tls   # Secret must exist in gateway’s namespace
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: uptime-kuma
   ###
   # PAPERLESS NGX
   ###
-  - name: paperless-ngx-http
-    hostname: "paperless-ngx.hoareau-marion.eu"
-    port: 80
-    protocol: HTTP
-    allowedRoutes:
-      namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            gateway-access: paperless-ngx
-
   - name: paperless-ngx-https
     hostname: "paperless-ngx.hoareau-marion.eu"
     port: 443
@@ -304,24 +191,16 @@ spec:
       certificateRefs:
         - name: paperless-ngx-hoareau-marion-eu-tls   # Secret must exist in gateway’s namespace
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: paperless-ngx  
   ###
   # SFTPGO
   ###
-  - name: sftpgo-http
-    hostname: "sftpgo.hoareau-marion.eu"
-    port: 80
-    protocol: HTTP
-    allowedRoutes:
-      namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            gateway-access: sftpgo
   - name: sftpgo-https
     hostname: "sftpgo.hoareau-marion.eu"
     port: 443
@@ -331,24 +210,16 @@ spec:
       certificateRefs:
       - name: sftpgo-hoareau-marion-eu-tls  # Create this TLS secret
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: sftpgo  
   ###
   # BROTHER SCANNER
   ###
-  - name: sroom-prt01-scanner-http
-    hostname: "sroom-prt01-scanner.hoareau-marion.eu"
-    port: 80
-    protocol: HTTP
-    allowedRoutes:
-      namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            gateway-access: sroom-prt01-scanner
   - name: sroom-prt01-scanner-https
     hostname: "sroom-prt01-scanner.hoareau-marion.eu"
     port: 443
@@ -358,8 +229,10 @@ spec:
       certificateRefs:
       - name: sroom-prt01-scanner-hoareau-marion-eu-tls  # Create this TLS secret
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: sroom-prt01-scanner
@@ -375,8 +248,10 @@ spec:
       certificateRefs:
         - name: synapse-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: synapse  
@@ -392,8 +267,10 @@ spec:
       certificateRefs:
         - name: mas-synapse-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: synapse  
@@ -409,8 +286,10 @@ spec:
       certificateRefs:
         - name: auth-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: auth  
@@ -426,8 +305,10 @@ spec:
       certificateRefs:
         - name: auth-private-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: auth
@@ -443,8 +324,10 @@ spec:
       certificateRefs:
         - name: trek-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: trek  
@@ -460,8 +343,10 @@ spec:
       certificateRefs:
         - name: immich-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: immich  
@@ -477,8 +362,10 @@ spec:
       certificateRefs:
         - name: moonlight-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: moonlight  
@@ -494,8 +381,10 @@ spec:
       certificateRefs:
         - name: sunshine-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: sunshine  
@@ -511,8 +400,10 @@ spec:
       certificateRefs:
         - name: home-assistant-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: home-assistant  
@@ -528,8 +419,10 @@ spec:
       certificateRefs:
         - name: prometheus-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: prometheus
@@ -545,8 +438,10 @@ spec:
       certificateRefs:
         - name: grafana-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: grafana
@@ -562,8 +457,10 @@ spec:
       certificateRefs:
         - name: planka-hoareau-marion-eu-tls
     allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
       namespaces:
-        from: Selector
         selector:
           matchLabels:
             gateway-access: planka
