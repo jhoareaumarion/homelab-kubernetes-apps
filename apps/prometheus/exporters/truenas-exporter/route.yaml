@@ -7,7 +7,7 @@ spec:
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway
-      name: ingress-gateway
+      name: tcp-ingress-gateway
       namespace: cluster-gateway 
       sectionName: graphite-in
   rules:
