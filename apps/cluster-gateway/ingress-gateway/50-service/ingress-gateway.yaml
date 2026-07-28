@@ -575,8 +575,6 @@ spec:
     protocol: TCP
     port: 9109
     allowedRoutes:
-      kinds:
-        - kind: TCPRoute
       namespaces:
         from: Selector
         selector:
