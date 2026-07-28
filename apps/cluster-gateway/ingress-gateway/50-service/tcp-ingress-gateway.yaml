@@ -15,9 +15,6 @@ spec:
     protocol: TCP
     port: 9109
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: TCPRoute
       namespaces:
         from: Selector
         selector:
