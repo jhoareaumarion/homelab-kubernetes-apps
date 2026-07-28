@@ -1,4 +1,4 @@
-apiVersion: gateway.networking.k8s.io/v1
+apiVersion: gateway.networking.k8s.io/v1alpha2
 kind: TCPRoute
 metadata:
   name: truenas-graphite-exporter-tcp-route
@@ -8,8 +8,8 @@ spec:
     - group: gateway.networking.k8s.io
       kind: Gateway
       name: ingress-gateway
-      namespace: cluster-gateway # Namespace where your Gateway object lives
-      sectionName: graphite-in # Links directly to the listener name above
+      namespace: cluster-gateway 
+      sectionName: graphite-in
   rules:
     - backendRefs:
         - name: truenas-graphite-exporter-svc
