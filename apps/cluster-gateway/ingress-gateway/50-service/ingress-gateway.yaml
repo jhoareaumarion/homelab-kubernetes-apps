@@ -20,9 +20,6 @@ spec:
       certificateRefs:
         - name: actual-budget-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -39,9 +36,6 @@ spec:
       certificateRefs:
         - name: sparky-fitness-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -58,9 +52,6 @@ spec:
       certificateRefs:
         - name: qbittorrent-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -77,9 +68,6 @@ spec:
       certificateRefs:
         - name: prowlarr-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -96,9 +84,6 @@ spec:
       certificateRefs:
         - name: sonarr-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -115,9 +100,6 @@ spec:
       certificateRefs:
         - name: radarr-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -134,9 +116,6 @@ spec:
       certificateRefs:
         - name: jellyfin-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -153,9 +132,6 @@ spec:
       certificateRefs:
         - name: code-server-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -172,9 +148,6 @@ spec:
       certificateRefs:
         - name: uptime-kuma-hoareau-marion-eu-tls   # Secret must exist in gateway’s namespace
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -191,9 +164,6 @@ spec:
       certificateRefs:
         - name: paperless-ngx-hoareau-marion-eu-tls   # Secret must exist in gateway’s namespace
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -210,9 +180,6 @@ spec:
       certificateRefs:
       - name: sftpgo-hoareau-marion-eu-tls  # Create this TLS secret
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -229,9 +196,6 @@ spec:
       certificateRefs:
       - name: sroom-prt01-scanner-hoareau-marion-eu-tls  # Create this TLS secret
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -248,9 +212,6 @@ spec:
       certificateRefs:
         - name: synapse-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -267,9 +228,6 @@ spec:
       certificateRefs:
         - name: mas-synapse-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -286,9 +244,6 @@ spec:
       certificateRefs:
         - name: auth-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -305,9 +260,6 @@ spec:
       certificateRefs:
         - name: auth-private-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -324,9 +276,6 @@ spec:
       certificateRefs:
         - name: trek-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -343,9 +292,6 @@ spec:
       certificateRefs:
         - name: immich-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -362,9 +308,6 @@ spec:
       certificateRefs:
         - name: moonlight-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -381,9 +324,6 @@ spec:
       certificateRefs:
         - name: sunshine-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -400,9 +340,6 @@ spec:
       certificateRefs:
         - name: home-assistant-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -419,9 +356,6 @@ spec:
       certificateRefs:
         - name: prometheus-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -438,9 +372,6 @@ spec:
       certificateRefs:
         - name: grafana-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
@@ -457,26 +388,7 @@ spec:
       certificateRefs:
         - name: planka-hoareau-marion-eu-tls
     allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
       namespaces:
         selector:
           matchLabels:
             gateway-access: planka
-            
-  ###
-  # TRUENAS GRAPHITE
-  ###
-  - name: graphite-in
-    protocol: TCP
-    port: 9109
-    allowedRoutes:
-      kinds:
-        - group: gateway.networking.k8s.io
-          kind: TCPRoute
-      namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            gateway-access: prometheus-exporters

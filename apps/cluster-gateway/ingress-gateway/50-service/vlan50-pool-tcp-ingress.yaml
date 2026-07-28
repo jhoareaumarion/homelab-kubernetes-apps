@@ -1,0 +1,13 @@
+apiVersion: cilium.io/v2alpha1
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: vlan50-pool-ingress
+spec:
+  blocks:
+  - start: "10.10.50.151" 
+    stop: "10.10.50.151"
+  serviceSelector:
+    matchExpressions:
+    - key: gateway.networking.k8s.io/gateway-name
+      operator: In
+      values: ["tcp-ingress-gateway"]

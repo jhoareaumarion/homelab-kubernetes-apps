@@ -1,0 +1,25 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: tcp-ingress-gateway
+  namespace: cluster-gateway
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"    
+spec:
+  gatewayClassName: cilium
+  listeners:
+  ###
+  # TRUENAS GRAPHITE
+  ###
+  - name: graphite-in
+    protocol: TCP
+    port: 9109
+    allowedRoutes:
+      kinds:
+        - group: gateway.networking.k8s.io
+          kind: TCPRoute
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: prometheus-exporters
