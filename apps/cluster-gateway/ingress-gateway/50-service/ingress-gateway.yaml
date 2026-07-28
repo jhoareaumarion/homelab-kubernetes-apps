@@ -21,6 +21,7 @@ spec:
         - name: actual-budget-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: actual-budget  
@@ -37,6 +38,7 @@ spec:
         - name: sparky-fitness-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: sparky-fitness
@@ -53,6 +55,7 @@ spec:
         - name: qbittorrent-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: qbittorrent
@@ -85,6 +88,7 @@ spec:
         - name: sonarr-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: sonarr
@@ -101,6 +105,7 @@ spec:
         - name: radarr-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: radarr
@@ -117,6 +122,7 @@ spec:
         - name: jellyfin-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: jellyfin
@@ -133,6 +139,7 @@ spec:
         - name: code-server-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: code-server
@@ -149,6 +156,7 @@ spec:
         - name: uptime-kuma-hoareau-marion-eu-tls   # Secret must exist in gateway’s namespace
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: uptime-kuma
@@ -165,6 +173,7 @@ spec:
         - name: paperless-ngx-hoareau-marion-eu-tls   # Secret must exist in gateway’s namespace
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: paperless-ngx  
@@ -181,6 +190,7 @@ spec:
       - name: sftpgo-hoareau-marion-eu-tls  # Create this TLS secret
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: sftpgo  
@@ -197,6 +207,7 @@ spec:
       - name: sroom-prt01-scanner-hoareau-marion-eu-tls  # Create this TLS secret
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: sroom-prt01-scanner
@@ -213,6 +224,7 @@ spec:
         - name: synapse-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: synapse  
@@ -229,6 +241,7 @@ spec:
         - name: mas-synapse-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: synapse  
@@ -245,6 +258,7 @@ spec:
         - name: auth-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: auth  
@@ -261,6 +275,7 @@ spec:
         - name: auth-private-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: auth
@@ -277,6 +292,7 @@ spec:
         - name: trek-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: trek  
@@ -293,6 +309,7 @@ spec:
         - name: immich-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: immich  
@@ -309,6 +326,7 @@ spec:
         - name: moonlight-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: moonlight  
@@ -325,6 +343,7 @@ spec:
         - name: sunshine-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: sunshine  
@@ -341,6 +360,7 @@ spec:
         - name: home-assistant-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: home-assistant  
@@ -357,6 +377,7 @@ spec:
         - name: prometheus-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: prometheus
@@ -373,6 +394,7 @@ spec:
         - name: grafana-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: grafana
@@ -389,6 +411,7 @@ spec:
         - name: planka-hoareau-marion-eu-tls
     allowedRoutes:
       namespaces:
+        from: Selector
         selector:
           matchLabels:
             gateway-access: planka
