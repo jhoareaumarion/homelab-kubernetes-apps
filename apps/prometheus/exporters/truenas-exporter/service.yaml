@@ -4,15 +4,13 @@ metadata:
   name: truenas-graphite-exporter-svc
   namespace: prometheus-exporters
   labels:
-    app: truenas-graphite-exporter
+    io.cilium/lb-pool: vlan50-pool-tcp-ingress
 spec:
-  type: ClusterIP
-  selector:
-    app: truenas-graphite-exporter
+  type: LoadBalancer
   ports:
     - name: graphite-in
       port: 9109
       targetPort: 9109
-    - name: metrics
-      port: 9108
-      targetPort: 9108
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: truenas-graphite-exporter

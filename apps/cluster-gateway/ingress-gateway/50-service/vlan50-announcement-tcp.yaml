@@ -7,10 +7,8 @@ spec:
   interfaces: ["ens18.50"]
   loadBalancerIPs: true
   serviceSelector:
-    matchExpressions:
-    - key: gateway.networking.k8s.io/gateway-name
-      operator: In
-      values: ["tcp-ingress-gateway"]
+    matchLabels:
+      io.cilium/lb-pool: vlan50-pool-tcp-ingress
   nodeSelector:
     matchLabels:
       affected_vlan: "50"

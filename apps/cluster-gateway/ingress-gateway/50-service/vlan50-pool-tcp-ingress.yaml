@@ -4,10 +4,8 @@ metadata:
   name: vlan50-pool-tcp-ingress
 spec:
   blocks:
-  - start: "10.10.50.151" 
-    stop: "10.10.50.151"
+    - start: "10.10.50.151"
+      stop: "10.10.50.151"
   serviceSelector:
-    matchExpressions:
-    - key: gateway.networking.k8s.io/gateway-name
-      operator: In
-      values: ["tcp-ingress-gateway"]
+    matchLabels:
+      io.cilium/lb-pool: vlan50-pool-tcp-ingress
