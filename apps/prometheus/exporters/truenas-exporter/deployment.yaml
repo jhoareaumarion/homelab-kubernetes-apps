@@ -16,23 +16,31 @@ spec:
         app: truenas-graphite-exporter
     spec:
       nodeSelector:
-        affected_vlan: "50" 
+        affected_vlan: "50"
       containers:
         - name: graphite-exporter
-          image: ghcr.io/supporterino/truenas-graphite-to-prometheus:v2.2.1
+          image: prom/graphite-exporter:v0.16.0
           imagePullPolicy: IfNotPresent
           args:
-            - "--graphite.listen-address=:9109"
-            - "--web.listen-address=:9108"
+            - "--graphite.mapping-config=/etc/graphite-exporter/graphite_mapping.conf"
           ports:
-            - containerPort: 9109
+            - containerPort: 2003
               name: graphite-in
+              protocol: TCP
             - containerPort: 9108
               name: metrics
-          # resources:
-          #   limits:
-          #     cpu: 500m
-          #     memory: 256Mi
-          #   requests:
-          #     cpu: 50m
-          #     memory: 64Mi
+              protocol: TCP
+          volumeMounts:
+            - name: config
+              mountPath: /etc/graphite-exporter
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 50m
+              memory: 64Mi
+      volumes:
+        - name: config
+          configMap:
+            name: truenas-graphite-exporter-config

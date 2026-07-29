@@ -9,8 +9,12 @@ spec:
   type: LoadBalancer
   ports:
     - name: graphite-in
-      port: 9109
-      targetPort: 9109
+      port: 2003
+      targetPort: 2003
+      protocol: TCP
+    - name: metrics
+      port: 9108
+      targetPort: 9108
       protocol: TCP
   selector:
     app.kubernetes.io/name: truenas-graphite-exporter

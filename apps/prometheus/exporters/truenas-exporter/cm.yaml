@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: truenas-graphite-exporter-config
+  namespace: prometheus-exporters
+data:
+  graphite_mapping.conf: |
+    mappings:
+    - match: "servers.*.*.*.*"
+      name: "truenas_${3}_${4}"
+      labels:
+        hostname: "$1"
+        device: "$2"

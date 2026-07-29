@@ -13,4 +13,4 @@ spec:
   rules:
     - backendRefs:
         - name: truenas-graphite-exporter-svc
-          port: 9109
+          port: 2003
