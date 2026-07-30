@@ -6,8 +6,7 @@ metadata:
 data:
   graphite_mapping.conf: |
     mappings:
-      # --- CPU ---
-      # Match: truenas.<hostname>.cpu.<id>.<mode>
+      # --- CPU (5 segments : truenas.<host>.cpu.<id>.<mode>) ---
       - match: "truenas.*.cpu.*.*"
         name: "truenas_cpu_total"
         labels:
@@ -15,42 +14,21 @@ data:
           cpu: "$2"
           mode: "$3"
 
-      # --- MEMOIRE ---
-      # Match: truenas.<hostname>.memory.<type>
+      # --- MEMOIRE (4 segments : truenas.<host>.memory.<type>) ---
       - match: "truenas.*.memory.*"
         name: "truenas_memory_bytes"
         labels:
           hostname: "$1"
           type: "$2"
 
-      # --- DISQUES / IO ---
-      - match: "truenas.*.disk_*.*.*"
-        name: "truenas_disk_io_total"
-        labels:
-          hostname: "$1"
-          device: "$2"
-          operation: "$3"
-
-      # --- RESEAU ---
-      - match: "truenas.*.net_*.*.*"
-        name: "truenas_interface_total"
-        labels:
-          hostname: "$1"
-          device: "$2"
-          direction: "$3"
-
-      # --- ZFS / ARC CACHE ---
+      # --- ZFS ARC (4 segments : truenas.<host>.zfs_arc.<stat>) ---
       - match: "truenas.*.zfs_arc.*"
         name: "truenas_zfs_arc_$2"
         labels:
           hostname: "$1"
 
-      - match: "truenas.*.zfs_arc_*.*"
-        name: "truenas_zfs_arc_$2_$3"
-        labels:
-          hostname: "$1"
-
-      # --- RÈGLES PAR DÉFAUT (Fallbacks par nombre de niveaux) ---
+      # --- FALLBACKS PAR NOMBRE DE SEGMENTS ---
+      # Remplace avantageusement les règles disk/net spécifiques sans faire planter l'exporter
       - match: "truenas.*.*.*"
         name: "truenas_$2_$3"
         labels:
