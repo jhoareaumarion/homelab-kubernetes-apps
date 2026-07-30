@@ -17,4 +17,4 @@ spec:
       targetPort: 9108
       protocol: TCP
   selector:
-    app.kubernetes.io/name: truenas-graphite-exporter
+    app: truenas-graphite-exporter
