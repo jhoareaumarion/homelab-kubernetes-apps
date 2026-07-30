@@ -7,7 +7,8 @@ data:
   graphite_mapping.conf: |
     mappings:
       # --- CPU ---
-      - match: "*.cpu.*.*"
+      # Match: truenas.<hostname>.cpu.<id>.<mode>
+      - match: "truenas.*.cpu.*.*"
         name: "truenas_cpu_total"
         labels:
           hostname: "$1"
@@ -15,56 +16,52 @@ data:
           mode: "$3"
 
       # --- MEMOIRE ---
-      - match: "*.memory.*"
+      # Match: truenas.<hostname>.memory.<type>
+      - match: "truenas.*.memory.*"
         name: "truenas_memory_bytes"
         labels:
           hostname: "$1"
           type: "$2"
 
       # --- DISQUES / IO ---
-      - match: "*.disk-*.disk_octets.*"
-        name: "truenas_disk_io_bytes_total"
-        labels:
-          hostname: "$1"
-          device: "$2"
-          direction: "$3"
-
-      - match: "*.disk-*.disk_ops.*"
-        name: "truenas_disk_ops_total"
+      - match: "truenas.*.disk_*.*.*"
+        name: "truenas_disk_io_total"
         labels:
           hostname: "$1"
           device: "$2"
           operation: "$3"
 
       # --- RESEAU ---
-      - match: "*.interface-*.if_octets.*"
-        name: "truenas_interface_bytes_total"
-        labels:
-          hostname: "$1"
-          device: "$2"
-          direction: "$3"
-
-      - match: "*.interface-*.if_errors.*"
-        name: "truenas_interface_errors_total"
+      - match: "truenas.*.net_*.*.*"
+        name: "truenas_interface_total"
         labels:
           hostname: "$1"
           device: "$2"
           direction: "$3"
 
       # --- ZFS / ARC CACHE ---
-      - match: "*.zfs_arc.*"
+      - match: "truenas.*.zfs_arc.*"
         name: "truenas_zfs_arc_$2"
         labels:
           hostname: "$1"
 
-      - match: "*.zfs_arc-*.*"
+      - match: "truenas.*.zfs_arc_*.*"
         name: "truenas_zfs_arc_$2_$3"
         labels:
           hostname: "$1"
 
-      # --- RÈGLE PAR DÉFAUT (Fallback) ---
-      # Capture toutes les métriques non explicites pour éviter de perdre de la donnée
-      - match: "*.*.*"
+      # --- RÈGLES PAR DÉFAUT (Fallbacks par nombre de niveaux) ---
+      - match: "truenas.*.*.*"
         name: "truenas_$2_$3"
+        labels:
+          hostname: "$1"
+
+      - match: "truenas.*.*.*.*"
+        name: "truenas_$2_$3_$4"
+        labels:
+          hostname: "$1"
+
+      - match: "truenas.*.*.*.*.*"
+        name: "truenas_$2_$3_$4_$5"
         labels:
           hostname: "$1"
