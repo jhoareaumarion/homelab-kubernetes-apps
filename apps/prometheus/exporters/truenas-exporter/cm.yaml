@@ -6,45 +6,37 @@ metadata:
 data:
   graphite_mapping.conf: |
     mappings:
-      # --- CPU (6 segments : scale.truenas.<host>.cpu.<id>.<mode>) ---
-      - match: "*.truenas.*.cpu.*.*"
-        name: "truenas_cpu_total"
+      # --- CPU ---
+      - match: "scale.truenas.*.cpu.*.*"
+        name: "truenas_cpu_$4_$5"
         labels:
-          prefix: "$1"
-          hostname: "$2"
-          cpu: "$4"
-          mode: "$5"
+          hostname: "$1"
+          cpu: "$3"
 
-      # --- MEMOIRE (5 segments : scale.truenas.<host>.memory.<type>) ---
-      - match: "*.truenas.*.memory.*"
-        name: "truenas_memory_bytes"
+      # --- MEMOIRE ---
+      - match: "scale.truenas.*.memory.*"
+        name: "truenas_memory_$3"
         labels:
-          prefix: "$1"
-          hostname: "$2"
-          type: "$4"
+          hostname: "$1"
 
-      # --- ZFS ARC (5 segments : scale.truenas.<host>.zfs_arc.<stat>) ---
-      - match: "*.truenas.*.zfs_arc.*"
-        name: "truenas_zfs_arc_$4"
+      # --- ZFS ARC ---
+      - match: "scale.truenas.*.zfs_arc.*"
+        name: "truenas_zfs_arc_$3"
         labels:
-          prefix: "$1"
-          hostname: "$2"
+          hostname: "$1"
 
-      # --- FALLBACKS ADAPTÉS AU PRÉFIXE ---
-      - match: "*.*.*.*"
+      # --- FALLBACK SÉCURISÉ (évite les collisions en incluant tous les segments) ---
+      - match: "scale.truenas.*.*.*"
         name: "truenas_$3_$4"
         labels:
-          prefix: "$1"
-          hostname: "$2"
+          hostname: "$1"
 
-      - match: "*.*.*.*.*"
+      - match: "scale.truenas.*.*.*.*"
         name: "truenas_$3_$4_$5"
         labels:
-          prefix: "$1"
-          hostname: "$2"
+          hostname: "$1"
 
-      - match: "*.*.*.*.*.*"
+      - match: "scale.truenas.*.*.*.*.*"
         name: "truenas_$3_$4_$5_$6"
         labels:
-          prefix: "$1"
-          hostname: "$2"
+          hostname: "$1"
