@@ -6,40 +6,45 @@ metadata:
 data:
   graphite_mapping.conf: |
     mappings:
-      # --- CPU (5 segments : truenas.<host>.cpu.<id>.<mode>) ---
-      - match: "truenas.*.cpu.*.*"
+      # --- CPU (6 segments : scale.truenas.<host>.cpu.<id>.<mode>) ---
+      - match: "*.truenas.*.cpu.*.*"
         name: "truenas_cpu_total"
         labels:
-          hostname: "$1"
-          cpu: "$2"
-          mode: "$3"
+          prefix: "$1"
+          hostname: "$2"
+          cpu: "$4"
+          mode: "$5"
 
-      # --- MEMOIRE (4 segments : truenas.<host>.memory.<type>) ---
-      - match: "truenas.*.memory.*"
+      # --- MEMOIRE (5 segments : scale.truenas.<host>.memory.<type>) ---
+      - match: "*.truenas.*.memory.*"
         name: "truenas_memory_bytes"
         labels:
-          hostname: "$1"
-          type: "$2"
+          prefix: "$1"
+          hostname: "$2"
+          type: "$4"
 
-      # --- ZFS ARC (4 segments : truenas.<host>.zfs_arc.<stat>) ---
-      - match: "truenas.*.zfs_arc.*"
-        name: "truenas_zfs_arc_$2"
+      # --- ZFS ARC (5 segments : scale.truenas.<host>.zfs_arc.<stat>) ---
+      - match: "*.truenas.*.zfs_arc.*"
+        name: "truenas_zfs_arc_$4"
         labels:
-          hostname: "$1"
+          prefix: "$1"
+          hostname: "$2"
 
-      # --- FALLBACKS PAR NOMBRE DE SEGMENTS ---
-      # Remplace avantageusement les règles disk/net spécifiques sans faire planter l'exporter
-      - match: "truenas.*.*.*"
-        name: "truenas_$2_$3"
+      # --- FALLBACKS ADAPTÉS AU PRÉFIXE ---
+      - match: "*.*.*.*"
+        name: "truenas_$3_$4"
         labels:
-          hostname: "$1"
+          prefix: "$1"
+          hostname: "$2"
 
-      - match: "truenas.*.*.*.*"
-        name: "truenas_$2_$3_$4"
+      - match: "*.*.*.*.*"
+        name: "truenas_$3_$4_$5"
         labels:
-          hostname: "$1"
+          prefix: "$1"
+          hostname: "$2"
 
-      - match: "truenas.*.*.*.*.*"
-        name: "truenas_$2_$3_$4_$5"
+      - match: "*.*.*.*.*.*"
+        name: "truenas_$3_$4_$5_$6"
         labels:
-          hostname: "$1"
+          prefix: "$1"
+          hostname: "$2"
