@@ -24,7 +24,7 @@ spec:
           args:
             - "--graphite.mapping-config=/etc/graphite-exporter/graphite_mapping.conf"
           ports:
-            - containerPort: 2003
+            - containerPort: 9109
               name: graphite-in
               protocol: TCP
             - containerPort: 9108
