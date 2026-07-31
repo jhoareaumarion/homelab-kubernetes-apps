@@ -5,38 +5,4 @@ metadata:
   namespace: prometheus-exporters
 data:
   graphite_mapping.conf: |
-    mappings:
-      # --- CPU ---
-      - match: "scale.truenas.*.cpu.*.*"
-        name: "truenas_cpu_$4_$5"
-        labels:
-          hostname: "$1"
-          cpu: "$3"
-
-      # --- MEMOIRE ---
-      - match: "scale.truenas.*.memory.*"
-        name: "truenas_memory_$3"
-        labels:
-          hostname: "$1"
-
-      # --- ZFS ARC ---
-      - match: "scale.truenas.*.zfs_arc.*"
-        name: "truenas_zfs_arc_$3"
-        labels:
-          hostname: "$1"
-
-      # --- FALLBACK SÉCURISÉ (évite les collisions en incluant tous les segments) ---
-      - match: "scale.truenas.*.*.*"
-        name: "truenas_$3_$4"
-        labels:
-          hostname: "$1"
-
-      - match: "scale.truenas.*.*.*.*"
-        name: "truenas_$3_$4_$5"
-        labels:
-          hostname: "$1"
-
-      - match: "scale.truenas.*.*.*.*.*"
-        name: "truenas_$3_$4_$5_$6"
-        labels:
-          hostname: "$1"
+    mappings: []
