@@ -7,9 +7,9 @@ data:
   graphite_mapping.conf: |
     mappings:
       # ==========================================
-      # 1. CPU 
+      # 1. CPU (Correspond exactement au Dashboard 19661)
       # Format Graphite : scale.truenas.<host>.cpu.<device>.<mode>
-      # Exemple : scale.truenas.truenas.cpu.average.system
+      # Transforme en : truenas_aggregation_cpu_gauge_<mode>
       # ==========================================
       - match: "scale.truenas.*.cpu.*.*"
         name: "truenas_aggregation_cpu_gauge_$3"
@@ -20,9 +20,10 @@ data:
       # ==========================================
       # 2. MEMORY 
       # Format Graphite : scale.truenas.<host>.memory.<type>
+      # Transforme en : truenas_aggregation_memory_gauge_<type>
       # ==========================================
       - match: "scale.truenas.*.memory.*"
-        name: "truenas_aggregation_memory_gauge_$3"
+        name: "truenas_aggregation_memory_gauge_$2"
         labels:
           hostname: "$1"
 
@@ -31,54 +32,32 @@ data:
       # Format Graphite : scale.truenas.<host>.zfs_arc.<stat>
       # ==========================================
       - match: "scale.truenas.*.zfs_arc.*"
-        name: "truenas_zfs_arc_$3"
+        name: "truenas_zfs_arc_$2"
         labels:
           hostname: "$1"
 
       # ==========================================
-      # 4. DISKS (I/O, Stats, Space)
-      # Format Graphite : scale.truenas.<host>.disk.<device>...
+      # 4. DISKS (I/O, Stats)
       # ==========================================
       - match: "scale.truenas.*.disk.*.*.*"
-        name: "truenas_disk_$3_$4_$5"
+        name: "truenas_disk_$2_$3_$4"
         labels:
           hostname: "$1"
 
       - match: "scale.truenas.*.disk.*.*"
-        name: "truenas_disk_$3_$4"
+        name: "truenas_disk_$2_$3"
         labels:
           hostname: "$1"
 
       # ==========================================
-      # 5. NETWORK (Interfaces, Bandwidth)
-      # Format Graphite : scale.truenas.<host>.net.<interface>...
+      # 5. NETWORK 
       # ==========================================
       - match: "scale.truenas.*.net.*.*.*"
-        name: "truenas_net_$3_$4_$5"
+        name: "truenas_net_$2_$3_$4"
         labels:
           hostname: "$1"
 
       - match: "scale.truenas.*.net.*.*"
-        name: "truenas_net_$3_$4"
-        labels:
-          hostname: "$1"
-
-      # ==========================================
-      # 6. FALLBACKS GÉNÉRIQUES SÉCURISÉS
-      # Pour capturer tout le reste (NUT, Uptime, NFS, Services, etc.) 
-      # en évitant les collisions d'erreurs.
-      # ==========================================
-      - match: "scale.truenas.*.*.*"
-        name: "truenas_$3"
-        labels:
-          hostname: "$1"
-
-      - match: "scale.truenas.*.*.*.*"
-        name: "truenas_$3_$4"
-        labels:
-          hostname: "$1"
-
-      - match: "scale.truenas.*.*.*.*.*"
-        name: "truenas_$3_$4_$5"
+        name: "truenas_net_$2_$3"
         labels:
           hostname: "$1"
