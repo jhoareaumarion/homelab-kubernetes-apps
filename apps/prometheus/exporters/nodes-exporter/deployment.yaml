@@ -21,3 +21,11 @@ spec:
           ports:
             - containerPort: 9100
               name: http
+          volumeMounts:
+            - name: dbus
+              mountPath: /var/run/dbus
+              readOnly: true
+      volumes:
+        - name: dbus
+          hostPath:
+            path: /var/run/dbus
