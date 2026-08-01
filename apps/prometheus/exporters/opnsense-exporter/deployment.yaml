@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opnsense-exporter
+  namespace: prometheus-exporters
+  labels:
+    app: opnsense-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: opnsense-exporter
+  template:
+    metadata:
+      labels:
+        app: opnsense-exporter
+    spec:
+      nodeSelector:
+        affected_vlan: "50"
+      containers:
+        - name: opnsense-exporter
+          image: athennamind/opnsense-exporter:0.0.16
+          imagePullPolicy: IfNotPresent
+          args:
+            - "--opnsense.protocol=https"
+            - "--opnsense.address=opnsense.home.hoareau-marion.eu"
+            - "--exporter.instance-label=opnsense"
+            - "--web.listen.address=:8080"
+          ports:
+            - containerPort: 8080
+              name: opnsense-metrics
+              protocol: TCP          
+          envFrom:
+            - secretRef:
+                name: opnsense-secrets
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 50m
+              memory: 64Mi
