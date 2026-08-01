@@ -19,7 +19,7 @@ spec:
         affected_vlan: "50"
       containers:
         - name: opnsense-exporter
-          image: athennamind/opnsense-exporter:0.0.16
+          image: ghcr.io/athennamind/opnsense-exporter:0.0.16
           imagePullPolicy: IfNotPresent
           args:
             - "--opnsense.protocol=https"
