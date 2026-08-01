@@ -30,7 +30,6 @@ data:
         params:
           cluster: ['1']
           node: ['1']
-          module: ['default']
         static_configs:
           - targets:
               - mars.private.hoareau-marion.eu
