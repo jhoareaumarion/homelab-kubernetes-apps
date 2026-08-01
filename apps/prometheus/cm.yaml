@@ -40,18 +40,11 @@ data:
           - source_labels: [__address__]
             target_label: __param_target
 
-          # 2. Dynamically extract the node prefix (mars, mercury, jupiter) 
-          # and map it to the ?module= parameter
-          - source_labels: [__address__]
-            regex: '^([a-z]+)\..*'
-            target_label: __param_module
-            replacement: '$1'
-
-          # 3. Clean up the Grafana/Prometheus 'instance' label to show the node hostname
+          # 2. Clean up the Grafana/Prometheus 'instance' label to show the node hostname
           - source_labels: [__param_target]
             target_label: instance
 
-          # 4. Redirect the actual network scrape away from the target 
+          # 3. Redirect the actual network scrape away from the target 
           # and into your K3S ClusterIP service
           - target_label: __address__
             replacement: 'pve-exporter-svc.prometheus-exporters.svc.cluster.local:9221'
