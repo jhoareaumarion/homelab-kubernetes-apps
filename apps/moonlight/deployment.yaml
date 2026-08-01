@@ -27,7 +27,12 @@ spec:
         - name: config-volume
           mountPath: /app/server/config.json
           subPath: config.json
+        - name: moonlight-nfs-storage
+          mountPath: /app/server
       volumes:
       - name: config-volume
         configMap:
           name: config-map 
+      - name: moonlight-nfs-storage
+        persistentVolumeClaim:
+          claimName: pvc
