@@ -100,16 +100,19 @@ data:
             namespaces:
               names: ['prometheus-exporters']
         relabel_configs:
-          # Matches the service name. Ensure you create a Service named 'opnsense-exporter-svc'
+          # Matches the service name. 
           - source_labels: [__meta_kubernetes_service_name]
             action: keep
             regex: opnsense-exporter-svc
+          # 2. Override the default K8s pod instance label to match 'opnsense'
+          - target_label: instance
+            replacement: 'opnsense'
 
       # ---------------------------------------------------------
       #  Scrape OPNsense Node Exporter (Directly on Firewall)
       # ---------------------------------------------------------
       - job_name: 'opnsense-node-exporter'
         static_configs:
-          - targets: ['opnsense.home.hoareau-marion.eu:9100'] # Default node_exporter port
+          - targets: ['opnsense.home.hoareau-marion.eu:9100'] 
             labels:
               instance: 'opnsense'
