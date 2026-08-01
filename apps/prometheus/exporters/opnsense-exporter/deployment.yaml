@@ -28,7 +28,7 @@ spec:
             - "--web.listen.address=:8080"
           ports:
             - containerPort: 8080
-              name: opnsense-metrics
+              name: fw-metrics
               protocol: TCP          
           envFrom:
             - secretRef:

@@ -7,6 +7,6 @@ spec:
   selector:
     app: opnsense-exporter
   ports:
-    - name: opnsense-metrics
+    - name: fw-metrics
       port: 8080
       targetPort: 8080
