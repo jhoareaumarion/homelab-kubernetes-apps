@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cilium
+  namespace: argocd
+  labels:
+    hoareau-marion.eu/category: infrastructure
+  annotations:
+    argocd.argoproj.io/sync-wave: "-5"
+spec:
+  project: homelab
+  sources:
+    # Source 1: The official Cilium Helm chart from upstream
+    - repoURL: https://helm.cilium.io/
+      chart: cilium
+      targetRevision: "1.19.5"
+      helm:
+        releaseName: cilium
+        valueFiles:
+          - $manifests/apps/cilium/values.yaml 
+
+    # Source 2: Extra manifests in apps/cilium
+    - repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps.git
+      targetRevision: HEAD
+      path: apps/cilium
+      ref: manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false
+      - ServerSideApply=true

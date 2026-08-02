@@ -1,0 +1,26 @@
+bpf:
+  hostLegacyRoutine: true
+  hostRouting: false
+  masquerade: true
+egressGateway:
+  enabled: true
+enablePMTU: true
+externalIPs:
+  enabled: true
+gatewayAPI:
+  enabled: true
+  replicas: 1
+hubble:
+  relay:
+    enabled: true
+  ui:
+    enabled: true
+ingressController:
+  default: true
+  enabled: true
+kubeProxyReplacement: true
+l2announcements:
+  enabled: true
+mtu: 1400
+operator:
+  replicas: 1
