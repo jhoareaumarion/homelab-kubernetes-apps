@@ -1,0 +1,16 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: route
+  namespace: grafana-loki
+spec:
+  parentRefs:
+    - name: ingress-gateway
+      namespace: cluster-gateway
+      sectionName: loki-https  
+  hostnames:
+    - "loki.hoareau-marion.eu"
+  rules:
+    - backendRefs:
+        - name: loki
+          port: 3100

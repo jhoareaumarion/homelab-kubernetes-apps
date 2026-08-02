@@ -416,3 +416,20 @@ spec:
         selector:
           matchLabels:
             gateway-access: planka
+  ###
+  # LOKI
+  ###
+  - name: loki-https
+    hostname: "loki.hoareau-marion.eu"
+    port: 443  
+    protocol: HTTPS
+    tls:
+      mode: Terminate
+      certificateRefs:
+        - name: loki-hoareau-marion-eu-tls
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: loki
