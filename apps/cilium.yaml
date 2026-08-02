@@ -11,7 +11,7 @@ spec:
   project: homelab
   sources:
     # Source 1: The official Cilium Helm chart from upstream
-    - repoURL: https://helm.cilium.io/
+    - repoURL: oci://quay.io/cilium/charts
       chart: cilium
       targetRevision: "1.19.5"
       helm:
