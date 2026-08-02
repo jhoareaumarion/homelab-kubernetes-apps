@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/rancher/system-upgrade-controller.git'
-    targetRevision: v0.20.1
-    path: manifests
+    repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
+    targetRevision: HEAD
+    path: apps/system-upgrade-controller
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: system-upgrade
