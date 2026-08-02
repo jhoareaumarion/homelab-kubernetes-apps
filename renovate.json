@@ -1,13 +1,55 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+  /* ==========================================================
+   * Core Configuration & Dashboard
+   * Inherits recommended presets and enables the interactive UI dashboard
+   * ========================================================== */
   "extends": ["config:recommended", ":dependencyDashboard"],
-  "enabledManagers": ["kubernetes", "dockerfile"], 
+
+  /* ==========================================================
+   * Enabled Package Managers
+   * Defines which ecosystem tools Renovate is permitted to run
+   * ========================================================== */
+  "enabledManagers": ["kubernetes", "dockerfile", "helm", "argocd", "custom.regex"],
+
+  /* ==========================================================
+   * File Matching Rules
+   * Scans deployment manifests, Dockerfiles, Helm charts, and ArgoCD apps
+   * ========================================================== */
   "kubernetes": {
     "fileMatch": ["apps/.+/deployment\\.yaml$"]
   },
   "dockerfile": {
     "fileMatch": ["apps/.+/Dockerfile$"]
   },
+  "helm": {
+    "fileMatch": ["apps/.+/values\\.yaml$", "apps/.+/helmrelease\\.yaml$"]
+  },
+  "argocd": {
+    "managerFilePatterns": ["^apps/.+\\.yaml$"]
+  },
+
+  /* ==========================================================
+   * Custom RegEx Manager for K3s System Upgrade Plans
+   * Tracks GitHub releases for k3s-io/k3s and updates version tags in plans
+   * ========================================================== */
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^apps/system-upgrade/.+\\.yaml$"],
+      "matchStrings": [
+        "version:\\s+(?<currentValue>v\\d+\\.\\d+\\.\\d+\\+k3s\\d+)"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "k3s-io/k3s"
+    }
+  ],
+
+  /* ==========================================================
+   * Global Package Rules & Security Policies
+   * Enforces container image pinning with immutable digests
+   * ========================================================== */
   "packageRules": [
     {
       "matchDatasources": ["docker"],
