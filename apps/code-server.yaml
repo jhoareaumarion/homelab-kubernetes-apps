@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: code-server
   namespace: argocd
+  labels:
+    hoareau-marion.eu/category: productivity
 spec:
   project: homelab
   sources:

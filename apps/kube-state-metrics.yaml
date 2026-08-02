@@ -5,6 +5,8 @@ metadata:
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "1"
+  labels:
+    hoareau-marion.eu/category: observability
 spec:
   project: default
   source:

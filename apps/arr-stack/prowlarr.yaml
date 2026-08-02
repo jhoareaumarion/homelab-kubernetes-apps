@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: prowlarr
   namespace: argocd
+  labels:
+    hoareau-marion.eu/category: media
 spec:
   project: homelab
   source:

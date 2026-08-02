@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: cluster-gateway
   namespace: argocd
+  labels:
+    hoareau-marion.eu/category: infrastructure
 spec:
   project: homelab
   source:

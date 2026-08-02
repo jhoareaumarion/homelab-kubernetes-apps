@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: synapse
   namespace: argocd
+  labels:
+    hoareau-marion.eu/category: collaboration
 spec:
   project: homelab
   source:

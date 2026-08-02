@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: renovate
   namespace: argocd
+  labels:
+    hoareau-marion.eu/category: tools
 spec:
   project: homelab
   source:

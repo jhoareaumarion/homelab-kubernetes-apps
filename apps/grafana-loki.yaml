@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: grafana-loki
   namespace: argocd
+  labels:
+    hoareau-marion.eu/category: observability
 spec:
   project: homelab
   source:

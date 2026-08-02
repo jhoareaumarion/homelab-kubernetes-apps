@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: shared-authentication
   namespace: argocd
+  labels:
+    hoareau-marion.eu/category: security
 spec:
   project: homelab
   source:

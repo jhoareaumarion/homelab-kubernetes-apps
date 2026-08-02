@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: paperless-ngx
   namespace: argocd
+  labels:
+    hoareau-marion.eu/category: personal
 spec:
   project: homelab
   source:

@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: radarr
   namespace: argocd
+  labels:
+    hoareau-marion.eu/category: media
 spec:
   project: homelab
   source:

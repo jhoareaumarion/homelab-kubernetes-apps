@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: argocd
   namespace: argocd
+  labels:
+    hoareau-marion.eu/category: infrastructure
 spec:
   project: homelab
   source:
