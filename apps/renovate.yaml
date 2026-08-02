@@ -5,7 +5,7 @@ metadata:
   name: renovate
   namespace: argocd
   labels:
-    hoareau-marion.eu/category: tools
+    hoareau-marion.eu/category: infrastructure
 spec:
   project: homelab
   source:
