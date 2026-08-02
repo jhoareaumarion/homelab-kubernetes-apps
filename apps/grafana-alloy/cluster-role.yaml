@@ -10,6 +10,7 @@ rules:
       - services
       - endpoints
       - pods
+      - pods/log
       - namespaces
     verbs: ["get", "list", "watch"]
   - apiGroups: ["apps"]
