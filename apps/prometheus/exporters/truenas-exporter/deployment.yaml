@@ -19,7 +19,7 @@ spec:
         affected_vlan: "50"
       containers:
         - name: graphite-exporter
-          image: prom/graphite-exporter:v0.16.0
+          image: prom/graphite-exporter:v0.17.0@sha256:c1a266f63a84fd11048ab6ad1552a4c497b14522d02823925247698e41eeac2b
           imagePullPolicy: IfNotPresent
           args:
             - "--graphite.mapping-config=/etc/graphite-exporter/graphite_mapping.conf"
