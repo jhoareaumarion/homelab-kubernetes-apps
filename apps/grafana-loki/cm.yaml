@@ -29,3 +29,17 @@ data:
             period: 24h
     ruler:
       alertmanager_url: http://localhost:9093
+
+    compactor:
+      working_directory: /loki/compactor
+      shared_store: filesystem
+      compaction_interval: 10m
+      retention_enabled: true          
+      retention_delete_delay: 2h      
+      retention_delete_worker_count: 15
+
+    limits_config:
+      retention_period: 30d            
+      enforced_metric_name: ""
+      reject_old_samples: true
+      reject_old_samples_max_age: 168h
