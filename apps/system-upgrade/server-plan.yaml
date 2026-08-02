@@ -6,10 +6,10 @@ metadata:
 spec:
   concurrency: 1
   cordon: true
+  version: v1.34.4+k3s1
   nodeSelector:
     matchLabels:
       kubernetes.io/hostname: home-desk-r04-mer01-20-mkub-01
   serviceAccountName: system-upgrade
   upgrade:
     image: rancher/k3s-upgrade
-    version: v1.34.4+k3s1
