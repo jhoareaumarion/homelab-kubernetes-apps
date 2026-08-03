@@ -1,0 +1,11 @@
+# argocd/kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: argocd
+
+# Point directly to the upstream stable manifest
+resources:
+  - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+  - route.yaml
+  - certificate.yaml
+  - argocd-cm.yaml

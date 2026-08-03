@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-hoareau-marion-eu-tls
+  namespace: virtual-management
+spec:
+  dnsNames:
+    - argocd.hoareau-marion.eu
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  secretName: argocd-hoareau-marion-eu-tls
