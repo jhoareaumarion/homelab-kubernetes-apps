@@ -10,3 +10,6 @@ resources:
   - certificate.yaml
 patches:
   - path: argocd-cm.yaml
+    target:
+      kind: ConfigMap
+      name: argocd-cm
