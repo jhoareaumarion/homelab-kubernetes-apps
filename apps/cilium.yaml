@@ -42,3 +42,15 @@ spec:
       jsonPointers:
         - /data/ca.crt
         - /data/ca.key
+    - kind: Secret
+      name: hubble-relay-client-certs
+      namespace: kube-system
+      jsonPointers:
+        - /data/ca.crt
+        - /data/ca.key
+    - kind: Secret
+      name: hubble-server-certs
+      namespace: kube-system
+      jsonPointers:
+        - /data/ca.crt
+        - /data/ca.key
