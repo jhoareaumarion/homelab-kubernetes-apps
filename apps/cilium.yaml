@@ -34,9 +34,9 @@ spec:
     syncOptions:
       - CreateNamespace=false
       - ServerSideApply=true
+      - RespectIgnoreDifferences=true
   ignoreDifferences:
-    - group: ""
-      kind: Secret
+    - kind: Secret
       name: cilium-ca
       namespace: kube-system
       jsonPointers:
