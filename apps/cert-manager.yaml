@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+  labels:
+    hoareau-marion.eu/category: infrastructure
+spec:
+  project: homelab
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cert-manager
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false
+      - ServerSideApply=true
+  sources:
+    # Source 1: Official cert-manager chart
+    - repoURL: https://charts.jetstack.io
+      chart: cert-manager
+      targetRevision: "v1.18.2"
+      helm:
+        releaseName: cert-manager
+
+    # Source 2: OVH Webhook for cert-manager
+    - repoURL: https://aureq.github.io/cert-manager-webhook-ovh/
+      chart: cert-manager-webhook-ovh
+      targetRevision: "0.9.0"
+      helm:
+        releaseName: cm-webhook-ovh
+    # Source 3 : This repository
+    - repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps.git
+      targetRevision: HEAD
+      path: apps/cert-manager
+      ref: manifests
