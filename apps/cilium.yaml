@@ -40,4 +40,5 @@ spec:
       name: cilium-ca
       namespace: kube-system
       jsonPointers:
-        - /data
+        - /data/ca.crt
+        - /data/ca.key
