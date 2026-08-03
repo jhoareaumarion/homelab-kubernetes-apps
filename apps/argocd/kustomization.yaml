@@ -8,4 +8,5 @@ resources:
   - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
   - route.yaml
   - certificate.yaml
-  - argocd-cm.yaml
+patches:
+  - path: argocd-cm.yaml
