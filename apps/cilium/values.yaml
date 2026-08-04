@@ -16,7 +16,7 @@ hubble:
   ui:
     enabled: true
 ingressController:
-  enabled: false
+  enabled: true
 kubeProxyReplacement: true
 l2announcements:
   enabled: true
