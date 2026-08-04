@@ -6,6 +6,7 @@ rules:
   - apiGroups:
       - "ovh.solver.hoareau-marion.eu"
     resources:
+      - "ovh"
       - "*"
     verbs:
       - "create"
