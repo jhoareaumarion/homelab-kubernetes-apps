@@ -6,7 +6,7 @@ metadata:
   labels:
     hoareau-marion.eu/category: infrastructure
 spec:
-  project: default
+  project: homelab
   source:
     repoURL: https://kubernetes-sigs.github.io/external-dns/
     chart: external-dns

@@ -8,7 +8,7 @@ metadata:
   labels:
     hoareau-marion.eu/category: observability
 spec:
-  project: default
+  project: homelab
   source:
     chart: kube-state-metrics
     repoURL: https://prometheus-community.github.io/helm-charts

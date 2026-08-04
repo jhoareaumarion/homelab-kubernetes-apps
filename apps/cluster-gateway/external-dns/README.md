@@ -26,7 +26,7 @@ metadata:
   name: external-dns
   namespace: argocd
 spec:
-  project: default
+  project: homelab
   source:
     repoURL: https://kubernetes-sigs.github.io/external-dns/
     chart: external-dns
