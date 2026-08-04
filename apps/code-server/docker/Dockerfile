@@ -1,5 +1,5 @@
 # 1. Base Image: Use the official code-server
-FROM codercom/code-server:4.130.0@sha256:fa367e7eddd303a95c736f7aede351cdee9036a7383cecfd8786bb5bbe78c13b
+FROM codercom/code-server:4.131.0@sha256:3623e6362abdec6258472882b06fdeec9d6ce2ad3fda316b3c5d7ed092b89add
 
 # Switch to root to perform installations
 USER root
