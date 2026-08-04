@@ -5,6 +5,10 @@ metadata:
   namespace: lubelogger
 data:
   EnableAuth: "true"
+  LANG: "en_US.UTF-8"
+  LC_NUMERIC: "fr_FR.UTF-8"
+  LC_MONETARY: "fr_FR.UTF-8"
+  LC_TIME: "fr_FR.UTF-8"
   OpenIDConfig__Name: "Keycloak"
   OpenIDConfig__ClientId: "lubelogger"
   OpenIDConfig__AuthURL: "https://auth.hoareau-marion.eu.com/realms/milkyway/protocol/openid-connect/auth"
