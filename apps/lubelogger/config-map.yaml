@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm
+  namespace: lubelogger
+data:
+  EnableAuth: "true"
+  OpenIDConfig__Name: "Keycloak"
+  OpenIDConfig__ClientId: "lubelogger"
+  OpenIDConfig__AuthURL: "https://auth.hoareau-marion.eu.com/realms/milkyway/protocol/openid-connect/auth"
+  OpenIDConfig__TokenURL: "https://auth.hoareau-marion.eu.com/realms/milkyway/protocol/openid-connect/token"
+  OpenIDConfig__RedirectURL: "https://lubelogger.hoareau-marion.eu/Login/RemoteAuth"
+  OpenIDConfig__Scope: "openid email profile"
+  OpenIDConfig__UsePKCE: "true"
+  OpenIDConfig__ValidateState: "true"

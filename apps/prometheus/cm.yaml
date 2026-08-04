@@ -52,7 +52,7 @@ data:
             target_label: __param_module
             replacement: '$1'
 
-          # 3. Clean up the Grafana/Prometheus 'instance' label to show the node hostname
+          # 3. Clean up the lubelogger/Prometheus 'instance' label to show the node hostname
           - source_labels: [__param_target]
             target_label: instance
 

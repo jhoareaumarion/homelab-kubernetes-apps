@@ -1,0 +1,28 @@
+# apps/lubelogger.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lubelogger
+  namespace: argocd
+  labels:
+    hoareau-marion.eu/category: personal
+spec:
+  project: homelab
+  source:
+    repoURL: https://github.com/jhoareaumarion/homelab-kubernetes-apps
+    targetRevision: HEAD
+    path: apps/lubelogger
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: lubelogger
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lubelogger
+  namespace: lubelogger
+  labels:
+    app: lubelogger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lubelogger
+  template:
+    metadata:
+      labels:
+        app: lubelogger
+    spec:
+      containers:
+      - name: lubelogger
+        image: ghcr.io/hargata/lubelogger:v1.7.0@sha256:01bdb486af71e641c3ae41499e0412a21f2e04fa31b25c5c6531b42c112938e5
+        ports:
+        - containerPort: 8080
+          name: http
+        resources:
+          limits:
+            cpu: "1"
+            memory: 1Gi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        volumeMounts:
+        - mountPath: /App/data
+          name: data-volume
+        - mountPath: /root/.aspnet/DataProtection-Keys
+          name: keys-volume
+        envFrom:
+        - configMapRef:
+            name: cm
+        env:
+        - name: OpenIDConfig__ClientSecret
+          valueFrom:
+            secretKeyRef:
+              name: lubelogger-secret
+              key: client-secret
+      volumes:
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: lubelogger-data-pvc
+      - name: keys-volume
+        persistentVolumeClaim:
+          claimName: lubelogger-keys-pvc
