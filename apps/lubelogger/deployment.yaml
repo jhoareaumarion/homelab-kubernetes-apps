@@ -48,4 +48,4 @@ spec:
           claimName: data-pvc
       - name: keys-volume
         persistentVolumeClaim:
-          claimName: keys-pvc
+          claimName: key-pvc
