@@ -16,7 +16,7 @@ hubble:
   ui:
     enabled: true
 ingressController:
-  enabled: false
+  enabled: true
   service:
     type: ClusterIP
 kubeProxyReplacement: true
