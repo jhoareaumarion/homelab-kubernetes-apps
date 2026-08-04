@@ -19,6 +19,7 @@ ingressController:
   enabled: true
   service:
     type: ClusterIP
+    externalTrafficPolicy: "~"
 kubeProxyReplacement: true
 l2announcements:
   enabled: true
