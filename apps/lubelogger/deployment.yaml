@@ -42,7 +42,7 @@ spec:
         - name: OpenIDConfig__ClientSecret
           valueFrom:
             secretKeyRef:
-              name: secrets
+              name: secret
               key: client-secret
       volumes:
       - name: data-volume
