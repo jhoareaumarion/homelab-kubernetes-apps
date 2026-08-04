@@ -3,8 +3,6 @@ kind: HTTPRoute
 metadata:
   name: actual-budget-route
   namespace: actual-budget
-  annotations:
-    argocd.argoproj.io/sync-wave: "0"  
 spec:
   parentRefs:
     - name: ingress-gateway
