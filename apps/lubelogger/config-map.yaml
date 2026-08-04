@@ -4,7 +4,7 @@ metadata:
   name: cm
   namespace: lubelogger
 data:
-  EnableAuth: "true"
+  #EnableAuth: "true"
   LANG: "en_US.UTF-8"
   LC_NUMERIC: "fr_FR.UTF-8"
   LC_MONETARY: "fr_FR.UTF-8"
