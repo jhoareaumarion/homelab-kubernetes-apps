@@ -9,7 +9,7 @@ spec:
   parentRefs:
     - name: ingress-gateway
       namespace: cluster-gateway 
-      section-name: actual-budget-https
+      sectionName: actual-budget-https
   hostnames:
     - "actual-budget.hoareau-marion.eu"
   rules:
