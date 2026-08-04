@@ -45,7 +45,7 @@ spec:
       volumes:
       - name: data-volume
         persistentVolumeClaim:
-          claimName: lubelogger-data-pvc
+          claimName: data-pvc
       - name: keys-volume
         persistentVolumeClaim:
-          claimName: lubelogger-keys-pvc
+          claimName: keys-pvc
