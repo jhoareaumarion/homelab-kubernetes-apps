@@ -59,9 +59,9 @@ spec:
               name: db-secrets
               key: POSTGRES_PASSWORD
         - name: RADARR__POSTGRES__MAINDB
-          value: "sonarr-main"
+          value: "radarr-main"
         - name: RADARR__POSTGRES__LOGDB
-          value: "sonarr-log"
+          value: "radarr-log"
         ports:
         - name: radarr
           containerPort: 7878
