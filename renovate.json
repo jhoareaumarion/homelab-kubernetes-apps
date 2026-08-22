@@ -13,7 +13,7 @@
   ],
   "kubernetes": {
     "managerFilePatterns": [
-      "/apps/.+/deployment\\.yaml$/"
+      "^apps/.+\\.yaml$"
     ]
   },
   "dockerfile": {
