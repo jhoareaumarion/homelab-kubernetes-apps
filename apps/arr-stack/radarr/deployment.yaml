@@ -43,6 +43,25 @@ spec:
         envFrom:
         - configMapRef:
             name: config-map
+        env:
+        - name: RADARR__POSTGRES__HOST
+          value: "postgres"
+        - name: RADARR__POSTGRES__PORT
+          value: "5432"
+        - name: RADARR__POSTGRES__USER
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: POSTGRES_USER
+        - name: RADARR__POSTGRES__PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: POSTGRES_PASSWORD
+        - name: RADARR__POSTGRES__MAINDB
+          value: "sonarr-main"
+        - name: RADARR__POSTGRES__LOGDB
+          value: "sonarr-log"
         ports:
         - name: radarr
           containerPort: 7878
