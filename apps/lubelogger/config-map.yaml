@@ -16,4 +16,4 @@ data:
   OpenIDConfig__RedirectURL: "https://lubelogger.hoareau-marion.eu/Login/RemoteAuth"
   OpenIDConfig__Scope: "openid email profile"
   OpenIDConfig__UsePKCE: "true"
-  OpenIDConfig__ValidateState: "true"
+  OpenIDConfig__ValidateState: "true"Speckled-Enslave4-Voucher-Calzone
