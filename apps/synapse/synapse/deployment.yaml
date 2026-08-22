@@ -23,7 +23,7 @@ spec:
         fsGroup: 991
       containers:
       - name: synapse
-        image: matrixdotorg/synapse:v1.157.2@sha256:097e3120b8ecf97e4f92537d7af2da41564c706e33fc740f3741c9defacc2af1
+        image: matrixdotorg/synapse:v1.159.0@sha256:edf259d2b575b669a3e81024918ab8d5cfb7d2fba5a53c9e09695f1abc5645cb
         ports:
         - containerPort: 8008
         envFrom:
