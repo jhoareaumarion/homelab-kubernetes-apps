@@ -41,6 +41,25 @@ spec:
         envFrom:
         - configMapRef:
             name: config-map
+        env:
+        - name: SONARR__POSTGRES__HOST
+          value: "postgres"
+        - name: SONARR__POSTGRES__PORT
+          value: "5432"
+        - name: SONARR__POSTGRES__USER
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: POSTGRES_USER
+        - name: SONARR__POSTGRES__PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: POSTGRES_PASSWORD
+        - name: SONARR__POSTGRES__MAINDB
+          value: "sonarr-main"
+        - name: SONARR__POSTGRES__LOGDB
+          value: "sonarr-log"
         ports:
         - name: sonarr
           containerPort: 8989
