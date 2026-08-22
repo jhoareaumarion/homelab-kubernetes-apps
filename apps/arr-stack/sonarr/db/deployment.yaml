@@ -33,10 +33,10 @@ spec:
           valueFrom:
             secretKeyRef:
               name: db-secrets
-              key: POSTGRES_DB
+              key: POSTGRES_D
         volumeMounts:
         - name: db-data
-          mountPath: /var/lib/postgresql/data
+          mountPath: /var/lib/postgresql
         - name: init-scripts
           mountPath: /docker-entrypoint-initdb.d
       volumes:
