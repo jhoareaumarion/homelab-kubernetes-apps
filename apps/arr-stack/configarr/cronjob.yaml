@@ -10,6 +10,14 @@ spec:
     spec:
       template:
         spec:
+          initContainers:
+            - name: fix-repo-permissions
+              image: busybox:latest
+              command: ["sh", "-c", "chown -R 1000:1000 /app/repos"]
+              volumeMounts:
+                - mountPath: /app/repos
+                  name: app-data
+                  subPath: configarr-repos
           containers:
             - name: configarr
               image: ghcr.io/raydak-labs/configarr:1.24
