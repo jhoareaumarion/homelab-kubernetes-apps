@@ -22,6 +22,11 @@ spec:
                 secretKeyRef:
                   name: renovate-secrets
                   key: token
+            - name: RENOVATE_HOST_RULES
+              valueFrom:
+                secretKeyRef:
+                  name: renovate-secrets
+                  key: RENOVATE_HOST_RULES
             - name: RENOVATE_AUTODISCOVER
               value: "true"
             - name: RENOVATE_AUTODISCOVER_FILTER
