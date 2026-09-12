@@ -13,30 +13,30 @@
   ],
   "kubernetes": {
     "managerFilePatterns": [
-      "^apps/.+\\.yaml$"
+      "^apps/(?!.*values\\.yaml$).+\\.yaml$"
     ]
   },
   "dockerfile": {
     "managerFilePatterns": [
-      "/apps/.+/Dockerfile$/"
+      "^apps/.+/Dockerfile$"
     ]
   },
   "helm-values": {
     "managerFilePatterns": [
-      "/apps/.+/values\\.yaml$/",
-      "/apps/.+/helmrelease\\.yaml$/"
+      "^apps/.+/values\\.yaml$",
+      "^apps/.+/helmrelease\\.yaml$"
     ]
   },
   "argocd": {
     "managerFilePatterns": [
-      "^apps/.+\\.yaml$"
+      "^apps/.+/application\\.yaml$"
     ]
   },
   "customManagers": [
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "/^apps/system-upgrade/.+\\.yaml$/"
+        "^apps/system-upgrade/.+\\.yaml$"
       ],
       "matchStrings": [
         "version:\\s+(?<currentValue>v\\d+\\.\\d+\\.\\d+\\+k3s\\d+)"
