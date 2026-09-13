@@ -40,7 +40,7 @@
     },
     {
       "matchPackageNames": ["codercom/code-server"],
-      "allowedVersions": "^4\\."
+      "allowedVersions": "4.x"
     }
   ]
 }
