@@ -11,32 +11,17 @@
     "argocd",
     "custom.regex"
   ],
-  "kubernetes": {
-    "managerFilePatterns": [
-      "^apps/(?!.*values\\.yaml$).+\\.yaml$"
-    ]
-  },
-  "dockerfile": {
-    "managerFilePatterns": [
-      "^apps/.+/Dockerfile$"
-    ]
-  },
   "helm-values": {
-    "managerFilePatterns": [
-      "^apps/.+/values\\.yaml$",
-      "^apps/.+/helmrelease\\.yaml$"
-    ]
-  },
-  "argocd": {
-    "managerFilePatterns": [
-      "^apps/.+/application\\.yaml$"
+    "fileMatch": [
+      "(^|/)values\\.yaml$",
+      "(^|/)helmrelease\\.yaml$"
     ]
   },
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": [
-        "^apps/system-upgrade/.+\\.yaml$"
+      "fileMatch": [
+        "(^|/)system-upgrade/.+\\.yaml$"
       ],
       "matchStrings": [
         "version:\\s+(?<currentValue>v\\d+\\.\\d+\\.\\d+\\+k3s\\d+)"
