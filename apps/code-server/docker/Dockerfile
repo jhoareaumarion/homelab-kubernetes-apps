@@ -1,5 +1,5 @@
 # 1. Base Image: Use the official code-server
-FROM codercom/code-server:4.137.0@sha256:57ac684d44deb6fa94317b3e8f3e128dd7fb897fffd95b4efcd16f56ce607971
+FROM ghcr.io/coder/code-server:4.137.0@sha256:57ac684d44deb6fa94317b3e8f3e128dd7fb897fffd95b4efcd16f56ce607971
 
 # Switch to root to perform installations
 USER root
