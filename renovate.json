@@ -12,16 +12,16 @@
     "custom.regex"
   ],
   "helm-values": {
-    "fileMatch": [
-      "(^|/)values\\.yaml$",
-      "(^|/)helmrelease\\.yaml$"
+    "managerFilePatterns": [
+      "/(^|/)values\\.yaml$/",
+      "/(^|/)helmrelease\\.yaml$/"
     ]
   },
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "(^|/)system-upgrade/.+\\.yaml$"
+      "managerFilePatterns": [
+        "/(^|/)system-upgrade/.+\\.yaml$/"
       ],
       "matchStrings": [
         "version:\\s+(?<currentValue>v\\d+\\.\\d+\\.\\d+\\+k3s\\d+)"
