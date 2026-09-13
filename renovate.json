@@ -37,6 +37,10 @@
       ],
       "pinDigests": true,
       "automerge": false
+    },
+    {
+      "matchPackageNames": ["codercom/code-server"],
+      "allowedVersions": "^4\\."
     }
   ]
 }
