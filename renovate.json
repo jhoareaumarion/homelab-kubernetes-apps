@@ -11,6 +11,11 @@
     "argocd",
     "custom.regex"
   ],
+  "kubernetes": {
+  "managerFilePatterns": [
+    "/(^|/)deployment\\.yaml$/"
+  ]
+  },
   "helm-values": {
     "managerFilePatterns": [
       "/(^|/)values\\.yaml$/",
