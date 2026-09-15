@@ -17,7 +17,7 @@ spec:
         affected_vlan: "50" 
       containers:
         - name: grafana
-          image: grafana/grafana:13.1.1@sha256:7cb8c64c4d57a57e734073f3cc94620adb24a0acb929bd80ba9f14017e3a975b
+          image: grafana/grafana:13.2.2@sha256:ac461fb352abc50da10a51c7d02462e9c05488f11f53f14b3ad79a8145f638a0
           ports:
             - containerPort: 3000
           volumeMounts:
