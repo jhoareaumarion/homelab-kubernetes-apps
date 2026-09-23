@@ -26,7 +26,7 @@ spec:
               tag: main
             env:
               - name: OPNSENSE_HOST
-                value: "https://opnsense.home.hoareau-marion.eu" # Replace with your OPNsense internal IP/URL
+                value: "https://opnsense.hoareau-marion.eu"
               - name: OPNSENSE_API_KEY
                 valueFrom:
                   secretKeyRef:
