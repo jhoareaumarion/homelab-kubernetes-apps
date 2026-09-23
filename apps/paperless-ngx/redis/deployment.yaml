@@ -17,7 +17,7 @@ spec:
         affected_vlan: "50"
       containers:
         - name: redis
-          image: docker.io/library/redis:8@sha256:2838d5524559494f6f1cd66e97e76b200d64a633a8614200620755ed395daf32
+          image: docker.io/library/redis:8@sha256:718f745deb7dfefeac6eed7041fc7ec9476b50e61b247932682457c41adafa0e
           args: ["--appendonly", "yes"]
           volumeMounts:
             - name: redisdata
