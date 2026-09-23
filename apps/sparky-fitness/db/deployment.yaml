@@ -17,7 +17,7 @@ spec:
         affected_vlan: "50"
       containers:
         - name: postgres
-          image: postgres:15-alpine@sha256:cd17e2ac98240fce1541ad2a803b34009b4eea5aec8a832363cdc7eca62e722e
+          image: postgres:18-alpine@sha256:77f585114c32fbca283dc835b0596f4e52b51b4c6662d7810b2f4084f60a1873
           envFrom:
             - configMapRef:
                 name: db-cm 
