@@ -17,7 +17,7 @@ spec:
         affected_vlan: "50"
       containers:
         - name: postgres
-          image: docker.io/library/postgres:18@sha256:4aabea78cf39b90e834caf3af7d602a18565f6fe2508705c8d01aa63245c2e20
+          image: docker.io/library/postgres:18@sha256:5a5a84b19854a9ffaa54082c166ff4ec27473a361e496e5ea167f298f2da9722
           envFrom:
             - configMapRef:
                 name: db-cm 
