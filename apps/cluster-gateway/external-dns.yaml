@@ -16,11 +16,15 @@ spec:
         fullnameOverride: external-dns
         logLevel: info
         
-        # Configure External-DNS to use the webhook provider
+        # Configure External-DNS to use the webhook provider locally
         provider:
           name: webhook
-           # OPNsense Webhook Sidecar Container
           webhook:
+            url: http://127.0.0.1:8080
+
+        # Inject the OPNsense webhook as a sidecar container
+        extraContainers:
+          - name: opnsense-webhook
             image:
               repository: ghcr.io/crutonjohn/external-dns-opnsense-webhook
               tag: main
@@ -37,6 +41,9 @@ spec:
                   secretKeyRef:
                     name: external-dns-opnsense-secret
                     key: api_secret
+            ports:
+              - containerPort: 8080
+                name: http
             livenessProbe:
               httpGet:
                 path: /healthz
@@ -45,6 +52,7 @@ spec:
               httpGet:
                 path: /healthz
                 port: 8080
+
         # Sources to monitor for domain generation
         sources:
           - gateway-httproute
@@ -54,7 +62,6 @@ spec:
           - hoareau-marion.eu
           
         registry: "noop"
-        
        
   destination:
     server: https://kubernetes.default.svc
