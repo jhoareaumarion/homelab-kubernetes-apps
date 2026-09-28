@@ -15,7 +15,7 @@ spec:
     spec:
       initContainers:
       - name: init-workspace
-        image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.26
+        image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.26@sha256:8174591c5cfa923c0051d7901ab87aa60118f9212e1b4bcfacb8259a2b685447
         securityContext:
           runAsUser: 0
         env:
@@ -85,7 +85,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: code-server
-          image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.26
+          image: ghcr.io/jhoareaumarion/homelab-kubernetes-apps/code-server:0.0.26@sha256:8174591c5cfa923c0051d7901ab87aa60118f9212e1b4bcfacb8259a2b685447
           args: ["--bind-addr", "0.0.0.0:8080", "/home/coder/workspace"]
           ports:
             - containerPort: 8080
