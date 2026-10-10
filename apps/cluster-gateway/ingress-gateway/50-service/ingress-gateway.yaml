@@ -450,3 +450,20 @@ spec:
         selector:
           matchLabels:
             gateway-access: lubelogger
+  ###
+  # LITELLM
+  ###
+  - name: litellm-https
+    hostname: "litellm.hoareau-marion.eu"
+    port: 443  
+    protocol: HTTPS
+    tls:
+      mode: Terminate
+      certificateRefs:
+        - name: litellm-hoareau-marion-eu-tls
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            gateway-access: litellm

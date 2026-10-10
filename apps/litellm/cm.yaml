@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: litellm-config
+  namespace: litellm
+data:
+  config.yaml: |
+    general_settings:
+      master_key: os.environ/LITELLM_MASTER_KEY
+      enable_jwt_auth: true
+      litellm_jwtauth:
+        user_roles_jwt_field: "roles"
+        admin_jwt_scope: "proxy_admin"
+        enforce_rbac: true
+        role_permissions:
+          - role: proxy_admin
+            models:
+              - qwen2.5-coder-7b
+          - role: internal_user
+            models:
+              - qwen2.5-coder-7b
+
+    environment_variables:
+      JWT_PUBLIC_KEY_URL: "https://auth.hoareau-marion.eu/realms/milkyway/protocol/openid-connect/certs"
+      PROXY_BASE_URL: "https://litellm.hoareau-marion.eu"
+
+    model_list:
+      - model_name: qwen2.5-coder-7b
+        litellm_params:
+          model: ollama/qwen2.5-coder:7b
+          api_base: "http://qwen-2.5-7b.hoareau-marion.eu:11434"
