@@ -8,6 +8,7 @@ data:
     general_settings:
       master_key: os.environ/LITELLM_MASTER_KEY
       database_url: os.environ/DATABASE_URL
+      disable_env_credential_login: true
       enable_jwt_auth: true
       require_master_key: true
       litellm_jwtauth:
@@ -28,6 +29,7 @@ data:
     environment_variables:
       JWT_PUBLIC_KEY_URL: "https://auth.hoareau-marion.eu/realms/milkyway/protocol/openid-connect/certs"
       PROXY_BASE_URL: "https://litellm.hoareau-marion.eu"
+      AUTO_REDIRECT_UI_LOGIN_TO_SSO: "true"
 
     model_list:
       - model_name: qwen2.5-coder-7b
