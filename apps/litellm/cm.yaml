@@ -27,7 +27,9 @@ data:
     environment_variables:
       JWT_PUBLIC_KEY_URL: "https://auth.hoareau-marion.eu/realms/milkyway/protocol/openid-connect/certs"
       PROXY_BASE_URL: "https://litellm.hoareau-marion.eu"
-
+      DB_HOST: "postgres.litellm.svc.cluster.local"
+      DB_NAME: "litellm"
+      
     model_list:
       - model_name: qwen2.5-coder-7b
         litellm_params:
