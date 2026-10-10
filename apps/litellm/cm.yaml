@@ -12,13 +12,13 @@ data:
         user_roles_jwt_field: "roles"
         admin_jwt_scope: "proxy_admin"
         enforce_rbac: true
-        role_permissions:
-          - role: proxy_admin
-            models:
-              - qwen2.5-coder-7b
-          - role: internal_user
-            models:
-              - qwen2.5-coder-7b
+    role_permissions:
+      - role: proxy_admin
+        models:
+          - qwen2.5-coder-7b
+      - role: internal_user
+        models:
+          - qwen2.5-coder-7b
 
     environment_variables:
       JWT_PUBLIC_KEY_URL: "https://auth.hoareau-marion.eu/realms/milkyway/protocol/openid-connect/certs"
