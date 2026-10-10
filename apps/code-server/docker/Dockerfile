@@ -19,7 +19,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     lsb-release \
     jq \
     && rm -rf /var/lib/apt/lists/*
-
 # 2. Install DevPod
 RUN curl -L -s https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64 -o /usr/local/bin/devpod && \
     chmod +x /usr/local/bin/devpod
@@ -49,6 +48,9 @@ RUN HUBBLE_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/hubble/mas
 
 # 5. Final Permissions for 'coder' user
 RUN echo "coder ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+# 6. Install Aider
+RUN curl -LsSf https://aider.chat/install.sh | sh
 
 # Copy your entrypoint script
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh

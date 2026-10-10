@@ -89,6 +89,9 @@ spec:
           args: ["--bind-addr", "0.0.0.0:8080", "/home/coder/workspace"]
           ports:
             - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: aider-secrets
           env:
             - name: GIT_USER_NAME
               valueFrom:
