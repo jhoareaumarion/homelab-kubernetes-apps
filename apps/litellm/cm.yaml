@@ -37,7 +37,7 @@ data:
     model_list:
       - model_name: qwen2.5-coder-7b
         litellm_params:
-          model: ollama/qwen2.5-coder:7b
+          model: ollama_chat/qwen2.5-coder:7b
           api_base: "http://qwen-2.5-7b.hoareau-marion.eu:11434"
           model_info:
             supports_function_calling: true
