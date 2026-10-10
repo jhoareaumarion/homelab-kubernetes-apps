@@ -8,6 +8,7 @@ data:
     general_settings:
       master_key: os.environ/LITELLM_MASTER_KEY
       enable_jwt_auth: true
+      require_master_key: true
       litellm_jwtauth:
         user_roles_jwt_field: "roles"
         user_allowed_roles:
