@@ -39,3 +39,6 @@ data:
         litellm_params:
           model: ollama/qwen2.5-coder:7b
           api_base: "http://qwen-2.5-7b.hoareau-marion.eu:11434"
+          model_info:
+            supports_function_calling: true
+            supports_parallel_function_calling: true
