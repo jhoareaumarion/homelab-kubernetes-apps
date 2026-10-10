@@ -10,6 +10,9 @@ data:
       enable_jwt_auth: true
       litellm_jwtauth:
         user_roles_jwt_field: "roles"
+        user_allowed_roles:
+          - proxy_admin
+          - internal_user
         admin_jwt_scope: "proxy_admin"
         enforce_rbac: true
     role_permissions:
