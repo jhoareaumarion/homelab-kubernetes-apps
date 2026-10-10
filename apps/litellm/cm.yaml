@@ -30,6 +30,9 @@ data:
       JWT_PUBLIC_KEY_URL: "https://auth.hoareau-marion.eu/realms/milkyway/protocol/openid-connect/certs"
       PROXY_BASE_URL: "https://litellm.hoareau-marion.eu"
       AUTO_REDIRECT_UI_LOGIN_TO_SSO: "true"
+      NO_DOCS: "True"
+      NO_REDOC: "True"
+      NO_OPENAPI: "True"
 
     model_list:
       - model_name: qwen2.5-coder-7b
