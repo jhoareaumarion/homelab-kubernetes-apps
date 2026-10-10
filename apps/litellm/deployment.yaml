@@ -13,6 +13,8 @@ spec:
       labels:
         app: litellm
     spec:
+      nodeSelector:
+        affected_vlan: "50"
       containers:
         - name: litellm
           image: ghcr.io/berriai/litellm:main-v1.61.12-stable
