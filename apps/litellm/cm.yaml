@@ -35,21 +35,13 @@ data:
       NO_OPENAPI: "True"
 
     model_list:
-      - model_name: qwen2.5-coder-7b
-        litellm_params:
-          model: ollama_chat/qwen2.5-coder:7b
-          api_base: "http://ollama.hoareau-marion.eu:11434"
-          num_ctx: 16384
-          temperature: 0.0
-          model_info:
-            supports_function_calling: true
-            supports_parallel_function_calling: true
       - model_name: ornith-1.5-9b                
         litellm_params:
           model: ollama_chat/ornith-1.5-9b
           api_base: "http://ollama.hoareau-marion.eu:11434"
-          num_ctx: 32768                         
-          temperature: 0.0
+          num_ctx: 16384      
+          num_predict: 4096
+          temperature: 0.2
           model_info:
             supports_function_calling: true
             supports_parallel_function_calling: false
