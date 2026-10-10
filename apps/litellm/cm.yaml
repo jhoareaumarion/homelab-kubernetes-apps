@@ -48,7 +48,7 @@ data:
         litellm_params:
           model: ollama_chat/ornith-1.5-9b
           api_base: "http://ollama.hoareau-marion.eu:11434"
-          num_ctx: 16384                         
+          num_ctx: 32768                         
           temperature: 0.0
           model_info:
             supports_function_calling: true
