@@ -1,2 +1,3 @@
 apps/kubeseal/*
 *.secrets.yaml
+.aider*
