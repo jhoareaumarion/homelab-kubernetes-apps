@@ -21,21 +21,28 @@ spec:
           ports:
             - containerPort: 4000
           env:
-            - name: DATABASE_URL
-              value: "postgresql://$(DB_USER):$(DB_PASSWORD)@$(DB_HOST):5432/$(DB_NAME)"
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: db-secrets
+                key: POSTGRES_USER
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-secrets
+                key: POSTGRES_PASSWORD
+          - name: DB_HOST
+            value: "postgres.litellm.svc.cluster.local"
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: db-secrets
+                key: POSTGRES_DB
+          - name: DATABASE_URL
+            value: "postgresql://$(DB_USER):$(DB_PASSWORD)@$(DB_HOST):5432/$(DB_NAME)"
           envFrom:
             - secretRef:
                 name: litellm-secrets
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: db-secrets
-                  key: POSTGRES_USER
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: db-secrets
-                  key: POSTGRES_PASSWORD
           args:
             - "--config"
             - "/app/config.yaml"
