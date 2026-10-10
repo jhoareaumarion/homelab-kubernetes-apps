@@ -1,12 +1,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: litellm-tls
+  name: litellm-hoareau-marion-eu-tls
   namespace: cluster-gateway
   annotations:
     argocd.argoproj.io/sync-wave: "0"
 spec:
-  secretName: litellm-tls
+  secretName: litellm-hoareau-marion-eu-tls
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer
