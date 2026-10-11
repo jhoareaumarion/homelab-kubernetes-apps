@@ -41,11 +41,11 @@ data:
         litellm_params:
           model: gemini/gemini-3.1-pro-preview
           api_key: os.environ/GEMINI_API_KEY
-      - model_name: ornith-1.5-9b      
       - model_name: gemini-flash
         litellm_params:
           model: gemini/gemini-3.8-flash
           api_key: os.environ/GEMINI_API_KEY
+      - model_name: ornith-1.5-9b      
         model_info:
           max_input_tokens: 20000
           max_output_tokens: 4096
