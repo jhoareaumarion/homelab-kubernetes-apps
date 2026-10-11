@@ -21,6 +21,8 @@ data:
     role_permissions:
       - role: proxy_admin
         models:
+          - gemini-pro
+          - gemini-flash
           - ornith-1.5-9b
       - role: internal_user
         models:
@@ -35,6 +37,14 @@ data:
       NO_OPENAPI: "True"
 
     model_list:
+      - model_name: gemini-flash
+        litellm_params:
+          model: gemini/gemini-2.5-flash
+          api_key: os.environ/GEMINI_API_KEY
+      - model_name: gemini-pro
+        litellm_params:
+          model: gemini/gemini-2.5-pro
+          api_key: os.environ/GEMINI_API_KEY
       - model_name: ornith-1.5-9b      
         model_info:
           max_input_tokens: 20000
@@ -54,3 +64,7 @@ data:
         litellm_params:
           model: ollama/nomic-embed-text
           api_base: "http://ollama.hoareau-marion.eu:11434"
+    router_settings:
+      fallbacks:
+        - "gemini-pro": ["gemini-flash", "ornith-1.5-9b"]
+        - "gemini-flash": ["ornith-1.5-9b"]
