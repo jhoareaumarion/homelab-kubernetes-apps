@@ -39,11 +39,15 @@ data:
         litellm_params:
           model: ollama_chat/ornith-1.5-9b
           api_base: "http://ollama.hoareau-marion.eu:11434"
+          truncate_large_inputs: true
           num_ctx: 32768      
           num_predict: 4096
           temperature: 0.2
           system_prompt: "You are a coding assistant. Ensure all shell commands executed via tool calls have perfectly matched and escaped quotes. Never append duplicate quotes at the end of echo statements."
           model_info:
+            max_input_tokens: 20000
+            max_output_tokens: 4096
+            max_tokens: 24096
             supports_function_calling: true
             supports_parallel_function_calling: false
       - model_name: nomic-embed-text

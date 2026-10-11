@@ -12,3 +12,4 @@ data:
   ENABLE_OAUTH_ROLE_MANAGEMENT: "true"
   OAUTH_ROLES_CLAIM: "roles"
   OAUTH_ROLES_MAP: '{"admin": "admin", "user": "user", "pending": "pending"}'
+  CORS_ALLOW_ORIGIN: https://open-webui.hoareau-marion.eu
