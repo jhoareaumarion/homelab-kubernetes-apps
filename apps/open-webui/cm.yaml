@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: open-webui-config
+  namespace: open-webui
+data:
+  ENABLE_OAUTH_SIGNUP: "true"
+  OAUTH_PROVIDER_NAME: "Keycloak"
+  OPENID_PROVIDER_URL: "https://auth.hoareau-marion.eu/realms/milkyway/.well-known/openid-configuration"
+  ENABLE_OAUTH_PERSISTENT_CONFIG: "false"
+  ENABLE_LOGIN_FORM: "false"

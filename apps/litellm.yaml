@@ -5,7 +5,7 @@ metadata:
   name: litellm
   namespace: argocd
   labels:
-    hoareau-marion.eu/category: productivity
+    hoareau-marion.eu/category: ai
 spec:
   project: homelab
   sources:
