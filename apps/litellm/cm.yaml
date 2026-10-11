@@ -66,5 +66,4 @@ data:
           api_base: "http://ollama.hoareau-marion.eu:11434"
     router_settings:
       fallbacks:
-        - "gemini-pro": ["gemini-flash", "ornith-1.5-9b"]
-        - "gemini-flash": ["ornith-1.5-9b"]
+        - "gemini-pro": ["gemini-flash"]
