@@ -17,7 +17,7 @@ spec:
         affected_vlan: "50"
       containers:
         - name: postgres
-          image: docker.io/library/postgres:18@sha256:4aabea78cf39b90e834caf3af7d602a18565f6fe2508705c8d01aa63245c2e20
+          image: docker.io/library/postgres:18@sha256:bd5dfa494a5a259704365813dbfa5fa6b3e69be7348d43b547f540c730478583
           envFrom:
             - configMapRef:
                 name: mas-db-cm 
