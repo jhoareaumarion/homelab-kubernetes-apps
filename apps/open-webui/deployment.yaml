@@ -17,7 +17,7 @@ spec:
         affected_vlan: "50"
       containers:
         - name: open-webui
-          image: ghcr.io/open-webui/open-webui:v0.12.0
+          image: ghcr.io/open-webui/open-webui:v0.13.3@sha256:46b59158e6558eeb980bc828e0f1b30238ad24d82ed84d5e5eda1dab2a082f14
           ports:
             - containerPort: 8080
               name: http
