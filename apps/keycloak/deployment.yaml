@@ -17,7 +17,7 @@ spec:
         affected_vlan: "50" 
       containers:
       - name: keycloak
-        image: quay.io/keycloak/keycloak:26.8.0@sha256:27b3230fbabb8c9ff3c66c864cf09dcd8a41aca82e5100679d109ef0eeb05741
+        image: quay.io/keycloak/keycloak:26.8.2@sha256:7e66a96e4739239070aeaf72e4c5decf0f7f682cfc725b9f7ea2b336eaba38b3
         args: ["start", "--http-enabled=true", "--hostname-strict=false"]
         envFrom:
           - secretRef:
