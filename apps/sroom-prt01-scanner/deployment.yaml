@@ -18,7 +18,7 @@ spec:
       hostNetwork: true
       containers:
         - name: sroom-prt01-scanner
-          image: ghcr.io/philippmundhenk/brotherscannerdocker:v1.1.1@sha256:d60f5ca09119e87f24a926b07d07cb0ee4ac1c555a7e210758796fd913bd0495
+          image: ghcr.io/philippmundhenk/brotherscannerdocker:v2.2.0@sha256:f7694c8be2de8a0abb6f3f3679572db1247fee158ea4a9afd9e80f939ce89597
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
